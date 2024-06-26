@@ -1,0 +1,124 @@
+.fractionsummary-header {
+  display: flex;
+}
+
+.fractionsummaryheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.viewfractionsummarydetails {
+  margin-right: 10px;
+  color: #777;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.viewdetails {
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 65%;
+  float: right;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.fractionsummary {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* For Table */
+table {
+  width: 90%;
+  border-collapse: collapse;
+}
+
+/* Style the table header */
+thead {
+  background-color: #f2f2f2;
+}
+
+/* Style the table header cells */
+th {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style the table body cells */
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect on table rows */
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+/* Style the virtual scroll items */
+.example-item {
+  transition: background-color 0.3s ease;
+}
+
+.example-item:hover {
+  background-color: #ddd;
+}
+
+.flex-end {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.fractiontype label {
+  color: #666;
+}
+
+.fractiontype {
+  margin-left: 3px;
+  /* font-weight: bold; */
+}
+
+#fractiontype {
+  border-radius: 5px;
+  /* margin-left: 5px; */
+  border-color: #ddd;
+  width: 95%;
+}
+.fractiontypeLabel {
+  font-size: 20px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.fromtodate {
+  border-radius: 5px;
+  /* margin-left: 5px; */
+  border-color: #ddd;
+  width: 95%;
+}
+
+/* .date {
+  font-size: 15px;
+  color: #666; 
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.fromtodate {
+  border-radius: 5px;
+  border-color: #ddd;
+  color: #666;
+  width: 115px;
+} */

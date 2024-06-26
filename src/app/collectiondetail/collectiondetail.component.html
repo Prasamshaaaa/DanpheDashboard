@@ -1,0 +1,35 @@
+<div class="row g-0" style="width: 100%; height: 40px">
+  <div class="col-lg-7 col-md-7 col-sm-12 collectiondetail-header">
+    <p class="collectiondetailheading">Collection Details</p>
+    <span><i class="fa-solid fa-circle-info"></i></span>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 collectiondetailreport">
+    <div class="viewdetails">
+      <label for="viewcollectiondetails" class="viewcollectiondetails"
+        >View Details</label
+      >
+      <i class="fas fa-angle-right"></i>
+    </div>
+  </div>
+</div>
+<div class="row g-0" style="width: 100%; height: 50px">
+  <!-- Service Pharmacy -->
+  <div class="col-lg-7 col-md-7 col-sm-12">
+    <button type="button" class="btn btn-sm service-button">Service</button>
+    <button type="button" class="btn btn-sm pharmacy-button">Pharmacy</button>
+  </div>
+
+  <!-- Department Dropdown -->
+  <div class="col-lg-5 col-md-5 col-sm-12">
+    <select id="departmentname" name="departmentname">
+      <option value="All">Departments</option>
+      <option value="All">D1</option>
+      <option value="All">D2</option>
+    </select>
+  </div>
+</div>
+
+<!-- Collection Details Chart -->
+<div class="row g-0">
+  <canvas id="collectiolDetailsChart" width="400" height="500"></canvas>
+</div>

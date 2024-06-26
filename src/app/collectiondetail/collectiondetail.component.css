@@ -1,0 +1,62 @@
+.collectiondetail-header {
+  display: flex;
+}
+
+.collectiondetailheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.viewcollectiondetails {
+  margin-right: 10px;
+  color: #777;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.viewdetails {
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 30%;
+  float: right;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.collectiondetailreport {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+#departmentname {
+  border-radius: 5px;
+  /* margin-left: 5px; */
+  border-color: #ddd;
+  width: 80%;
+  float: right;
+  height: 35px;
+}
+
+.service-button {
+  background-color: rgb(5, 143, 143);
+  color: white;
+  border-color: rgb(5, 143, 143);
+  border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+  border-right: none;
+}
+
+.pharmacy-button {
+  color: rgb(5, 143, 143);
+  border-color: rgb(5, 143, 143);
+  border-radius: 5px;
+  border-radius: 0 5px 5px 0; /* Rounded corners on the right */
+  border-left: none;
+}

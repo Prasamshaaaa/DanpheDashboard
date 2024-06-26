@@ -1,0 +1,37 @@
+.radiologyreport-header {
+  display: flex;
+}
+
+.radiologyreportheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.viewradiologyreportdetails {
+  margin-right: 10px;
+  color: #777;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.viewdetails {
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 65%;
+  float: right;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.fractionsummary {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}

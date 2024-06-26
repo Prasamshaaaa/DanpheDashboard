@@ -1,0 +1,51 @@
+.agewise-header {
+  display: flex;
+}
+
+.agewiseheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.viewagewisedetails {
+  margin-right: 10px;
+  color: #777;
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.viewdetails {
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 65%;
+  float: right;
+  margin-left: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.agewisedetails {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+label {
+  margin-left: 5px;
+  color: #666;
+}
+
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+}
+
+.chart {
+  margin-left: 15px;
+}
