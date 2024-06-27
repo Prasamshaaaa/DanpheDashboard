@@ -46,6 +46,18 @@ input[type="checkbox"] {
   width: 20px;
 }
 
-.chart {
-  margin-left: 15px;
+.chart-box {
+  width: 95%;
+  height: 500px;
+  background-color: none;
+  /* border: 1px solid black; */
+  padding: 20px;
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+.chart-size {
+  width: 500px;
+  height: 300px;
 }

@@ -1,216 +1,146 @@
-<div class="container">
-  <!-- top -->
-  <div class="top">
-    <div class="row g-0">
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="row g-0">
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <label for="fiscalYear" class="fiscalYearLabel">Fiscal Year:</label>
-            <select id="fiscalYear" name="fiscalYear">
-              <option value="2022-2023">80-81</option>
-              <option value="2023-2024">81-82</option>
-              <option value="2024-2025">82-83</option>
-            </select>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12"></div>
+<!-- <div class="container"> -->
+<!-- top -->
+<div class="top">
+  <div class="row g-0">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="row g-0">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <label for="fiscalYear" class="fiscalYearLabel">Fiscal Year:</label>
+          <select id="fiscalYear" name="fiscalYear">
+            <option value="2022-2023">80-81</option>
+            <option value="2023-2024">81-82</option>
+            <option value="2024-2025">82-83</option>
+          </select>
         </div>
+        <div class="col-lg-6 col-md-6 col-sm-12"></div>
       </div>
+    </div>
 
-      <!-- Daily-Weekly-Monthly-Yearly -->
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <button
-          type="button"
-          class="btn btn-sm daily-button"
-          [ngClass]="{ active: activeButton === 'daily' }"
-          (click)="setActiveButton('daily')"
-        >
-          Daily
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm middle-button"
-          [ngClass]="{ active: activeButton === 'weekly' }"
-          (click)="setActiveButton('weekly')"
-        >
-          Weekly
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm middle-button"
-          [ngClass]="{ active: activeButton === 'monthly' }"
-          (click)="setActiveButton('monthly')"
-        >
-          Monthly
-        </button>
-        <button
-          type="button"
-          class="btn btn-sm yearly-button"
-          [ngClass]="{ active: activeButton === 'yearly' }"
-          (click)="setActiveButton('yearly')"
-        >
-          Yearly
-        </button>
-      </div>
+    <!-- Daily-Weekly-Monthly-Yearly -->
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <button
+        type="button"
+        class="btn btn-sm daily-button"
+        [ngClass]="{ active: activeButton === 'daily' }"
+        (click)="setActiveButton('daily')"
+      >
+        Daily
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm middle-button"
+        [ngClass]="{ active: activeButton === 'weekly' }"
+        (click)="setActiveButton('weekly')"
+      >
+        Weekly
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm middle-button"
+        [ngClass]="{ active: activeButton === 'monthly' }"
+        (click)="setActiveButton('monthly')"
+      >
+        Monthly
+      </button>
+      <button
+        type="button"
+        class="btn btn-sm yearly-button"
+        [ngClass]="{ active: activeButton === 'yearly' }"
+        (click)="setActiveButton('yearly')"
+      >
+        Yearly
+      </button>
+    </div>
 
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="row g-0">
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <label for="startDate" class="date">From</label>
-            <input
-              type="date"
-              id="startDate"
-              class="fromtodate"
-              name="startDate"
-              pattern="\d{4}-\d{2}-\d{2}"
-              placeholder="MM/DD/YYYY"
-            />
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <label for="endDate" class="date">To</label>
-            <input
-              type="date"
-              id="endDate"
-              class="fromtodate"
-              name="endDate"
-              pattern="\d{4}-\d{2}-\d{2}"
-              placeholder="MM/DD/YYYY"
-            />
-          </div>
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="row g-0">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <label for="startDate" class="date">From</label>
+          <input
+            type="date"
+            id="startDate"
+            class="fromtodate"
+            name="startDate"
+            pattern="\d{4}-\d{2}-\d{2}"
+            placeholder="MM/DD/YYYY"
+          />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <label for="endDate" class="date">To</label>
+          <input
+            type="date"
+            id="endDate"
+            class="fromtodate"
+            name="endDate"
+            pattern="\d{4}-\d{2}-\d{2}"
+            placeholder="MM/DD/YYYY"
+          />
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- Sub Container 1 -->
-  <div class="row g-0">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="sub-container1">
-        <div class="row g-0">
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div style="display: flex; margin-top: 120px">
-              <p class="chartheading mb-0">Total</p>
-              <span><i class="fa-solid fa-circle-info"></i></span>
-            </div>
-            <div>
-              <p class="numbercount" style="font-size: 35px">35399</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 27px">
-            <div class="row g-0">
-              <!-- Vertical Colorful Line -->
-              <div
-                class="col-lg-3 col-md-3 col-sm-12 button-container"
-                style="margin-top: 3px"
-              >
-                <button
-                  type="button"
-                  class="verticalcolorfulline topverticalbutton"
-                  style="background-color: blue; border-color: blue"
-                ></button>
-                <button
-                  type="button"
-                  class="verticalcolorfulline middleverticalbutton"
-                  style="background-color: green; border-color: green"
-                ></button>
-                <button
-                  type="button"
-                  class="verticalcolorfulline middleverticalbutton"
-                  style="background-color: red; border-color: red"
-                ></button>
-                <button
-                  type="button"
-                  class="verticalcolorfulline buttomverticalbutton"
-                  style="background-color: purple; border-color: purple"
-                ></button>
-              </div>
-              <div class="col-lg-9 col-md-9 col-sm-12">
-                <div>
-                  <p style="color: blue" class="mb-0">In Patients</p>
-                  <p class="numbercount">214</p>
-                </div>
-                <div>
-                  <p style="color: green" class="mb-0">Out Patients</p>
-                  <p class="numbercount">214</p>
-                </div>
-                <div>
-                  <p style="color: red" class="mb-0">Emergency</p>
-                  <p class="numbercount">214</p>
-                </div>
-                <div>
-                  <p style="color: purple" class="mb-0">PCR</p>
-                  <p class="numbercount">214</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- View Visit Reports -->
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="sub-container1">
-        <div class="row g-0" style="width: 100%; height: 50px">
-          <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+<!-- Sub Container 1 -->
+<div class="row g-0">
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="sub-container1">
+      <div class="row g-0">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div style="display: flex; margin-top: 120px">
+            <p class="chartheading mb-0">Total</p>
             <span><i class="fa-solid fa-circle-info"></i></span>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="viewvisitdetails">
-              <label for="viewvisitreports" class="viewvisitreports"
-                >View Visit Reports</label
-              >
-              <i class="fas fa-angle-right"></i>
-            </div>
+          <div>
+            <p class="numbercount" style="font-size: 35px">35399</p>
           </div>
         </div>
 
-        <div class="row g-0" style="width: 100%; height: 250px">
-          <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
-            <button type="button" class="buttons" id="NPButton">NP</button>
-            <button type="button" class="buttons" id="OPButton">OP</button>
-            <button type="button" class="buttons" id="FPButton">FP</button>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="row g-0 text-end">
-              <p class="mb-0">New Patients</p>
-              <p class="numbercount">21017</p>
+        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 27px">
+          <div class="row g-0">
+            <!-- Vertical Colorful Line -->
+            <div
+              class="col-lg-3 col-md-3 col-sm-12 button-container"
+              style="margin-top: 3px"
+            >
+              <button
+                type="button"
+                class="verticalcolorfulline topverticalbutton"
+                style="background-color: blue; border-color: blue"
+              ></button>
+              <button
+                type="button"
+                class="verticalcolorfulline middleverticalbutton"
+                style="background-color: green; border-color: green"
+              ></button>
+              <button
+                type="button"
+                class="verticalcolorfulline middleverticalbutton"
+                style="background-color: red; border-color: red"
+              ></button>
+              <button
+                type="button"
+                class="verticalcolorfulline buttomverticalbutton"
+                style="background-color: purple; border-color: purple"
+              ></button>
             </div>
-            <div class="row g-0 text-end">
-              <p class="mb-0">Old Patients</p>
-              <p class="numbercount">14382</p>
-            </div>
-            <div class="row g-0 text-end">
-              <p class="mb-0">Followup</p>
-              <p class="numbercount">214</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="sub-container1">
-        <div class="row g-0" style="width: 100%; height: 50px">
-          <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
-            <span><i class="fa-solid fa-circle-info"></i></span>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12"></div>
-        </div>
-
-        <div class="row g-0" style="width: 100%; height: 250px">
-          <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
-            <button type="button" class="buttons" id="EButton">E</button>
-            <button type="button" class="buttons" id="WButton">W</button>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="row g-0 text-end">
-              <p class="mb-0">Online Patients</p>
-              <p class="numbercount">0</p>
-            </div>
-            <div class="row g-0 text-end">
-              <p class="mb-0">Walkin Patients</p>
-              <p class="numbercount">35399</p>
+            <div class="col-lg-9 col-md-9 col-sm-12">
+              <div>
+                <p style="color: blue" class="mb-0">In Patients</p>
+                <p class="numbercount">214</p>
+              </div>
+              <div>
+                <p style="color: green" class="mb-0">Out Patients</p>
+                <p class="numbercount">214</p>
+              </div>
+              <div>
+                <p style="color: red" class="mb-0">Emergency</p>
+                <p class="numbercount">214</p>
+              </div>
+              <div>
+                <p style="color: purple" class="mb-0">PCR</p>
+                <p class="numbercount">214</p>
+              </div>
             </div>
           </div>
         </div>
@@ -218,10 +148,82 @@
     </div>
   </div>
 
-  <!-- Sub Container 2-->
-  <div class="row g-0">
-    <!-- Covid-19 Result -->
-    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
+  <!-- View Visit Reports -->
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="sub-container1">
+      <div class="row g-0" style="width: 100%; height: 50px">
+        <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+          <span>
+            <i class="fa-solid fa-circle-info" title="Get more info!"></i>
+          </span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="viewvisitdetails">
+            <label for="viewvisitreports" class="viewvisitreports"
+              >View Visit Reports</label
+            >
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-0" style="width: 100%; height: 250px">
+        <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
+          <button type="button" class="buttons" id="NPButton">NP</button>
+          <button type="button" class="buttons" id="OPButton">OP</button>
+          <button type="button" class="buttons" id="FPButton">FP</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="row g-0 text-end">
+            <p class="mb-0">New Patients</p>
+            <p class="numbercount">21017</p>
+          </div>
+          <div class="row g-0 text-end">
+            <p class="mb-0">Old Patients</p>
+            <p class="numbercount">14382</p>
+          </div>
+          <div class="row g-0 text-end">
+            <p class="mb-0">Followup</p>
+            <p class="numbercount">214</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="sub-container1">
+      <div class="row g-0" style="width: 100%; height: 50px">
+        <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+          <span><i class="fa-solid fa-circle-info"></i></span>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12"></div>
+      </div>
+
+      <div class="row g-0" style="width: 100%; height: 250px">
+        <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
+          <button type="button" class="buttons" id="EButton">E</button>
+          <button type="button" class="buttons" id="WButton">W</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="row g-0 text-end">
+            <p class="mb-0">Online Patients</p>
+            <p class="numbercount">0</p>
+          </div>
+          <div class="row g-0 text-end">
+            <p class="mb-0">Walkin Patients</p>
+            <p class="numbercount">35399</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 2-->
+<div class="row g-0">
+  <!-- Covid-19 Result -->
+  <!-- <div class="col-lg-4 col-md-4 col-sm-12">
       <div class="sub-container2">
         <div class="row g-0" style="width: 100%; height: 50px">
           <div class="col-lg-7 col-md-7 col-sm-12 chart-header">
@@ -268,128 +270,126 @@
       </div>
     </div> -->
 
-    <!-- Sampled Reports -->
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="sub-container2">
-        <div class="row g-0" style="width: 100%; height: 27px">
-          <div class="col-lg-7 col-md-7 col-sm-12 chart-header">
-            <p class="chartheading">Sampled Report</p>
-            <span><i class="fa-solid fa-circle-info"></i></span>
-          </div>
-          <div class="col-lg-5 col-md-5 col-sm-12"></div>
+  <!-- Sampled Reports -->
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="sub-container2">
+      <div class="row g-0" style="width: 100%; height: 27px">
+        <div class="col-lg-7 col-md-7 col-sm-12 chart-header">
+          <p class="chartheading">Sampled Report</p>
+          <span><i class="fa-solid fa-circle-info"></i></span>
         </div>
-        <div class="row g-0" style="width: 100%; height: 120px">
-          <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 22px">
-            <button
-              type="button"
-              class="buttons"
-              id="coronaButton"
-              style="margin-bottom: 0px"
-            >
-              <span><i class="fa-solid fa-virus"></i></span>
-            </button>
-            <div class="inline">
-              <p class="numbercount">223</p>
-              <p style="margin-left: 3px">Total</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="inlinesampledreport">
-              <p class="numbercount">28</p>
-              <p style="margin-left: 3px">IP</p>
-            </div>
-
-            <div class="inlinesampledreport">
-              <p class="numbercount">131</p>
-              <p style="margin-left: 3px">OP</p>
-            </div>
-
-            <div class="inlinesampledreport">
-              <p class="numbercount">1</p>
-              <p style="margin-left: 3px">ER</p>
-            </div>
-          </div>
-        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12"></div>
       </div>
-    </div>
-
-    <!-- Pharmacy Patient Count -->
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <div class="sub-container2">
-        <div class="row g-0" style="width: 100%; height: 50px">
-          <div class="col-lg-10 col-md-10 col-sm-12 chart-header">
-            <p class="chartheading">Pharmacy Patient Count</p>
-            <span><i class="fa-solid fa-circle-info"></i></span>
+      <div class="row g-0" style="width: 100%; height: 120px">
+        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 22px">
+          <button
+            type="button"
+            class="buttons"
+            id="coronaButton"
+            style="margin-bottom: 0px"
+          >
+            <span><i class="fa-solid fa-virus"></i></span>
+          </button>
+          <div class="inline">
+            <p class="numbercount">223</p>
+            <p style="margin-left: 3px">Total</p>
           </div>
-          <div class="col-lg-2 col-md-2 col-sm-12"></div>
         </div>
-        <div class="row g-0" style="width: 100%; height: 120px">
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <button
-              type="button"
-              class="buttons"
-              id="coronaButton"
-              style="margin-bottom: 0px"
-            >
-              <span
-                ><i class="fa-solid fa-prescription-bottle-medical"></i
-              ></span>
-            </button>
-            <div class="inline">
-              <p class="numbercount">14181</p>
-              <p style="margin-left: 3px">Total</p>
-            </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="inlinesampledreport">
+            <p class="numbercount">28</p>
+            <p style="margin-left: 3px">IP</p>
           </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <div class="row g-0 text-end">
-              <div class="inlinepharmacycount">
-                <p class="numbercount p">1577</p>
-                <p class="p" style="margin-left: 3px">IP</p>
-              </div>
-              <div class="inlinepharmacycount">
-                <p class="numbercount p">12604</p>
-                <p class="p" style="margin-left: 3px">OP</p>
-              </div>
-            </div>
+
+          <div class="inlinesampledreport">
+            <p class="numbercount">131</p>
+            <p style="margin-left: 3px">OP</p>
+          </div>
+
+          <div class="inlinesampledreport">
+            <p class="numbercount">1</p>
+            <p style="margin-left: 3px">ER</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Sub Container 3 -->
-  <div class="MainContainer">
-    <div class="row g-0">
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="row g-0">
-          <!-- Current Inpatient Details -->
-          <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="sub-container3">
-              <div class="row g-0" style="width: 100%; height: 35px">
-                <div class="col-lg-9 col-md-9 col-sm-12 chart-header">
-                  <p class="currentimpatientdetailsheading">
-                    Current Inpatient Details
-                  </p>
-                  <span><i class="fa-solid fa-circle-info"></i></span>
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-12">
-                  <div
-                    class="viewdetails"
-                    style="margin-left: 0px; width: 90px; height: 27px"
+  <!-- Pharmacy Patient Count -->
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="sub-container2">
+      <div class="row g-0" style="width: 100%; height: 50px">
+        <div class="col-lg-10 col-md-10 col-sm-12 chart-header">
+          <p class="chartheading">Pharmacy Patient Count</p>
+          <span><i class="fa-solid fa-circle-info"></i></span>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12"></div>
+      </div>
+      <div class="row g-0" style="width: 100%; height: 120px">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <button
+            type="button"
+            class="buttons"
+            id="coronaButton"
+            style="margin-bottom: 0px"
+          >
+            <span><i class="fa-solid fa-prescription-bottle-medical"></i></span>
+          </button>
+          <div class="inline">
+            <p class="numbercount">14181</p>
+            <p style="margin-left: 3px">Total</p>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="row g-0 text-end">
+            <div class="inlinepharmacycount">
+              <p class="numbercount p">1577</p>
+              <p class="p" style="margin-left: 3px">IP</p>
+            </div>
+            <div class="inlinepharmacycount">
+              <p class="numbercount p">12604</p>
+              <p class="p" style="margin-left: 3px">OP</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 3 -->
+<div class="MainContainer">
+  <div class="row g-0">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="row g-0">
+        <!-- Current Inpatient Details -->
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="sub-container3">
+            <div class="row g-0" style="width: 100%; height: 35px">
+              <div class="col-lg-9 col-md-9 col-sm-12 chart-header">
+                <p class="currentimpatientdetailsheading">
+                  Current Inpatient Details
+                </p>
+                <span><i class="fa-solid fa-circle-info"></i></span>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-12">
+                <div
+                  class="viewdetails"
+                  style="margin-left: 0px; width: 90px; height: 27px"
+                >
+                  <label
+                    for="viewcovid19details"
+                    class="viewcurrentimpatientdetails"
+                    >View Details</label
                   >
-                    <label
-                      for="viewcovid19details"
-                      class="viewcurrentimpatientdetails"
-                      >View Details</label
-                    >
-                    <i class="fas fa-angle-right"></i>
-                  </div>
+                  <i class="fas fa-angle-right"></i>
                 </div>
               </div>
-              <div class="row g-0" style="width: 100%; height: 120px">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <!-- <button
+            </div>
+            <div class="row g-0" style="width: 100%; height: 120px">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <!-- <button
                     type="button"
                     class="buttons"
                     id="coronaButton"
@@ -397,187 +397,186 @@
                   >
                     <span><i class="fa-solid fa-virus"></i></span>
                   </button> -->
-                  <div class="currentinpatientDetails" style="margin-top: 22px">
-                    <span><i class="fa-solid fa-bed"></i></span>
-                    <p style="margin-left: 3px" class="numbercountimpatient p">
-                      118
-                    </p>
-                    <p class="p" style="margin-left: 3px">Total Beds</p>
-                  </div>
-                  <div class="currentinpatientDetails">
-                    <p style="margin-left: 3px" class="numbercountimpatient">
-                      2
-                    </p>
-                    <p style="margin-left: 3px">Not in Service</p>
-                  </div>
+                <div
+                  class="inlineinpatient"
+                  style="margin-top: 16px; justify-content: flex-start"
+                >
+                  <span><i class="fa-solid fa-bed"></i></span>
+                  <p style="margin-left: 3px" class="numbercount p">118</p>
+                  <p class="p" style="margin-left: 3px">Total Beds</p>
                 </div>
                 <div
-                  class="col-lg-6 col-md-6 col-sm-12"
-                  style="margin-top: 15px"
+                  class="inlineinpatient"
+                  style="justify-content: flex-start"
                 >
-                  <div class="inlineinpatient">
-                    <p class="numbercount">32</p>
-                    <p style="margin-left: 3px">Current</p>
-                  </div>
-                  <div class="inlineinpatient">
-                    <p class="numbercount">1460</p>
-                    <p style="margin-left: 3px">Discharge</p>
-                  </div>
-                  <!-- </div> -->
+                  <p style="margin-left: 3px" class="numbercount">2</p>
+                  <p style="margin-left: 3px">Not in Service</p>
                 </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 15px">
+                <div class="inlineinpatient">
+                  <p class="numbercount">32</p>
+                  <p style="margin-left: 3px">Current</p>
+                </div>
+                <div class="inlineinpatient">
+                  <p class="numbercount">1460</p>
+                  <p style="margin-left: 3px">Discharge</p>
+                </div>
+                <!-- </div> -->
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="row g-0">
+      <div class="row g-0">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="sub-container3">
+            <div class="row g-0" style="width: 100%; height: 30px"></div>
+
+            <div class="row g-0">
+              <div
+                class="col-lg-12 col-md-12 col-sm-12 chart-header"
+                style="margin-left: 80px"
+              >
+                <p class="numbercountdeath">0</p>
+                <p class="totaldeath">Total Deaths</p>
+                <span style="margin-top: 16px"
+                  ><i class="fa-solid fa-circle-info fa-2x"></i
+                ></span>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-12"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lab Details -->
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="sub-container1">
+        <div class="row g-0" style="width: 100%; height: 50px">
+          <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+            <p class="chartheading">Lab Details</p>
+            <span><i class="fa-solid fa-circle-info"></i></span>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="viewdetails">
+              <label for="viewlabdetails" class="viewlabdetails"
+                >View Details</label
+              >
+              <i class="fas fa-angle-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row g-0" style="width: 100%; height: 250px">
           <div class="col-lg-12 col-md-12 col-sm-12">
-            <div class="sub-container3">
-              <div class="row g-0" style="width: 100%; height: 30px"></div>
-
-              <div class="row g-0">
-                <div
-                  class="col-lg-12 col-md-12 col-sm-12 chart-header"
-                  style="margin-left: 30px"
-                >
-                  <p class="numbercountdeath">0</p>
-                  <p class="totaldeath">Total Deaths</p>
-                  <span style="margin-top: 16px"
-                    ><i class="fa-solid fa-circle-info fa-2x"></i
-                  ></span>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-12"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Lab Details -->
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="sub-container1">
-          <div class="row g-0" style="width: 100%; height: 50px">
-            <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
-              <p class="chartheading">Lab Details</p>
-              <span><i class="fa-solid fa-circle-info"></i></span>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="viewdetails">
-                <label for="viewlabdetails" class="viewlabdetails"
-                  >View Details</label
-                >
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </div>
-          </div>
-          <div class="row g-0" style="width: 100%; height: 250px">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <canvas id="labDetailsChart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Radio Details -->
-      <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="sub-container1">
-          <div class="row g-0" style="width: 100%; height: 50px">
-            <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
-              <p class="chartheading">Radio Details</p>
-              <span><i class="fa-solid fa-circle-info"></i></span>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="viewdetails">
-                <label for="viewradiodetails" class="viewlabdetails"
-                  >View Details</label
-                >
-                <i class="fas fa-angle-right"></i>
-              </div>
-            </div>
-          </div>
-          <div class="row g-0" style="width: 100%; height: 250px">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <canvas id="radioDetailsChart"></canvas>
-            </div>
+            <canvas id="labDetailsChart"></canvas>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Sub Container 5 -->
-  <div class="row g-0">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="sub-container5">
-        <app-collectiondetail></app-collectiondetail>
+    <!-- Radio Details -->
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <div class="sub-container1">
+        <div class="row g-0" style="width: 100%; height: 50px">
+          <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+            <p class="chartheading">Radio Details</p>
+            <span><i class="fa-solid fa-circle-info"></i></span>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="viewdetails">
+              <label for="viewradiodetails" class="viewlabdetails"
+                >View Details</label
+              >
+              <i class="fas fa-angle-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row g-0" style="width: 100%; height: 250px">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <canvas id="radioDetailsChart"></canvas>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-  <!-- Sub Container 6 -->
-  <div class="row g-0">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <div class="sub-container4">
-        <app-fractionsummary></app-fractionsummary>
-      </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <!-- radiology reports -->
-      <div class="sub-container4">
-        <app-radiologyreports></app-radiologyreports>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sub Container 7 -->
-  <div class="row g-0">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <!-- Lab Reports -->
-      <div class="sub-container5" style="height: 250px">
-        <app-labreports></app-labreports>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sub Container 8 -->
-  <div class="row g-0">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="sub-container5" style="height: 800px">
-        <app-categorywiseincomereport></app-categorywiseincomereport>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sub Container 9 -->
-  <div class="row g-0">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="sub-container5" style="height: 720px">
-        <app-labtests></app-labtests>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sub Container 10 -->
-  <div class="row g-0">
-    <div class="col-lg-12 col-md-12 col-sm-12">
-      <div class="sub-container5" style="height: 720px">
-        <app-radiotests></app-radiotests>
-      </div>
-    </div>
-  </div>
-
-  <div class="row g-0">
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <!-------Age Wise Details------->
-      <div class="sub-container4">
-        <app-age-wise-details></app-age-wise-details>
-      </div>
-    </div>
-    <div class="col-lg-6 col-md-6 col-sm-12">
-      <div class="sub-container4"></div>
     </div>
   </div>
 </div>
+
+<!-- Sub Container 5 -->
+<div class="row g-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="sub-container5">
+      <app-collectiondetail></app-collectiondetail>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 6 -->
+<div class="row g-0">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="sub-container4">
+      <app-fractionsummary></app-fractionsummary>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <!-- radiology reports -->
+    <div class="sub-container4">
+      <app-radiologyreports></app-radiologyreports>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 7 -->
+<div class="row g-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <!-- Lab Reports -->
+    <div class="sub-container5" style="height: 250px">
+      <app-labreports></app-labreports>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 8 -->
+<div class="row g-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="sub-container5" style="height: 800px">
+      <app-categorywiseincomereport></app-categorywiseincomereport>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 9 -->
+<div class="row g-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="sub-container5" style="height: 720px">
+      <app-labtests></app-labtests>
+    </div>
+  </div>
+</div>
+
+<!-- Sub Container 10 -->
+<div class="row g-0">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="sub-container5" style="height: 720px">
+      <app-radiotests></app-radiotests>
+    </div>
+  </div>
+</div>
+
+<div class="row g-0">
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <!-------Age Wise Details------->
+    <div class="sub-container4">
+      <app-age-wise-details></app-age-wise-details>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="sub-container4"></div>
+  </div>
+</div>
+<!-- </div> -->
 
 <!-- Footer -->
 <!-- <footer class="footer">

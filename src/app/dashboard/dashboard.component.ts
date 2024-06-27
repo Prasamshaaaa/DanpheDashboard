@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   setActiveButton(button: string) {
     this.activeButton = button;
   }
+
   // Create Lab Detail Chart
   CreateLabDetailsChart(): void {
     const data = {

@@ -53,7 +53,6 @@
 
 .yearly-button {
   border-radius: 0 5px 5px 0; /* Rounded corners on the right */
-  border-left: none;
 }
 
 .active {
@@ -85,7 +84,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   margin-bottom: 10px;
-  border-radius: 10px; /* to make border rounded */
+  border-radius: 6px; /* to make border rounded */
 }
 
 .sub-container2 {
@@ -97,7 +96,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   margin-bottom: 10px;
-  border-radius: 10px; /* to make border rounded */
+  border-radius: 6px; /* to make border rounded */
 }
 
 .MainContainer {
@@ -112,7 +111,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   margin-bottom: 10px;
-  border-radius: 10px; /* to make border rounded */
+  border-radius: 6px; /* to make border rounded */
 }
 
 .sub-container4 {
@@ -126,7 +125,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   margin-bottom: 10px;
-  border-radius: 10px; /* to make border rounded */
+  border-radius: 6px; /* to make border rounded */
 }
 
 .sub-container5 {
@@ -140,7 +139,7 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
   justify-content: center;
   margin-bottom: 10px;
-  border-radius: 10px; /* to make border rounded */
+  border-radius: 6px; /* to make border rounded */
 }
 
 .chart-header {
@@ -168,11 +167,11 @@
   height: 27px;
   justify-content: center;
   width: 120px;
-  margin-left: 30px;
+  margin-left: 70px;
 }
 
 .viewvisitdetails {
-  margin-left: 22px;
+  margin-left: 60px;
   border: 1px solid #888;
   border-radius: 5px;
   height: 28px;
@@ -263,7 +262,7 @@ p {
 
 .currentimpatientdetailsheading {
   margin-right: 3px;
-  font-size: 14px;
+  font-size: 16px;
   color: #666; /* Text color */
   font-weight: bold;
 }

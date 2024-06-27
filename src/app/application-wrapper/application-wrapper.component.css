@@ -34,10 +34,12 @@ app-side-nav {
 }
 
 .display-area {
+  background: rgba(250, 250, 250);
   position: relative;
   left: 40px;
   /* width: calc(100% -250px); */
   transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  margin-right: 50px;
 }
 
 .app-side-nav-open + .display-area {

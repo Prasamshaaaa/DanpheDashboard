@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 
 @Component({
@@ -6,11 +6,16 @@ import { Chart } from 'chart.js';
   templateUrl: './collectiondetail.component.html',
   styleUrls: ['./collectiondetail.component.css']
 })
-export class CollectiondetailComponent implements OnInit {
+export class CollectiondetailComponent implements AfterViewInit {
   activeButton: string = 'service';
-  constructor() { }
+  constructor(private elementRef: ElementRef) { }
 
-  ngOnInit() {
+  // ngOnInit() {
+  //   this.CreateCollectionDetailsChart();
+  // }
+
+  ngAfterViewInit() {
+    // Call chart initialization method after view is fully initialized
     this.CreateCollectionDetailsChart();
   }
 
@@ -20,7 +25,7 @@ export class CollectiondetailComponent implements OnInit {
   }
 
   CreateCollectionDetailsChart() {
-    const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8'];
+    const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11', 'Year 12', 'Year 13', 'Year 14', 'Year 15'];
     const data = years.map(() => Math.floor(Math.random() * 1000)); // Generate random count data
 
     const chartData = {

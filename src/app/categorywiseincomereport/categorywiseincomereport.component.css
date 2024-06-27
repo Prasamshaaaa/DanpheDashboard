@@ -86,3 +86,17 @@
 .table-container .example-item:hover {
   background-color: #ddd;
 }
+
+.chart-box {
+  width: 95%;
+  height: 700px;
+  background-color: none;
+  padding: 20px;
+  justify-content: center;
+  margin-bottom: 10px;
+  margin-left: 35px;
+}
+.chart-size {
+  width: 95%;
+  height: 90%;
+}

@@ -17,7 +17,7 @@ import { CategorywiseincomereportComponent } from './categorywiseincomereport/ca
 import { LabtestsComponent } from './labtests/labtests.component';
 import { RadiotestsComponent } from './radiotests/radiotests.component';
 import { AgeWiseDetailsComponent } from './age-wise-details/age-wise-details.component';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +38,8 @@ import { AgeWiseDetailsComponent } from './age-wise-details/age-wise-details.com
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
