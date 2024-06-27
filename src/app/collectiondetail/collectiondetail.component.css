@@ -46,17 +46,30 @@
 }
 
 .service-button {
-  background-color: rgb(5, 143, 143);
-  color: white;
-  border-color: rgb(5, 143, 143);
   border-radius: 5px 0 0 5px; /* Rounded corners on the left */
   border-right: none;
 }
 
 .pharmacy-button {
-  color: rgb(5, 143, 143);
-  border-color: rgb(5, 143, 143);
-  border-radius: 5px;
   border-radius: 0 5px 5px 0; /* Rounded corners on the right */
   border-left: none;
+}
+
+.service-button,
+.pharmacy-button {
+  background-color: white;
+  color: rgb(5, 143, 143);
+  border-color: rgb(5, 143, 143);
+  box-shadow: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.service-button:hover,
+.pharmacy-button:hover {
+  background-color: rgb(5, 143, 143);
+  color: white;
+}
+.active {
+  background-color: rgb(5, 143, 143) !important;
+  color: white !important;
 }

@@ -18,10 +18,38 @@
 
       <!-- Daily-Weekly-Monthly-Yearly -->
       <div class="col-lg-4 col-md-4 col-sm-12">
-        <button type="button" class="btn btn-sm daily-button">Daily</button>
-        <button type="button" class="btn btn-sm middle-button">Weekly</button>
-        <button type="button" class="btn btn-sm middle-button">Monthly</button>
-        <button type="button" class="btn btn-sm yearly-button">Yearly</button>
+        <button
+          type="button"
+          class="btn btn-sm daily-button"
+          [ngClass]="{ active: activeButton === 'daily' }"
+          (click)="setActiveButton('daily')"
+        >
+          Daily
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm middle-button"
+          [ngClass]="{ active: activeButton === 'weekly' }"
+          (click)="setActiveButton('weekly')"
+        >
+          Weekly
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm middle-button"
+          [ngClass]="{ active: activeButton === 'monthly' }"
+          (click)="setActiveButton('monthly')"
+        >
+          Monthly
+        </button>
+        <button
+          type="button"
+          class="btn btn-sm yearly-button"
+          [ngClass]="{ active: activeButton === 'yearly' }"
+          (click)="setActiveButton('yearly')"
+        >
+          Yearly
+        </button>
       </div>
 
       <div class="col-lg-4 col-md-4 col-sm-12">
@@ -193,7 +221,7 @@
   <!-- Sub Container 2-->
   <div class="row g-0">
     <!-- Covid-19 Result -->
-    <div class="col-lg-4 col-md-4 col-sm-12">
+    <!-- <div class="col-lg-4 col-md-4 col-sm-12">
       <div class="sub-container2">
         <div class="row g-0" style="width: 100%; height: 50px">
           <div class="col-lg-7 col-md-7 col-sm-12 chart-header">
@@ -238,7 +266,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Sampled Reports -->
     <div class="col-lg-4 col-md-4 col-sm-12">
@@ -552,7 +580,7 @@
 </div>
 
 <!-- Footer -->
-<footer class="footer">
+<!-- <footer class="footer">
   <div class="row g-0">
     <div class="col-lg-6 col-md-6 col-sm-12">
       <div class="footerlicensed">
@@ -566,4 +594,4 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> -->

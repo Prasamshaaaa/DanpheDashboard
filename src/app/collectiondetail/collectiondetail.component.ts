@@ -7,11 +7,16 @@ import { Chart } from 'chart.js';
   styleUrls: ['./collectiondetail.component.css']
 })
 export class CollectiondetailComponent implements OnInit {
-
+  activeButton: string = 'service';
   constructor() { }
 
   ngOnInit() {
     this.CreateCollectionDetailsChart();
+  }
+
+  //For buttons
+  setActiveButton(button: string) {
+    this.activeButton = button;
   }
 
   CreateCollectionDetailsChart() {

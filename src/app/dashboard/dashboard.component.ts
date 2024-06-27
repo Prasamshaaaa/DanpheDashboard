@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  activeButton: string = 'yearly';
   constructor() { }
 
   ngOnInit() {
@@ -15,6 +15,10 @@ export class DashboardComponent implements OnInit {
     this.CreateRadioDetailsChart();
   }
 
+  //For top yearly/monthly/weekly/daily buttons
+  setActiveButton(button: string) {
+    this.activeButton = button;
+  }
   // Create Lab Detail Chart
   CreateLabDetailsChart(): void {
     const data = {

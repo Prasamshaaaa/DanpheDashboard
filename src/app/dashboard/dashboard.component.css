@@ -4,6 +4,7 @@
   overflow: auto;
   overflow-y: scroll;
   margin-right: 0px;
+  width: 100%;
 }
 
 .top {
@@ -18,33 +19,46 @@
 }
 .fiscalYearLabel {
   font-size: 20px;
-  color: #666; /* Text color */
+  color: #666;
   font-weight: bold;
 }
 
-.daily-button {
+/* Daily, Weekly, Monthly, Yearly Buttons Style */
+.daily-button,
+.middle-button,
+.yearly-button {
   background-color: white;
   color: rgb(5, 143, 143);
   border-color: rgb(5, 143, 143);
+  box-shadow: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.daily-button:hover,
+.middle-button:hover,
+.yearly-button:hover {
+  background-color: rgb(5, 143, 143);
+  color: white;
+}
+
+.daily-button {
   border-radius: 5px 0 0 5px; /* Rounded corners on the left */
   border-right: none;
 }
 
 .middle-button {
-  background-color: white;
-  color: rgb(5, 143, 143);
-  border-color: rgb(5, 143, 143);
-  border-radius: 0 0 0 0px; /* Rounded corners on the left */
+  border-radius: 0; /* No rounded corners */
   border-right: none;
 }
 
 .yearly-button {
-  background-color: rgb(5, 143, 143);
-  color: white;
-  border-color: rgb(5, 143, 143);
-  border-radius: 5px;
   border-radius: 0 5px 5px 0; /* Rounded corners on the right */
   border-left: none;
+}
+
+.active {
+  background-color: rgb(5, 143, 143) !important;
+  color: white !important;
 }
 
 .date {

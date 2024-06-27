@@ -15,8 +15,22 @@
 <div class="row g-0" style="width: 100%; height: 50px">
   <!-- Service Pharmacy -->
   <div class="col-lg-7 col-md-7 col-sm-12">
-    <button type="button" class="btn btn-sm service-button">Service</button>
-    <button type="button" class="btn btn-sm pharmacy-button">Pharmacy</button>
+    <button
+      type="button"
+      class="btn btn-sm service-button"
+      [ngClass]="{ active: activeButton === 'service' }"
+      (click)="setActiveButton('service')"
+    >
+      Service
+    </button>
+    <button
+      type="button"
+      class="btn btn-sm pharmacy-button"
+      [ngClass]="{ active: activeButton === 'pharmacy' }"
+      (click)="setActiveButton('pharmacy')"
+    >
+      Pharmacy
+    </button>
   </div>
 
   <!-- Department Dropdown -->
