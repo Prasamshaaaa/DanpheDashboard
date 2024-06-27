@@ -265,7 +265,7 @@ p {
 
 .currentinpatientDetails {
   display: flex;
-  margin-left: 0px;
+  margin-left: 3px;
   font-size: 15px;
   /* margin-bottom: 20px;
   margin-top: 25px; */
