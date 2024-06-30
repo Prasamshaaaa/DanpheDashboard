@@ -1,5 +1,32 @@
 <!-- <div class="container"> -->
 <!-- top -->
+<style>
+  .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    width: 150px; /* Increased width for better display */
+    color: white;
+    font-size: 12px;
+    background-color: #192733;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left; /* Adjusted text alignment */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added box-shadow for better visibility */
+  }
+
+  .hover-text:hover .tooltip-text {
+    visibility: visible;
+  }
+
+  .hover-text {
+    position: relative;
+    display: inline-block;
+    margin: 40px;
+    font-family: Arial;
+    text-align: center;
+  }
+</style>
 <div class="top">
   <div class="row g-0">
     <div class="col-lg-3 col-md-3 col-sm-12">
@@ -371,10 +398,27 @@
     <div class="sub-container1">
       <div class="row g-0" style="width: 100%; height: 50px">
         <div class="col-lg-6 col-md-6 col-sm-12 chart-header">
+          <!-- <span>
+            <i
+              class="fa-solid fa-circle-info"
+              title="click to view report"
+              data-toggle="tooltip"
+            ></i>
+          </span> -->
           <span>
-            <i class="fa-solid fa-circle-info" title="Get more info!"></i>
+            <div class="hover-text" style="margin-top: 0px; margin-left: 0px">
+              <i class="fa-solid fa-circle-info" data-toggle="tooltip"></i>
+              <span class="tooltip-text" id="top">
+                <div>I'm a tooltip1!</div>
+                <div>I'm a tooltip2!</div>
+                <div>I'm a tooltip3!</div>
+                <div>I'm a tooltip4!</div>
+                <div>I'm a tooltip5!</div>
+              </span>
+            </div>
           </span>
         </div>
+
         <!-- <div class="col-lg-2 col-md-2 col-sm-12"></div> -->
         <div class="col-lg-6 col-md-6 col-sm-12 viewvisitdetails">
           <div class="viewdetails">

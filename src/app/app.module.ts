@@ -18,6 +18,8 @@ import { LabtestsComponent } from './labtests/labtests.component';
 import { RadiotestsComponent } from './radiotests/radiotests.component';
 import { AgeWiseDetailsComponent } from './age-wise-details/age-wise-details.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatButtonModule } from '@angular/material/button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +41,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     AppRoutingModule,
     CommonModule,
     RouterModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Chart } from 'chart.js';
-
+declare var $: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, AfterViewInit {
   activeButton: string = 'yearly';
   constructor() { }
 
@@ -14,6 +14,12 @@ export class DashboardComponent implements OnInit {
     this.CreateLabDetailsChart();
     this.CreateRadioDetailsChart();
   }
+  ngAfterViewInit() {
+    // $(document).ready(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+    // });
+  }
+
 
   //For top yearly/monthly/weekly/daily buttons
   setActiveButton(button: string) {
