@@ -35,3 +35,30 @@
   justify-content: flex-end;
   width: 100%;
 }
+
+/* For Tooltip */
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1;
+  width: 150px; /* Increased width for better display */
+  color: white;
+  font-size: 12px;
+  background-color: #192733;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left; /* Adjusted text alignment */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Added box-shadow for better visibility */
+}
+
+.hover-text:hover .tooltip-text {
+  visibility: visible;
+}
+
+.hover-text {
+  position: relative;
+  display: inline-block;
+  margin: 40px;
+  font-family: Arial;
+  text-align: center;
+}
