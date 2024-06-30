@@ -408,3 +408,23 @@ p {
   font-family: Arial;
   text-align: center;
 }
+
+/* For Buttons */
+#NPButton:hover + .tooltip-text {
+  visibility: visible;
+}
+
+#OPButton:hover + .tooltip-text {
+  visibility: visible;
+}
+
+#FPButton:hover + .tooltip-text {
+  visibility: visible;
+}
+#EButton:hover + .tooltip-text {
+  visibility: visible;
+}
+
+#WButton:hover + .tooltip-text {
+  visibility: visible;
+}
