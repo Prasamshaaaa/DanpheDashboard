@@ -18,38 +18,43 @@
 
     <!-- Daily-Weekly-Monthly-Yearly -->
     <div class="col-lg-5 col-md-5 col-sm-12">
-      <button
-        type="button"
-        class="btn btn-sm daily-button"
-        [ngClass]="{ active: activeButton === 'daily' }"
-        (click)="setActiveButton('daily')"
-      >
-        Daily
-      </button>
-      <button
-        type="button"
-        class="btn btn-sm middle-button"
-        [ngClass]="{ active: activeButton === 'weekly' }"
-        (click)="setActiveButton('weekly')"
-      >
-        Weekly
-      </button>
-      <button
-        type="button"
-        class="btn btn-sm middle-button"
-        [ngClass]="{ active: activeButton === 'monthly' }"
-        (click)="setActiveButton('monthly')"
-      >
-        Monthly
-      </button>
-      <button
-        type="button"
-        class="btn btn-sm yearly-button"
-        [ngClass]="{ active: activeButton === 'yearly' }"
-        (click)="setActiveButton('yearly')"
-      >
-        Yearly
-      </button>
+      <div class="row g-0">
+        <div class="col-lg-1 col-md-1 col-sm-12"></div>
+        <div class="col-lg-11 col-md-11 col-sm-12">
+          <button
+            type="button"
+            class="btn btn-sm daily-button"
+            [ngClass]="{ active: activeButton === 'daily' }"
+            (click)="setActiveButton('daily')"
+          >
+            Daily
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm middle-button"
+            [ngClass]="{ active: activeButton === 'weekly' }"
+            (click)="setActiveButton('weekly')"
+          >
+            Weekly
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm middle-button"
+            [ngClass]="{ active: activeButton === 'monthly' }"
+            (click)="setActiveButton('monthly')"
+          >
+            Monthly
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm yearly-button"
+            [ngClass]="{ active: activeButton === 'yearly' }"
+            (click)="setActiveButton('yearly')"
+          >
+            Yearly
+          </button>
+        </div>
+      </div>
     </div>
 
     <div class="col-lg-4 col-md-4 col-sm-12">
@@ -87,7 +92,7 @@
   <div class="col-lg-3 col-md-3 col-sm-12">
     <div class="sub-container2">
       <div class="row g-0" style="width: 100%; height: 27px">
-        <div class="col-lg-8 col-md-8 col-sm-12 chart-header">
+        <div class="col-lg-12 col-md-12 col-sm-12 chart-header">
           <p class="chartheading" style="font-size: 14px">Sampled Report</p>
           <span><i class="fa-solid fa-circle-info"></i></span>
           <!-- <span>
@@ -99,10 +104,12 @@
             </div>
           </span> -->
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12"></div>
       </div>
       <div class="row g-0" style="width: 100%; height: 120px">
-        <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 10px">
+        <div
+          class="col-lg-6 col-md-6 col-sm-12 vertical-buttons"
+          style="margin-top: 10px"
+        >
           <button
             type="button"
             class="buttons"
@@ -118,17 +125,17 @@
         </div>
 
         <div class="col-lg-6 col-md-6 col-sm-12">
-          <div class="inlinesampledreport">
+          <div class="inlinesampledreport text-end">
             <p class="numbercount">28</p>
             <p style="margin-left: 3px">IP</p>
           </div>
 
-          <div class="inlinesampledreport">
+          <div class="inlinesampledreport text-end">
             <p class="numbercount">131</p>
             <p style="margin-left: 3px">OP</p>
           </div>
 
-          <div class="inlinesampledreport">
+          <div class="inlinesampledreport text-end">
             <p class="numbercount">1</p>
             <p style="margin-left: 3px">ER</p>
           </div>
@@ -218,14 +225,6 @@
       </div>
       <div class="row g-0" style="width: 100%; height: 120px">
         <div class="col-lg-8 col-md-8 col-sm-12" style="margin-top: 15px">
-          <!-- <button
-            type="button"
-            class="buttons"
-            id="coronaButton"
-            style="margin-bottom: 0px"
-          >
-            <span><i class="fa-solid fa-virus"></i></span>
-          </button> -->
           <div class="inlineinpatientleft">
             <span><i class="fa-solid fa-bed"></i></span>
             <p style="margin-left: 3px" class="numbercount">118</p>
@@ -259,7 +258,7 @@
       <div class="row g-0">
         <div
           class="col-lg-12 col-md-12 col-sm-12 chart-header"
-          style="margin-left: 30px"
+          style="margin-left: 20px"
         >
           <p class="numbercountdeath">0</p>
           <p class="totaldeath">Total Deaths</p>

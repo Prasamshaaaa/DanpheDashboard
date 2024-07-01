@@ -58,19 +58,19 @@
 .service-button,
 .pharmacy-button {
   background-color: white;
-  color: rgb(5, 143, 143);
-  border-color: rgb(5, 143, 143);
+  color: rgb(55, 193, 193);
+  border-color: rgb(55, 193, 193);
   box-shadow: none;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .service-button:hover,
 .pharmacy-button:hover {
-  background-color: rgb(5, 143, 143);
+  background-color: rgb(55, 193, 193);
   color: white;
 }
 .active {
-  background-color: rgb(5, 143, 143) !important;
+  background-color: rgb(55, 193, 193) !important;
   color: white !important;
 }
 
