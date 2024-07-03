@@ -10,9 +10,9 @@
 }
 
 .viewcategorydetails {
-  margin-right: 10px;
+  margin-right: 5px;
   color: #777;
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 12px;
   font-weight: bold;
   margin-top: 6px;
@@ -23,7 +23,7 @@
   border-radius: 5px;
   height: 27px;
   justify-content: center;
-  width: 30%;
+  width: 22%;
   float: right;
   margin-left: 0px;
   display: flex;
@@ -89,16 +89,17 @@
 
 .chart-box {
   width: 95%;
-  height: 700px;
+  height: 500px;
   background-color: none;
-  padding: 20px;
+  padding: 5px;
   justify-content: center;
   margin-bottom: 10px;
-  margin-left: 35px;
+  /* margin-left: 35px; */
 }
 .chart-size {
   width: 95%;
   height: 90%;
+  margin-top: 10px;
 }
 
 /* For Tooltip */
@@ -126,4 +127,49 @@
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .categoryheading {
+    font-size: 13px;
+    margin-top: 3px;
+  }
+
+  .info {
+    font-size: 13px;
+  }
+
+  .viewdetails {
+    height: 22px;
+    justify-content: center;
+    width: 40%;
+  }
+
+  .viewcategorydetails {
+    margin-right: 3px;
+    font-size: 11px;
+  }
+
+  .table-container th {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .table-container td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .table-container table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-container {
+    max-height: 450px;
+    overflow-y: auto;
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
 }

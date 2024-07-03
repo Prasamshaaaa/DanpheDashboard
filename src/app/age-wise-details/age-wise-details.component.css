@@ -10,9 +10,9 @@
 }
 
 .viewagewisedetails {
-  margin-right: 10px;
+  margin-right: 5px;
   color: #777;
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 12px;
   font-weight: bold;
   margin-top: 6px;
@@ -23,7 +23,7 @@
   border-radius: 5px;
   height: 27px;
   justify-content: center;
-  width: 65%;
+  width: 45%;
   float: right;
   margin-left: 0px;
   display: flex;
@@ -87,4 +87,35 @@ input[type="checkbox"] {
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .agewiseheading {
+    margin-right: 5px;
+    font-size: 12px;
+    color: #666; /* Text color */
+    font-weight: bold;
+    margin-top: 3px;
+  }
+  .info {
+    font-size: 12px;
+  }
+
+  .viewdetails {
+    width: 65%;
+    height: 20px;
+  }
+
+  .viewagewisedetails {
+    margin-right: 2px;
+    color: #777;
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+  .agewise-header {
+    width: 100%;
+    display: flex;
+  }
 }

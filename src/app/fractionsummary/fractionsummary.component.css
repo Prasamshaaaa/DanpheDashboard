@@ -10,9 +10,9 @@
 }
 
 .viewfractionsummarydetails {
-  margin-right: 10px;
+  margin-right: 5px;
   color: #777;
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 12px;
   font-weight: bold;
   margin-top: 6px;
@@ -23,10 +23,11 @@
   border-radius: 5px;
   height: 27px;
   justify-content: center;
-  width: 65%;
+  width: 40%;
   float: right;
   margin-left: 0px;
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -37,8 +38,18 @@
 }
 
 /* For Table */
+
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 95%;
+}
+
 table {
-  width: 90%;
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -134,4 +145,68 @@ tbody tr:hover {
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .fractionsummaryheading {
+    margin-right: 5px;
+    font-size: 12px;
+    color: #666; /* Text color */
+    font-weight: bold;
+    margin-top: 3px;
+  }
+  .info {
+    font-size: 12px;
+  }
+
+  .viewdetails {
+    width: 65%;
+    height: 20px;
+  }
+
+  .viewfractionsummarydetails {
+    margin-right: 2px;
+    color: #777;
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+  .fractionsummary-header {
+    width: 110%;
+    display: flex;
+  }
+
+  .fractiontype label {
+    font-size: 13px;
+  }
+
+  .fractiontype {
+    margin-top: 15px;
+  }
+
+  #fractiontype {
+    width: 120px;
+    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .fromtodate {
+    width: 90%;
+    height: 20px;
+    font-size: 12px;
+  }
+
+  th {
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 12px;
+  }
+
+  .table-container {
+    max-height: 200px;
+    width: 90%;
+  }
 }

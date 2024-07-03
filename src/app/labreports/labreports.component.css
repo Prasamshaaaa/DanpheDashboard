@@ -10,9 +10,9 @@
 }
 
 .viewlabreportdetails {
-  margin-right: 10px;
+  margin-right: 5px;
   color: #777;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   font-size: 12px;
   font-weight: bold;
   margin-top: 6px;
@@ -23,7 +23,7 @@
   border-radius: 5px;
   height: 27px;
   justify-content: center;
-  width: 30%;
+  width: 20%;
   float: right;
   margin-left: 0px;
   display: flex;
@@ -61,4 +61,26 @@
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .labreportheading {
+    font-size: 13px;
+    margin-top: 3px;
+  }
+
+  .info {
+    font-size: 13px;
+  }
+
+  .viewdetails {
+    height: 22px;
+    justify-content: center;
+    width: 40%;
+  }
+
+  .viewlabreportdetails {
+    margin-right: 3px;
+    font-size: 11px;
+  }
 }

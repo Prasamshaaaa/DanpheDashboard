@@ -150,6 +150,33 @@
   border-radius: 10px; /* to make border rounded */
 }
 
+.sub-container6 {
+  margin-top: 20px;
+  border: 1px solid #dddd;
+
+  width: 100%;
+  height: 250px;
+  background-color: white;
+  /* border: 1px solid black; */
+  padding: 20px;
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 10px; /* to make border rounded */
+}
+
+.sub-container7 {
+  width: 100%;
+  height: 500px;
+  background-color: white;
+  border: 1px solid #dddd;
+  padding: 20px;
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+  justify-content: center;
+  margin-bottom: 10px;
+  border-radius: 10px; /* to make border rounded */
+}
+
 .chart-header {
   display: flex;
 }
@@ -170,11 +197,35 @@
   margin-left: 70px;
 }
 
+.visitdetails {
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 120px;
+  /* margin-left: 70px; */
+  float: right;
+}
+
+.labdetailsheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
 .viewlabdetails {
   margin-right: 15px;
   color: #777;
   margin-left: 15px;
   font-size: 12px;
+  font-weight: bold;
+}
+
+.radiodetailsheading {
+  margin-right: 5px;
+  font-size: 16px;
+  color: #666; /* Text color */
   font-weight: bold;
 }
 
@@ -211,13 +262,50 @@
   flex-direction: column;
 }
 
+.pcolorful {
+  font-size: 17px;
+}
+
 .numbercount {
   font-size: 17px;
   color: #666; /* Text color */
   font-weight: bold;
 }
 
+.numbercounttop {
+  font-size: 17px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.numbercounttotal {
+  font-size: 35px;
+  margin-left: 40px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+.numbercountinpatient {
+  font-weight: bold;
+}
+
+.numbercountcolorfulline {
+  font-size: 17px;
+  color: #666; /* Text color */
+  font-weight: bold;
+}
+
+.totalpatient {
+  display: flex;
+  margin-top: 120px;
+  margin-left: 40px;
+}
+
 .inline {
+  display: flex;
+  margin-left: 5px;
+  font-size: 17px;
+}
+.inlinetop {
   display: flex;
   margin-left: 5px;
   font-size: 17px;
@@ -240,13 +328,13 @@
 
 .viewinpatientdetails {
   display: flex;
-  width: 77px;
+  width: 75px;
   border: 1px solid #888;
   border-radius: 5px;
   height: 25px;
   justify-content: center;
   padding-top: 3px;
-  float: left;
+  float: right;
 }
 
 .inlinecovid19 {
@@ -293,9 +381,8 @@ p {
 }
 
 .viewcurrentimpatientdetails {
-  margin-right: 3px;
+  margin-right: 1px;
   color: #777;
-  /* margin-left: 3px; */
 
   font-size: 10px;
   font-weight: bold;
@@ -312,9 +399,11 @@ p {
 }
 
 .numbercountdeath {
-  font-size: 40px;
+  font-size: 80px;
   color: #666; /* Text color */
   font-weight: bold;
+  margin-left: 55px;
+  align-items: top;
 }
 
 .totaldeath {
@@ -322,7 +411,18 @@ p {
   margin-left: 5px;
   margin-right: 5px;
   color: #666;
-  font-size: 32px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.infototaldeath {
+  font-size: 16px;
+}
+
+.totaldeathheader {
+  display: flex;
+  margin-left: 30px;
+  flex-direction: row;
 }
 
 .verticalcolorfulline {
@@ -377,12 +477,12 @@ p {
 
 .chart-box {
   width: 95%;
-  height: 450px;
+  height: 430px;
   background-color: none;
   padding: 20px;
   justify-content: center;
   margin-bottom: 10px;
-  margin-left: 35px;
+  /* margin-left: 0px; */
 }
 .chart-size {
   width: 95%;
@@ -436,5 +536,279 @@ p {
   visibility: visible;
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .top {
+    height: 50px;
+    margin-top: 15px;
+  }
+
+  #fiscalYear {
+    border-radius: 5px;
+    margin-left: 3px;
+    border-color: #ddd;
+    height: 20px;
+    width: 55px;
+    font-size: 12px;
+  }
+  .fiscalYearLabel {
+    font-size: 15px;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .daily-button,
+  .middle-button,
+  .yearly-button {
+    background-color: white;
+    color: rgb(55, 193, 193);
+    border-color: rgb(55, 193, 193);
+    box-shadow: none;
+    transition: background-color 0.3s, color 0.3s;
+    width: 42;
+    height: 25px;
+    font-size: 10px;
+  }
+
+  .date {
+    font-size: 13px;
+    color: #666; /* Text color */
+    font-weight: bold;
+    margin-right: 3px;
+  }
+
+  .fromtodate {
+    border-radius: 5px;
+    border-color: #ddd;
+    color: #666;
+    width: 65px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .chartheading {
+    margin-right: 5px;
+    font-size: 10px !important;
+    color: #666; /* Text color */
+    font-weight: bold;
+  }
+  #info {
+    font-size: 12px;
+    display: flex;
+    margin-top: 2px;
+  }
+  .info {
+    font-size: 12px;
+    display: flex;
+    margin-top: 2px;
+  }
+  .chart-header {
+    display: flex;
+  }
+  .sub-container2 {
+    /* margin-top: 20px; */
+    width: 110%;
+    height: 150px;
+    background-color: white;
+    border: 1px solid #dddd;
+
+    padding: 5px;
+    justify-content: center;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .sub-container1 {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+  }
+
+  .infoicon {
+    height: 50px;
+  }
+
+  #pharmacypatientcountButton {
+    height: 35px;
+    width: 35px;
+    margin-top: 10px;
+  }
+
+  #coronaButton {
+    height: 35px;
+    width: 35px;
+  }
+
+  .button-icon {
+    font-size: 14px;
+  }
+
+  .numbercounttop {
+    font-size: 13px;
+    color: #666; /* Text color */
+    font-weight: bold;
+  }
+
+  .inlinetop {
+    display: flex;
+    margin-left: 5px;
+    font-size: 13px;
+  }
+  .inlinesampledreport {
+    font-size: 13px;
+  }
+  .inlinepharmacycount {
+    font-size: 13px;
+  }
+
+  .currentimpatientdetailsheading {
+    margin-right: 3px;
+    font-size: 10px;
+    color: #666; /* Text color */
+    font-weight: bold;
+  }
+
+  .numbercountdeath {
+    font-size: 70px;
+    margin-right: 2px;
+    margin-top: 3px;
+    margin-left: 20px;
+  }
+
+  .totaldeath {
+    font-size: 10px;
+    margin-left: 0px;
+    margin-right: 3px;
+  }
+
+  .infototaldeath {
+    font-size: 12px;
+    display: flex;
+  }
+  .totaldeathheader {
+    display: flex;
+    /* margin-top: 20px; */
+    margin-left: 18px;
+  }
+
+  .numbercounttotal {
+    font-size: 20px;
+    margin-left: 0px;
+    color: #666; /* Text color */
+    font-weight: bold;
+  }
+  .totalpatient {
+    display: flex;
+    margin-top: 120px;
+    margin-left: 0px;
+  }
+
+  .viewdetails {
+    border: 1px solid #888;
+    border-radius: 5px;
+    height: 27px;
+    justify-content: center;
+    width: 120px;
+    margin-left: 70px;
+  }
+
+  .visitdetails {
+    height: 25px;
+    width: 100px;
+  }
+
+  .visitreport {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .viewvisitreports {
+    color: #777;
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 10px !important;
+  }
+
+  .labdetailsheading {
+    font-size: 13px;
+    margin-top: 5px;
+  }
+  .infolabdetails {
+    font-size: 13px;
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .radiodetailsheading {
+    font-size: 11px;
+    margin-top: 7px;
+  }
+
+  .ipdetail {
+    margin-top: 25px !important;
+  }
+
+  .numbercountinpatient {
+    color: #666;
+    font-weight: bold;
+  }
+
+  .inlineinpatient {
+    font-size: 12px;
+  }
+
+  .inlineinpatientleft {
+    font-size: 12px;
+  }
+
+  .viewcurrentimpatientdetails {
+    margin-right: 2px;
+    color: #777;
+
+    font-size: 8px;
+    font-weight: bold;
+  }
+
+  .viewinpatientdetails {
+    display: flex;
+    width: 65px;
+    border: 1px solid #888;
+    border-radius: 5px;
+    height: 20px;
+    justify-content: center;
+    padding-top: 3px;
+  }
+
+  .numbercountcolorfulline {
+    font-size: 10px;
+    color: #666; /* Text color */
+    font-weight: bold;
+  }
+
+  .pcolorful {
+    font-size: 10px;
+  }
+
+  .sub-container5 {
+    height: 600px !important;
+  }
+
+  .sub-container4 {
+    height: 500px !important;
+  }
+
+  .header {
+    height: 25px !important;
+  }
+
+  .sub-container7 {
+    height: 450px !important;
+  }
+
+  .text {
+    width: 80%;
+  }
+  .line {
+    width: 120%;
+  }
 }

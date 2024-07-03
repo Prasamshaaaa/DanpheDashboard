@@ -23,7 +23,7 @@
   border-radius: 5px;
   height: 27px;
   justify-content: center;
-  width: 65%;
+  width: 50%;
   float: right;
   margin-left: 0px;
   display: flex;
@@ -61,4 +61,36 @@
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+@media only screen and (max-width: 1468px) and (min-width: 768px) {
+  .radiologyreportheading {
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  .info {
+    font-size: 12px;
+  }
+
+  .viewdetails {
+    width: 85%;
+    height: 20px;
+  }
+
+  .viewfractionsummarydetails {
+    margin-right: 2px;
+    color: #777;
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 6px;
+  }
+
+  .viewradiologyreportdetails {
+    margin-right: 2px;
+    margin-left: 2px;
+    font-size: 10px;
+    font-weight: bold;
+  }
 }
