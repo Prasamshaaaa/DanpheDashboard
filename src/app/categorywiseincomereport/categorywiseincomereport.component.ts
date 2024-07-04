@@ -16,7 +16,7 @@ export class CategorywiseincomereportComponent implements OnInit {
 
   categoryReports = [
     { id: 1, categoryreport: 'OT', collection: 'Rs.4,002,720.00', return: '46545' },
-    { id: 2, categoryreport: 'Consultation', collection: 'Rs.4,002,720.00', return: '46545' },
+    { id: 2, categoryreport: 'Consultation', collection: 'Rs.4,002,720.00', return: '4652245' },
     { id: 3, categoryreport: 'Biochemistry', collection: 'Rs.4,002,720.00', return: '46545' },
     { id: 4, categoryreport: 'Uro Surgery', collection: 'Rs.4,002,720.00', return: '46545' },
     { id: 5, categoryreport: 'Immunology', collection: 'Rs.4,002,720.00', return: '46545' },
@@ -44,15 +44,15 @@ export class CategorywiseincomereportComponent implements OnInit {
         {
           label: 'Collection',
           data: collections,
-          backgroundColor: 'rgba(255, 159, 64, 0.6)',
-          borderColor: 'rgba(255, 159, 64, 1)',
+          backgroundColor: 'rgb(169, 228, 169,0.6)',
+          borderColor: 'rgb(169, 228, 169,1)',
           borderWidth: 1
         },
         {
           label: 'Return',
           data: returns,
-          backgroundColor: 'rgba(255, 99, 132, 0.6)',
-          borderColor: 'rgba(255, 99, 132, 1)',
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
           borderWidth: 1
         }
       ]

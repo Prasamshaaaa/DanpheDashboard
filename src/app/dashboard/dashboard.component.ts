@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
           'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
+          'rgb(132, 227, 132)',
           'rgb(153, 102, 255)',
           'rgb(255, 159, 64)'
         ],
@@ -74,12 +74,12 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       labels: ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'],
       datasets: [{
         label: 'My First Dataset',
-        data: [300, 50, 100, 600, 20, 89],
+        data: [300, 50, 100, 600, 20,],
         backgroundColor: [
           'rgb(255, 99, 132)',
           'rgb(54, 162, 235)',
           'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
+          'rgb(132, 227, 132)',
           'rgb(153, 102, 255)'
         ],
         hoverOffset: 4

@@ -28,8 +28,8 @@
 .middle-button,
 .yearly-button {
   background-color: white;
-  color: rgb(55, 193, 193);
-  border-color: rgb(55, 193, 193);
+  color: rgb(132, 227, 132);
+  border-color: rgb(132, 227, 132);
   box-shadow: none;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -37,7 +37,7 @@
 .daily-button:hover,
 .middle-button:hover,
 .yearly-button:hover {
-  background-color: rgb(55, 193, 193);
+  background-color: rgb(132, 227, 132);
   color: white;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .active {
-  background-color: rgb(55, 193, 193) !important;
+  background-color: rgb(132, 227, 132) !important;
   color: white !important;
 }
 
@@ -264,14 +264,14 @@
 }
 
 .buttons {
-  background-color: rgb(55, 193, 193);
+  background-color: rgb(132, 227, 132);
   margin-bottom: 25px;
   border-radius: 5px;
   margin-left: 5px;
-  border-color: rgb(55, 193, 193);
+  border-color: rgb(132, 227, 132);
   height: 50px;
   width: 50px;
-  color: white;
+  color: #ffffff;
 }
 
 .vertical-buttons {
@@ -586,9 +586,9 @@ p {
   .daily-button,
   .middle-button,
   .yearly-button {
-    background-color: white;
-    color: rgb(55, 193, 193);
-    border-color: rgb(55, 193, 193);
+    background-color: #ffff;
+    color: rgb(132, 227, 132);
+    border-color: rgb(132, 227, 132);
     box-shadow: none;
     transition: background-color 0.3s, color 0.3s;
     width: 42;

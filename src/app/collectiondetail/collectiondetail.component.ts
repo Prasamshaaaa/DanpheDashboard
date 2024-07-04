@@ -33,8 +33,8 @@ export class CollectiondetailComponent implements AfterViewInit {
       datasets: [{
         label: 'Collection Count',
         data: data,
-        borderColor: 'rgb(75, 192, 192)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgb(132, 227, 132)',
+        backgroundColor: 'rgb(132, 227, 132,0.6)',
         fill: true
       }]
     };
