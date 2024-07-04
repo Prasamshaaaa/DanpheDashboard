@@ -69,21 +69,20 @@
 
 .fromtodate {
   border-radius: 5px;
-  border-color: #ddd;
+  border-color: #eeee;
   color: #666;
   width: 115px;
 }
 
 .sub-container1 {
-  /* margin-top: 20px; */
+  margin-top: 10px;
   width: 100%;
   height: 350px;
   background-color: white;
-  border: 1px solid #dddd;
+  border: 1px solid #eeee;
   padding: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
   border-radius: 10px; /* to make border rounded */
 }
 
@@ -92,21 +91,17 @@
   width: 100%;
   height: 180px;
   background-color: white;
-  border: 1px solid #dddd;
+  border: 1px solid #eeee;
 
   padding: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
   border-radius: 10px; /* to make border rounded */
   margin-bottom: 30px;
 }
 
-.MainContainer {
-  margin-top: 20px;
-}
 .sub-container3 {
-  border: 1px solid #dddd;
+  border: 1px solid #eeee;
 
   width: 100%;
   height: 170px;
@@ -120,9 +115,9 @@
 }
 
 .sub-container4 {
-  border: 1px solid #dddd;
+  border: 1px solid #eeee;
 
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   height: 600px;
   background-color: white;
@@ -131,14 +126,12 @@
   padding-left: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
   border-radius: 10px; /* to make border rounded */
 }
 
 .sub-container5 {
-  margin-top: 20px;
-  border: 1px solid #dddd;
-
+  border: 1px solid #eeee;
+  margin-top: 10px;
   width: 100%;
   height: 650px;
   background-color: white;
@@ -146,13 +139,12 @@
   padding: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
   border-radius: 10px; /* to make border rounded */
 }
 
 .sub-container6 {
-  margin-top: 20px;
-  border: 1px solid #dddd;
+  margin-top: 10px;
+  border: 1px solid #eeee;
 
   width: 100%;
   height: 250px;
@@ -161,19 +153,45 @@
   padding: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
   border-radius: 10px; /* to make border rounded */
 }
 
 .sub-container7 {
   width: 100%;
+  margin-top: 20px;
   height: 500px;
   background-color: white;
-  border: 1px solid #dddd;
+  border: 1px solid #eeee;
   padding: 20px;
   /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
-  margin-bottom: 10px;
+  border-radius: 10px; /* to make border rounded */
+}
+
+.sub-container8 {
+  border: 1px solid #eeee;
+  margin-top: 10px;
+  width: 100%;
+  height: 650px;
+  background-color: white;
+  /* border: 1px solid black; */
+  padding: 20px;
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+  justify-content: center;
+  border-radius: 10px; /* to make border rounded */
+}
+.sub-container9 {
+  border: 1px solid #eeee;
+
+  margin-top: 10px;
+  width: 100%;
+  height: 600px;
+  background-color: white;
+  /* border: 1px solid black; */
+  padding-top: 20px;
+  padding-left: 20px;
+  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
+  justify-content: center;
   border-radius: 10px; /* to make border rounded */
 }
 
@@ -280,7 +298,7 @@
 
 .numbercounttotal {
   font-size: 35px;
-  margin-left: 40px;
+  margin-left: 20px;
   color: #666; /* Text color */
   font-weight: bold;
 }
@@ -297,7 +315,7 @@
 .totalpatient {
   display: flex;
   margin-top: 120px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .inline {
@@ -536,6 +554,15 @@ p {
   visibility: visible;
 }
 
+.topcontainer {
+  padding: 0px;
+  padding-left: 10px;
+}
+
+.sub2 {
+  height: 180px;
+}
+
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
   .top {
     height: 50px;
@@ -605,11 +632,10 @@ p {
   }
   .sub-container2 {
     /* margin-top: 20px; */
-    width: 110%;
+    width: 100%;
     height: 150px;
     background-color: white;
-    border: 1px solid #dddd;
-
+    border: 1px solid #eeee;
     padding: 5px;
     justify-content: center;
     border-radius: 10px;
@@ -620,6 +646,11 @@ p {
     width: 100%;
     margin-bottom: 10px;
     padding: 5px;
+    height: 300px;
+  }
+
+  .sub-container8 {
+    height: 300px !important;
   }
 
   .infoicon {
@@ -691,14 +722,14 @@ p {
 
   .numbercounttotal {
     font-size: 20px;
-    margin-left: 0px;
+    margin-left: 10px;
     color: #666; /* Text color */
     font-weight: bold;
   }
   .totalpatient {
     display: flex;
     margin-top: 120px;
-    margin-left: 0px;
+    margin-left: 10px;
   }
 
   .viewdetails {
@@ -783,10 +814,12 @@ p {
     font-size: 10px;
     color: #666; /* Text color */
     font-weight: bold;
+    width: 60%;
   }
 
   .pcolorful {
     font-size: 10px;
+    width: 60%;
   }
 
   .sub-container5 {
@@ -810,5 +843,28 @@ p {
   }
   .line {
     width: 120%;
+  }
+
+  .sub2 {
+    height: 150px !important;
+  }
+
+  .columnpatients {
+    width: 60%;
+    margin-top: 20px;
+  }
+
+  .sub-container9 {
+    height: 400px;
+  }
+
+  .daily-button {
+    border-radius: 5px 0 0 5px; /* Rounded corners on the left */
+    border-right: none;
+  }
+
+  .middle-button {
+    border-radius: 0; /* No rounded corners */
+    border-right: none;
   }
 }

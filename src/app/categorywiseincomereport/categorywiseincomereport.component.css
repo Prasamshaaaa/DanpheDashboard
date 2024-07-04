@@ -38,7 +38,7 @@
 
 /* For Table Container */
 .table-container {
-  max-height: 600px;
+  max-height: 300px;
   overflow-y: auto;
   margin: 20px;
   border: 1px solid #ddd;
@@ -166,7 +166,7 @@
   }
 
   .table-container {
-    max-height: 450px;
+    max-height: 200px;
     overflow-y: auto;
     margin: 10px;
     border: 1px solid #ddd;
