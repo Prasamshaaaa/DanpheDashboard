@@ -142,7 +142,7 @@
   .viewdetails {
     height: 22px;
     justify-content: center;
-    width: 40%;
+    width: 90px;
   }
 
   .viewcategorydetails {
@@ -171,5 +171,11 @@
     margin: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    margin-top: 20px;
+  }
+
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

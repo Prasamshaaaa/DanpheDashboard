@@ -96,13 +96,18 @@ input[type="checkbox"] {
     color: #666; /* Text color */
     font-weight: bold;
     margin-top: 3px;
+    width: 60%;
+  }
+  .span {
+    width: 40%;
+    float: left;
   }
   .info {
     font-size: 12px;
   }
 
   .viewdetails {
-    width: 65%;
+    width: 75px;
     height: 20px;
   }
 
@@ -117,5 +122,10 @@ input[type="checkbox"] {
   .agewise-header {
     width: 100%;
     display: flex;
+  }
+
+  .topcontainer {
+    padding-left: 5px;
+    padding-right: 0px;
   }
 }

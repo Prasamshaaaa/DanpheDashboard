@@ -73,8 +73,12 @@
     font-size: 12px;
   }
 
+  .arrowicon {
+    font-size: 12px;
+  }
+
   .viewdetails {
-    width: 85%;
+    width: 80px;
     height: 20px;
   }
 
@@ -92,5 +96,8 @@
     margin-left: 2px;
     font-size: 10px;
     font-weight: bold;
+  }
+  .topcontainer {
+    margin-right: 0px;
   }
 }

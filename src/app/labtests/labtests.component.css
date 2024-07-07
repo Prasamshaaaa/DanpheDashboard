@@ -38,7 +38,7 @@
 
 /* For Table Container */
 .table-container {
-  max-height: auto; /* Remove fixed height */
+  max-height: auto;
   margin: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -141,7 +141,7 @@
   .viewdetails {
     height: 22px;
     justify-content: center;
-    width: 40%;
+    width: 90px;
   }
 
   .viewlabtestsdetails {
@@ -152,11 +152,13 @@
   .table-container th {
     padding: 8px;
     font-size: 12px;
+    margin-top: 20px;
+    margin: 0px;
   }
 
   .table-container td {
-    padding: 8px;
-    font-size: 12px;
+    padding: 7px;
+    font-size: 10px;
   }
 
   .chart-box {
@@ -165,5 +167,9 @@
 
   .header {
     height: 25px !important;
+  }
+
+  .tablecontainer {
+    padding-right: 0px;
   }
 }

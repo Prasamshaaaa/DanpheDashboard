@@ -141,7 +141,7 @@
   .viewdetails {
     height: 22px;
     justify-content: center;
-    width: 40%;
+    width: 90px;
   }
 
   .viewradiotestsdetails {
@@ -150,13 +150,13 @@
   }
 
   .table-container th {
-    padding: 8px;
+    padding: 7px;
     font-size: 12px;
   }
 
   .table-container td {
     padding: 8px;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .chart-box {
@@ -165,5 +165,9 @@
 
   .header {
     height: 25px !important;
+  }
+  .container {
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }

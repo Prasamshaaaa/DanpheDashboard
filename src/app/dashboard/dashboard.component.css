@@ -15,7 +15,7 @@
 #fiscalYear {
   border-radius: 5px;
   margin-left: 5px;
-  border-color: #ddd;
+  border-color: #eeee;
 }
 .fiscalYearLabel {
   font-size: 20px;
@@ -559,6 +559,11 @@ p {
   padding-left: 10px;
 }
 
+.pharmacypatientcounthead {
+  padding: 0px;
+  padding-left: 15px;
+}
+
 .sub2 {
   height: 180px;
 }
@@ -569,16 +574,25 @@ p {
     margin-top: 15px;
   }
 
+  .topcolumn {
+    padding-left: 5px;
+    padding-right: 0px;
+  }
+
+  .topcardsheadercolumn {
+    padding-right: 0px;
+  }
+
   #fiscalYear {
     border-radius: 5px;
     margin-left: 3px;
     border-color: #ddd;
     height: 20px;
-    width: 55px;
+    width: 52px;
     font-size: 12px;
   }
   .fiscalYearLabel {
-    font-size: 15px;
+    font-size: 13px;
     color: #666;
     font-weight: bold;
   }
@@ -591,13 +605,12 @@ p {
     border-color: rgb(132, 227, 132);
     box-shadow: none;
     transition: background-color 0.3s, color 0.3s;
-    width: 42;
     height: 25px;
-    font-size: 10px;
+    font-size: 8px;
   }
 
   .date {
-    font-size: 13px;
+    font-size: 10px;
     color: #666; /* Text color */
     font-weight: bold;
     margin-right: 3px;
@@ -608,17 +621,21 @@ p {
     border-color: #ddd;
     color: #666;
     width: 65px;
-    height: 20px;
-    font-size: 10px;
+    height: 18px;
+    font-size: 9px;
+  }
+
+  .fromcolumn {
+    padding-left: 20px;
   }
   .chartheading {
     margin-right: 5px;
-    font-size: 10px !important;
+    font-size: 9px !important;
     color: #666; /* Text color */
     font-weight: bold;
   }
   #info {
-    font-size: 12px;
+    font-size: 11px;
     display: flex;
     margin-top: 2px;
   }
@@ -658,22 +675,22 @@ p {
   }
 
   #pharmacypatientcountButton {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     margin-top: 10px;
   }
 
   #coronaButton {
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
   }
 
   .button-icon {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .numbercounttop {
-    font-size: 13px;
+    font-size: 11 px;
     color: #666; /* Text color */
     font-weight: bold;
   }
@@ -681,27 +698,29 @@ p {
   .inlinetop {
     display: flex;
     margin-left: 5px;
-    font-size: 13px;
+    font-size: 12px;
   }
   .inlinesampledreport {
-    font-size: 13px;
+    font-size: 12px;
   }
   .inlinepharmacycount {
-    font-size: 13px;
+    font-size: 11px;
+    height: 30px;
   }
 
   .currentimpatientdetailsheading {
     margin-right: 3px;
-    font-size: 10px;
+    font-size: 9px;
     color: #666; /* Text color */
     font-weight: bold;
+    margin-left: 3px;
   }
 
   .numbercountdeath {
     font-size: 70px;
     margin-right: 2px;
     margin-top: 3px;
-    margin-left: 20px;
+    margin-left: 25%;
   }
 
   .totaldeath {
@@ -717,11 +736,11 @@ p {
   .totaldeathheader {
     display: flex;
     /* margin-top: 20px; */
-    margin-left: 18px;
+    margin-left: 15px;
   }
 
   .numbercounttotal {
-    font-size: 20px;
+    font-size: 17px;
     margin-left: 10px;
     color: #666; /* Text color */
     font-weight: bold;
@@ -737,8 +756,14 @@ p {
     border-radius: 5px;
     height: 27px;
     justify-content: center;
-    width: 120px;
+    width: 85px;
     margin-left: 70px;
+  }
+
+  .viewlabdetails {
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 10px;
   }
 
   .visitdetails {
@@ -755,7 +780,7 @@ p {
   .viewvisitreports {
     color: #777;
     margin-left: 2px;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     margin-bottom: 10px !important;
   }
@@ -782,30 +807,32 @@ p {
   .numbercountinpatient {
     color: #666;
     font-weight: bold;
+    font-size: 11px;
   }
 
   .inlineinpatient {
-    font-size: 12px;
+    font-size: 11px;
+    margin-top: 8px;
   }
 
   .inlineinpatientleft {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .viewcurrentimpatientdetails {
     margin-right: 2px;
     color: #777;
 
-    font-size: 8px;
+    font-size: 7px;
     font-weight: bold;
   }
 
   .viewinpatientdetails {
     display: flex;
-    width: 65px;
+    width: 55px;
     border: 1px solid #888;
     border-radius: 5px;
-    height: 20px;
+    height: 16px;
     justify-content: center;
     padding-top: 3px;
   }
@@ -866,5 +893,21 @@ p {
   .middle-button {
     border-radius: 0; /* No rounded corners */
     border-right: none;
+  }
+
+  .iconspan {
+    padding-top: 0px;
+  }
+
+  .arrowicon {
+    font-size: 10px;
+  }
+
+  .total {
+    font-size: 11px;
+  }
+
+  .numbercounttop {
+    font-size: 11px;
   }
 }
