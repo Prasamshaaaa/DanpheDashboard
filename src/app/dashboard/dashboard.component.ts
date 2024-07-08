@@ -35,9 +35,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         data: [300, 50, 100, 600, 20, 89],
         backgroundColor: [
           'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)',
           'rgb(132, 227, 132)',
+          'rgb(255, 205, 86)',
+          'rgb(7, 115, 188)',
           'rgb(153, 102, 255)',
           'rgb(255, 159, 64)'
         ],
@@ -77,10 +77,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
         data: [300, 50, 100, 600, 20,],
         backgroundColor: [
           'rgb(255, 99, 132)',
-          'rgb(54, 162, 235)',
-          'rgb(255, 205, 86)',
           'rgb(132, 227, 132)',
-          'rgb(153, 102, 255)'
+          'rgb(153, 102, 255)',
+          'rgb(7, 115, 188)',
+          'rgb(255, 159, 64)'
         ],
         hoverOffset: 4
       }]

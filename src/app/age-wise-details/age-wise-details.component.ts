@@ -34,8 +34,8 @@ export class AgeWiseDetailsComponent implements OnInit {
         {
           label: 'Male',
           data: maleCounts,
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgb(7, 115, 188,0.6)',
+          borderColor: 'rgb(7, 115, 188)',
           borderWidth: 1
         },
         {

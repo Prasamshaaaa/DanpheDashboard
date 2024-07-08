@@ -96,17 +96,17 @@
           class="col-lg-12 col-md-12 col-sm-12 chart-header topcardsheadercolumn"
         >
           <p class="chartheading" style="font-size: 14px">Sampled Report</p>
-          <span class="iconspan"
+          <!-- <span class="iconspan"
             ><i class="fa-solid fa-circle-info" id="info"></i
-          ></span>
-          <!-- <span>
+          ></span> -->
+          <span class="iconspan">
             <div class="hover-text" style="margin-top: 0px; margin-left: 0px">
-              <i class="fa-solid fa-circle-info" data-toggle="tooltip"></i>
+              <i class="fa-solid fa-circle-info info" data-toggle="tooltip"></i>
               <span class="tooltip-text" id="top" style="width: 110px">
                 <div>This is a tooltip!</div>
               </span>
             </div>
-          </span> -->
+          </span>
         </div>
       </div>
       <div class="row g-0" style="width: 100%; height: 120px">
@@ -114,14 +114,16 @@
           class="col-lg-6 col-md-6 col-sm-12 vertical-buttons topcontainer"
           style="margin-top: 10px"
         >
-          <button
+          <!-- <button
             type="button"
             class="buttons"
             id="coronaButton"
             style="margin-bottom: 0px"
-          >
-            <span><i class="fa-solid fa-virus button-icon"></i></span>
-          </button>
+          > -->
+          <span class="sampledspan"
+            ><i class="fa-solid fa-vial button-icon"></i
+          ></span>
+          <!-- </button> -->
           <div class="inlinetop">
             <p class="numbercounttop">223</p>
             <p class="total" style="margin-left: 3px">Total</p>
@@ -158,32 +160,30 @@
           <p class="chartheading" style="font-size: 14px">
             Pharmacy Patient Count
           </p>
-          <span><i class="fa-solid fa-circle-info" id="info"></i></span>
-          <!-- <span>
+          <!-- <span><i class="fa-solid fa-circle-info" id="info"></i></span> -->
+          <span class="iconspan">
             <div class="hover-text" style="margin-top: 0px; margin-left: 0px">
-              <i class="fa-solid fa-circle-info" data-toggle="tooltip"></i>
+              <i class="fa-solid fa-circle-info info" data-toggle="tooltip"></i>
               <span class="tooltip-text" id="top" style="width: 110px">
                 <div>This is a tooltip!</div>
               </span>
             </div>
-          </span> -->
+          </span>
         </div>
         <!-- <div class="col-lg-1 col-md-1 col-sm-12"></div> -->
       </div>
       <div class="row g-0" style="width: 100%; height: 120px">
         <div class="col-lg-6 col-md-6 col-sm-12" style="margin-top: 10px">
-          <button
+          <!-- <button
             type="button"
             class="buttons"
             id="pharmacypatientcountButton"
             style="margin-bottom: 0px"
-          >
-            <span
-              ><i
-                class="fa-solid fa-prescription-bottle-medical button-icon"
-              ></i
-            ></span>
-          </button>
+          > -->
+          <span class="pharmacyspan"
+            ><i class="fa-solid fa-prescription-bottle-medical button-icon"></i
+          ></span>
+          <!-- </button> -->
           <div class="inlinetop">
             <p class="numbercounttop">14181</p>
             <p class="total" style="margin-left: 3px">Total</p>
@@ -208,21 +208,21 @@
   <div class="col-lg-4 col-md-4 col-sm-12 topcontainer">
     <div class="sub-container2">
       <div class="row g-0" style="width: 100%; height: 27px">
-        <div class="col-lg-8 col-md-6 col-sm-12 chart-header topcontainer">
+        <div class="col-lg-8 col-md-7 col-sm-12 chart-header topcontainer">
           <p class="currentimpatientdetailsheading">
             Current Inpatient Details
           </p>
-          <span><i class="fa-solid fa-circle-info" id="info"></i></span>
-          <!-- <span>
+          <!-- <span><i class="fa-solid fa-circle-info" id="info"></i></span> -->
+          <span class="iconspan">
             <div class="hover-text" style="margin-top: 0px; margin-left: 0px">
-              <i class="fa-solid fa-circle-info" data-toggle="tooltip"></i>
+              <i class="fa-solid fa-circle-info info" data-toggle="tooltip"></i>
               <span class="tooltip-text" id="top" style="width: 110px">
                 <div>This is a tooltip!</div>
               </span>
             </div>
-          </span> -->
+          </span>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 topcontainer">
+        <div class="col-lg-4 col-md-5 col-sm-12 topcontainer">
           <div class="viewinpatientdetails">
             <label
               for="currentinpatientdetails"
@@ -269,35 +269,34 @@
     style="padding-right: 10px"
   >
     <div class="sub-container2">
-      <div class="row g-0" style="width: 100%; height: 15px">
+      <div class="row g-0" style="width: 140%; height: 15px">
         <!-- <div class="col-lg-12 col-md-12 col-sm-12 totaldeathheader"> -->
         <div class="totaldeathheader">
           <p class="totaldeath">Total Deaths</p>
-          <span style="margin-top: 9px"
+          <!-- <span style="margin-top: 9px"
             ><i class="fa-solid fa-circle-info fa-2x infototaldeath"></i
-          ></span>
+          ></span> -->
+          <span class="deathinfospan">
+            <div class="hover-text" style="margin-top: 10px; margin-left: 0px">
+              <i
+                class="fa-solid fa-circle-info fa-2x infototaldeath"
+                data-toggle="tooltip"
+              ></i>
+              <span
+                class="tooltip-text"
+                id="top"
+                style="width: 110px; right: 40%; bottom: 100%"
+              >
+                <div>This is a tooltip!</div>
+              </span>
+            </div>
+          </span>
         </div>
         <!-- </div> -->
       </div>
       <div class="row g-0">
         <div class="col-lg-12 col-md-12 col-sm-12 topcontainer">
           <p class="numbercountdeath">0</p>
-
-          <!-- <span style="margin-top: 16px">
-            <div class="hover-text" style="margin-top: 0px; margin-left: 0px">
-              <i
-                class="fa-solid fa-circle-info fa-2x"
-                data-toggle="tooltip"
-              ></i>
-              <span
-                class="tooltip-text"
-                id="top"
-                style="width: 110px; right: 100%; top: 100%"
-              >
-                <div>Total Death Info!</div>
-              </span> -->
-          <!-- </div>
-          </span> -->
         </div>
       </div>
     </div>
@@ -329,40 +328,42 @@
               <button
                 type="button"
                 class="verticalcolorfulline topverticalbutton"
-                style="background-color: blue; border-color: blue"
+                style="background-color: #6495ed; border-color: #6495ed"
               ></button>
               <button
                 type="button"
                 class="verticalcolorfulline middleverticalbutton"
-                style="background-color: green; border-color: green"
+                style="background-color: #7a9e80; border-color: #7a9e80"
               ></button>
               <button
                 type="button"
                 class="verticalcolorfulline middleverticalbutton"
-                style="background-color: red; border-color: red"
+                style="background-color: #b23a3a; border-color: #b23a3a"
               ></button>
               <button
                 type="button"
                 class="verticalcolorfulline buttomverticalbutton"
-                style="background-color: purple; border-color: purple"
+                style="background-color: #917ba3; border-color: #917ba3"
               ></button>
             </div>
 
             <div class="col-lg-9 col-md-8 col-sm-12 columnpatients">
               <div class>
-                <p class="pcolorful mb-0" style="color: blue">In Patients</p>
+                <p class="pcolorful mb-0" style="color: #6495ed">In Patients</p>
                 <p class="numbercountcolorfulline">214</p>
               </div>
               <div>
-                <p class="pcolorful mb-0" style="color: green">Out Patients</p>
+                <p class="pcolorful mb-0" style="color: #7a9e80">
+                  Out Patients
+                </p>
                 <p class="numbercountcolorfulline">214</p>
               </div>
               <div>
-                <p class="pcolorful mb-0" style="color: red">Emergency</p>
+                <p class="pcolorful mb-0" style="color: #b23a3a">Emergency</p>
                 <p class="numbercountcolorfulline">214</p>
               </div>
               <div>
-                <p style="color: purple" class="mb-0">PCR</p>
+                <p style="color: #917ba3" class="mb-0">PCR</p>
                 <p class="numbercountcolorfulline">214</p>
               </div>
             </div>
@@ -404,25 +405,25 @@
 
       <div class="row g-0" style="width: 100%; height: 250px">
         <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
-          <button
+          <label
             type="button"
             class="buttons"
             id="NPButton"
             data-toggle="tooltip"
           >
             NP
-          </button>
+          </label>
           <span class="tooltip-text" for="NPButton" l style="left: 40%">
             Click on the 'NP' button to perform an action.
           </span>
-          <button
+          <label
             type="button"
             class="buttons"
             id="OPButton"
             data-toggle="tooltip"
           >
             OP
-          </button>
+          </label>
           <span
             class="tooltip-text"
             for="OPButton"
@@ -431,14 +432,14 @@
           >
             Click on the 'OP' button to perform an action.
           </span>
-          <button
+          <label
             type="button"
             class="buttons"
             id="FPButton"
             data-toggle="tooltip"
           >
             FP
-          </button>
+          </label>
           <span
             class="tooltip-text"
             for="FPButton"
@@ -488,25 +489,25 @@
 
       <div class="row g-0" style="width: 100%; height: 250px">
         <div class="col-lg-6 col-md-6 col-sm-12 vertical-buttons">
-          <button
+          <label
             type="button"
             class="buttons"
             id="EButton"
             data-toggle="tooltip"
           >
             E
-          </button>
+          </label>
           <span class="tooltip-text" for="EButton" l style="left: 40%">
             Click on the 'E' button to perform an action.
           </span>
-          <button
+          <label
             type="button"
             class="buttons"
             id="WButton"
             data-toggle="tooltip"
           >
             W
-          </button>
+          </label>
           <span
             class="tooltip-text"
             for="WButton"
@@ -555,7 +556,7 @@
             </div></span
           >
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
+        <div class="col-lg-4 col-md-4 col-sm-12 topcontainer">
           <div class="viewdetails" style="float: right">
             <label for="viewlabdetails" class="viewlabdetails"
               >View Details</label
@@ -599,7 +600,7 @@
             </div>
           </span>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12">
+        <div class="col-lg-5 col-md-5 col-sm-12 topcontainer">
           <div class="viewdetails" style="float: right">
             <label for="viewradiodetails" class="viewlabdetails"
               >View Details</label

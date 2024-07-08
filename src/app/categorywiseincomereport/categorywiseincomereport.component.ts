@@ -44,15 +44,15 @@ export class CategorywiseincomereportComponent implements OnInit {
         {
           label: 'Collection',
           data: collections,
-          backgroundColor: 'rgb(169, 228, 169,0.6)',
-          borderColor: 'rgb(169, 228, 169,1)',
+          backgroundColor: 'rgb(7, 115, 188,0.6)',
+          borderColor: 'rgb(7, 115, 188)',
           borderWidth: 1
         },
         {
           label: 'Return',
           data: returns,
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'rgb(169, 228, 169,0.6)',
+          borderColor: 'rgb(169, 228, 169,1)',
           borderWidth: 1
         }
       ]

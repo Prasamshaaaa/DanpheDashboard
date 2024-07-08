@@ -28,8 +28,8 @@
 .middle-button,
 .yearly-button {
   background-color: white;
-  color: rgb(132, 227, 132);
-  border-color: rgb(132, 227, 132);
+  color: #0773bc;
+  border-color: #0773bc;
   box-shadow: none;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -37,7 +37,7 @@
 .daily-button:hover,
 .middle-button:hover,
 .yearly-button:hover {
-  background-color: rgb(132, 227, 132);
+  background-color: #0773bc;
   color: white;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .active {
-  background-color: rgb(132, 227, 132) !important;
+  background-color: #0773bc !important;
   color: white !important;
 }
 
@@ -206,6 +206,18 @@
   font-weight: bold;
 }
 
+.sampledspan {
+  font-size: 18px;
+  margin-left: 20px;
+  color: forestgreen;
+}
+
+.pharmacyspan {
+  font-size: 18px;
+  margin-left: 20px;
+  color: orchid;
+}
+
 .viewdetails {
   border: 1px solid #888;
   border-radius: 5px;
@@ -264,18 +276,24 @@
 }
 
 .buttons {
-  background-color: rgb(132, 227, 132);
+  background-color: white;
   margin-bottom: 25px;
   border-radius: 5px;
   margin-left: 5px;
-  border-color: rgb(132, 227, 132);
+  border-color: white;
   height: 50px;
   width: 50px;
-  color: #ffffff;
+  color: #0773bc;
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+#EButton {
+  font-size: 33px;
 }
 
 .vertical-buttons {
-  margin-top: 8px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
 }
@@ -601,8 +619,8 @@ p {
   .middle-button,
   .yearly-button {
     background-color: #ffff;
-    color: rgb(132, 227, 132);
-    border-color: rgb(132, 227, 132);
+    color: #0773bc;
+    border-color: #0773bc;
     box-shadow: none;
     transition: background-color 0.3s, color 0.3s;
     height: 25px;
@@ -647,6 +665,16 @@ p {
   .chart-header {
     display: flex;
   }
+
+  .sampledspan {
+    font-size: 13px;
+    margin-left: 12px;
+  }
+
+  .pharmacyspan {
+    font-size: 13px;
+    margin-left: 10px;
+  }
   .sub-container2 {
     /* margin-top: 20px; */
     width: 100%;
@@ -668,6 +696,7 @@ p {
 
   .sub-container8 {
     height: 300px !important;
+    /* padding-right: 0px; */
   }
 
   .infoicon {
@@ -685,9 +714,9 @@ p {
     width: 30px;
   }
 
-  .button-icon {
+  /* .button-icon {
     font-size: 12px;
-  }
+  } */
 
   .numbercounttop {
     font-size: 11 px;
@@ -705,7 +734,7 @@ p {
   }
   .inlinepharmacycount {
     font-size: 11px;
-    height: 30px;
+    height: 15px;
   }
 
   .currentimpatientdetailsheading {
@@ -714,6 +743,7 @@ p {
     color: #666; /* Text color */
     font-weight: bold;
     margin-left: 3px;
+    width: 80%;
   }
 
   .numbercountdeath {
@@ -736,7 +766,7 @@ p {
   .totaldeathheader {
     display: flex;
     /* margin-top: 20px; */
-    margin-left: 15px;
+    margin-left: 20px;
   }
 
   .numbercounttotal {
@@ -859,6 +889,7 @@ p {
 
   .header {
     height: 25px !important;
+    width: 110% !important;
   }
 
   .sub-container7 {
@@ -896,9 +927,12 @@ p {
   }
 
   .iconspan {
-    padding-top: 0px;
+    margin-top: -7px;
+    width: 20%;
   }
-
+  .deathinfospan {
+    margin-top: -3px;
+  }
   .arrowicon {
     font-size: 10px;
   }

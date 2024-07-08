@@ -22,7 +22,7 @@ app-side-nav {
   width: 60px;
   height: calc(100vh - 4rem);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  background-color: rgb(132, 227, 132);
+  background-color: #0773bc;
   border-top: 1px solid white;
   overflow-x: hidden;
   white-space: nowrap;
