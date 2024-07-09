@@ -312,9 +312,16 @@
 }
 
 .vertical-buttons {
-  margin-top: 0px;
+  margin-top: 2px;
   display: flex;
   flex-direction: column;
+}
+
+.verticalEW-buttons {
+  margin-top: -4px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
 }
 
 .pcolorful {
@@ -367,6 +374,12 @@
   font-size: 17px;
 }
 .inlinetop {
+  display: flex;
+  margin-left: 5px;
+  font-size: 17px;
+}
+
+.inlinetoppharmacypatientcount {
   display: flex;
   margin-left: 5px;
   font-size: 17px;
@@ -607,6 +620,14 @@ p {
   height: 180px;
 }
 
+.ipdetail {
+  margin-top: 15px;
+  padding-right: 0px;
+}
+.margintopinpatient {
+  margin-top: 15px;
+}
+
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
   .top {
     height: 50px;
@@ -679,7 +700,7 @@ p {
     margin-top: 2px;
   }
   .info {
-    font-size: 12px;
+    font-size: 11px;
     display: flex;
     margin-top: 2px;
   }
@@ -688,18 +709,18 @@ p {
   }
 
   .sampledspan {
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 12px;
   }
 
   .pharmacyspan {
-    font-size: 13px;
+    font-size: 12px;
     margin-left: 10px;
   }
   .sub-container2 {
     /* margin-top: 20px; */
     width: 103%;
-    height: 154px;
+    height: 130px;
     background-color: white;
     border: 1px solid #eeee;
     padding: 5px;
@@ -712,7 +733,8 @@ p {
     width: 103%;
     margin-bottom: 10px;
     padding: 5px;
-    height: 270px;
+    height: 210px;
+    margin-top: -15px;
   }
 
   .sub-container8 {
@@ -737,7 +759,7 @@ p {
   }
 
   .numbercounttop {
-    font-size: 11 px;
+    font-size: 10 px;
     color: #666; /* Text color */
     font-weight: bold;
   }
@@ -745,14 +767,20 @@ p {
   .inlinetop {
     display: flex;
     margin-left: 5px;
-    font-size: 12px;
+    font-size: 10px;
+  }
+
+  .inlinetoppharmacypatientcount {
+    display: flex;
+    margin-left: 1px;
+    font-size: 10px;
   }
   .inlinesampledreport {
     font-size: 12px;
   }
   .inlinepharmacycount {
-    font-size: 11px;
-    height: 15px;
+    font-size: 10px;
+    height: 30px;
   }
 
   .currentimpatientdetailsheading {
@@ -795,7 +823,7 @@ p {
   }
   .totalpatient {
     display: flex;
-    margin-top: 120px;
+    margin-top: 85px;
     margin-left: 4px;
   }
 
@@ -842,7 +870,7 @@ p {
   .infolabdetails {
     font-size: 13px;
     display: flex;
-    margin-top: 10px;
+    margin-top: 9px;
   }
 
   .radiodetailsheading {
@@ -851,22 +879,27 @@ p {
   }
 
   .ipdetail {
-    margin-top: 25px !important;
+    margin-top: 8px;
+    padding-right: 0px;
+  }
+
+  .margintopinpatient {
+    margin-top: 0px;
   }
 
   .numbercountinpatient {
     color: #666;
     font-weight: bold;
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .inlineinpatient {
-    font-size: 11px;
+    font-size: 10px;
     margin-top: 8px;
   }
 
   .inlineinpatientleft {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .viewcurrentimpatientdetails {
@@ -921,7 +954,7 @@ p {
 
   .sub-container7 {
     height: 450px !important;
-    margin-top: -65px;
+    margin-top: -150px;
     width: 102%;
   }
 
@@ -938,7 +971,7 @@ p {
 
   .columnpatients {
     width: 60%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .sub-container9 {
@@ -972,39 +1005,44 @@ p {
   }
 
   .total {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .numbercounttop {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .verticalcolorfulline {
-    height: 50px;
+    height: 45px;
   }
 
   .buttons {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     margin-left: 5px;
     height: 40px;
     width: 40px;
-    font-size: 20px;
+    font-size: 15px;
   }
 
   #EButton {
-    font-size: 25px;
+    font-size: 19px;
+    margin-bottom: 20px;
   }
 
   .text-end {
-    font-size: 12px;
+    font-size: 10px;
   }
 
   .containerrightpadding {
     padding-right: 5px;
   }
+  .OWpatientpadding {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 
   .numbercountvisitreport {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .viewvisitreoprtcontainer {
@@ -1013,5 +1051,13 @@ p {
 
   .button-container {
     align-items: center;
+  }
+
+  .subcontainer1heading {
+    height: 35px !important;
+  }
+
+  .colorfullinerow {
+    margin-top: -20px;
   }
 }
