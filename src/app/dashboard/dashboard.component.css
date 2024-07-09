@@ -206,6 +206,10 @@
   font-weight: bold;
 }
 
+.iconspan {
+  margin-top: -1px;
+}
+
 .sampledspan {
   font-size: 18px;
   margin-left: 20px;
@@ -227,14 +231,46 @@
   margin-left: 70px;
 }
 
-.visitdetails {
+/* .visitdetails {
   border: 1px solid #888;
   border-radius: 5px;
   height: 27px;
   justify-content: center;
   width: 120px;
-  /* margin-left: 70px; */
   float: right;
+} */
+
+.button-container {
+  display: flex;
+  /* align-items: center; */
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  width: 100%;
+  align-items: end;
+  flex-direction: column;
+}
+
+.visitdetails {
+  display: flex;
+  align-items: center;
+  border: 1px solid #888;
+  border-radius: 5px;
+  height: 27px;
+  justify-content: center;
+  width: 120px;
+  margin-left: 70px;
+}
+
+.viewvisitreports {
+  color: #777;
+  margin-left: 2px;
+  font-size: 7px;
+  font-weight: bold;
+  /* margin-bottom: 10px !important; */
+  margin-top: 7px;
 }
 
 .labdetailsheading {
@@ -259,13 +295,12 @@
   font-weight: bold;
 }
 
-.viewvisitdetails {
-  /* border: 1px solid #888; */
+/* .viewvisitdetails {
   border-radius: 5px;
   height: 28px;
   float: right;
   width: 75%;
-}
+} */
 
 .viewvisitreports {
   /* margin-right: 5px; */
@@ -476,11 +511,10 @@ p {
   /* display: block; */
 }
 
-.button-container {
+.colorfulbutton-container {
   display: flex;
   flex-direction: column;
   margin: 0;
-  /* padding: 0; */
 }
 
 .middleverticalbutton {
@@ -805,8 +839,10 @@ p {
   }
 
   .visitdetails {
-    height: 25px;
+    height: 18px;
     width: 80px;
+    padding-top: 5px;
+    margin-left: 35%;
   }
 
   .visitreport {
@@ -954,6 +990,10 @@ p {
   .arrowicon {
     font-size: 10px;
   }
+  .arrowiconviewvisitreport {
+    font-size: 10px;
+    margin-top: -3px;
+  }
 
   .total {
     font-size: 11px;
@@ -993,5 +1033,9 @@ p {
 
   .viewvisitreoprtcontainer {
     padding-left: 0px;
+  }
+
+  .button-container {
+    align-items: center;
   }
 }
