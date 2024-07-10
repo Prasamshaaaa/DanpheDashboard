@@ -127,6 +127,13 @@
   font-family: Arial;
   text-align: center;
 }
+.info {
+  color: #666;
+}
+
+.arrowicon {
+  color: #666;
+}
 
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
   .labtestsheading {

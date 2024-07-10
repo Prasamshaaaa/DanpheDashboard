@@ -50,16 +50,14 @@ input[type="checkbox"] {
   width: 95%;
   height: 350px;
   background-color: none;
-  /* border: 1px solid black; */
   padding: 20px;
-  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); */
   justify-content: center;
   margin-bottom: 10px;
   margin-left: 30px;
 }
 .chart-size {
-  width: 90%;
-  height: 90%;
+  width: 65%;
+  height: 40%;
 }
 
 /* For Tooltip */
@@ -87,6 +85,18 @@ input[type="checkbox"] {
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+.info {
+  color: #666;
+}
+
+.arrowicon {
+  color: #666;
+}
+
+.graphrow {
+  height: 480px;
 }
 
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
@@ -127,5 +137,9 @@ input[type="checkbox"] {
   .topcontainer {
     padding-left: 5px;
     padding-right: 0px;
+  }
+
+  .graphrow {
+    height: 35px;
   }
 }

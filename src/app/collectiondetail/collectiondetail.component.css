@@ -30,6 +30,14 @@
   align-items: center;
 }
 
+.arrowicon {
+  color: #666;
+}
+
+.infoicon {
+  color: #666;
+}
+
 .collectiondetailreport {
   display: flex;
   flex-direction: row;

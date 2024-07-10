@@ -97,7 +97,7 @@
   /* margin-left: 35px; */
 }
 .chart-size {
-  width: 95%;
+  width: 70%;
   height: 90%;
   margin-top: 10px;
 }
@@ -127,6 +127,14 @@
   margin: 40px;
   font-family: Arial;
   text-align: center;
+}
+
+.info {
+  color: #666;
+}
+
+.arrowicon {
+  color: #666;
 }
 
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
