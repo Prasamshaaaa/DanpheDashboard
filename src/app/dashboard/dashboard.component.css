@@ -380,8 +380,9 @@
 .numbercounttotal {
   font-size: 35px;
   margin-left: 10px;
-  color: #666; /* Text color */
+  color: #666;
   font-weight: bold;
+  margin-top: -40px;
 }
 .numbercountinpatient {
   font-weight: bold;
@@ -1200,5 +1201,9 @@ p {
   .horizontal-buttons {
     margin-top: -3px;
     padding-left: 3px;
+  }
+
+  .totalspan {
+    margin-top: -8px;
   }
 }
