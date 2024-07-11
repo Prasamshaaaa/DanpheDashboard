@@ -16,14 +16,20 @@
     </span>
   </div>
   <div class="col-lg-5 col-md-4 col-sm-12 radiologyreportsummary topcontainer">
-    <div class="viewdetails">
+    <button class="viewdetails">
       <label for="viewradiologyreportdetails" class="viewradiologyreportdetails"
         >View Details</label
       >
       <i class="fas fa-angle-right arrowicon"></i>
-    </div>
+    </button>
   </div>
 </div>
 
 <!-- radioDetailsChart -->
-<div class="row g-0"></div>
+<div class="chart-container">
+  <canvas
+    #radiologychart
+    width="400 !important"
+    height="300 !important"
+  ></canvas>
+</div>

@@ -28,6 +28,9 @@
   margin-left: 0px;
   display: flex;
   align-items: center;
+  background-color: white;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .radiotestsreport {
