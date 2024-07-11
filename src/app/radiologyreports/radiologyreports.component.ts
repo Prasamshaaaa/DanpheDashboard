@@ -9,18 +9,15 @@ import * as Chart from 'chart.js';
 export class RadiologyreportsComponent implements OnInit {
   @ViewChild('radiologychart') myChartRef: ElementRef;
 
-  private chart: Chart
+  private chart: Chart;
+
   constructor() { }
 
   ngOnInit() {
-    this.CreateRadiologyReportChart()
+    this.CreateRadiologyReportChart();
   }
 
-
   CreateRadiologyReportChart() {
-    const CATEGORY_COUNT = 15;
-    const INTERVAL = 1000;
-
     const categories = ['CT', 'CT Scan', 'Doppler', 'Extra', 'Gastrology', 'IVU', 'Mammagram', 'Micturating Cystourethro', 'MRI Report', 'Neurology', 'Sonomammagram', 'Special Producer', 'UltraSound', 'Ultrasound(USG)', 'X-ray'];
     const statuses = ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'];
 
@@ -28,7 +25,7 @@ export class RadiologyreportsComponent implements OnInit {
       labels: categories,
       datasets: statuses.map(status => ({
         label: status,
-        data: this.getNumbers(CATEGORY_COUNT),
+        data: this.getNumbers(categories.length),
         backgroundColor: this.getColor(status.toLowerCase()),
         borderColor: this.getColor(status.toLowerCase()),
         borderWidth: 1
@@ -56,9 +53,9 @@ export class RadiologyreportsComponent implements OnInit {
           xAxes: [{
             ticks: {
               beginAtZero: true,
-              stepSize: INTERVAL,
+              autoSkip: true, // Allow Chart.js to decide the number of ticks
               callback: function (value, index, values) {
-                return value.toString();
+                return value.toString(); // Optional: Customize tick formatting if needed
               }
             },
             scaleLabel: {
@@ -100,10 +97,4 @@ export class RadiologyreportsComponent implements OnInit {
     return colors[name];
   }
 
-
 }
-
-
-
-
-
