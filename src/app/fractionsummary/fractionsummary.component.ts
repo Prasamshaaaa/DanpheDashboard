@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './fractionsummary.component.html',
   styleUrls: ['./fractionsummary.component.css']
 })
-export class FractionsummaryComponent implements OnInit {
+export class FractionSummaryComponent implements OnInit {
 
   constructor() { }
 

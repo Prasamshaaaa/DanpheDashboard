@@ -1,41 +1,35 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { ChartService } from '../chart.service';
-declare var $: any;
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ChartService } from '../Services/chart.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
 
   /** 
    * @summary - Reference to the canvas element for the lab details chart.
    * 
    */
-  @ViewChild('labDetailsChart') labDetailsChartRef!: ElementRef;
+  @ViewChild('labDetailsChart') LabDetailsChartRef!: ElementRef;
 
   /** 
    * @summary - Reference to the canvas element for the radio details chart. */
-  @ViewChild('radioDetailsChart') radioDetailsChartRef!: ElementRef;
+  @ViewChild('radioDetailsChart') RadioDetailsChartRef!: ElementRef;
 
-  activeButton: string = 'yearly';
+  ActiveButton: string = 'yearly';
 
   constructor(private chartService: ChartService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateLabDetailsChart();
     this.CreateRadioDetailsChart();
   }
 
 
-  ngAfterViewInit() {
-    $('[data-toggle="tooltip"]').tooltip();
-  }
-
-
-  setActiveButton(button: string) {
-    this.activeButton = button;
+  SetActiveButton(button: string): void {
+    this.ActiveButton = button;
   }
 
   /**
@@ -53,14 +47,23 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       'rgb(255, 159, 64)'
     ];
 
-    this.chartService.CreateDoughnutChart(
-      this.labDetailsChartRef.nativeElement,
-      labels,
-      data,
-      colors,
-      'Doughnut Chart Example',
-      'bottom'
-    );
+    const validLabels = labels.filter(label => label.trim() !== '');
+    const validData = data.filter(num => num >= 0);
+
+
+    if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
+
+      this.chartService.CreateDoughnutChart(
+        this.LabDetailsChartRef.nativeElement,
+        labels,
+        data,
+        colors,
+        'Doughnut Chart Example',
+        'bottom'
+      );
+    } else {
+      console.log('Invalid data or labels for Lab Details Chart.');
+    }
   }
 
   /**
@@ -77,13 +80,21 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       'rgb(255, 159, 64)'
     ];
 
-    this.chartService.CreateDoughnutChart(
-      this.radioDetailsChartRef.nativeElement,
-      labels,
-      data,
-      colors,
-      'Doughnut Chart Example',
-      'top'
-    );
+    const validLabels = labels.filter(label => label.trim() !== '');
+    const validData = data.filter(num => num >= 0);
+
+    if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
+
+      this.chartService.CreateDoughnutChart(
+        this.RadioDetailsChartRef.nativeElement,
+        labels,
+        data,
+        colors,
+        'Doughnut Chart Example',
+        'top'
+      );
+    } else {
+      console.log('Invalid data or labels for Radio Details Chart.');
+    }
   }
 }

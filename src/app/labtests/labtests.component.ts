@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ChartService } from '../chart.service';
+import { ChartService } from '../Services/chart.service';
 
 /**
  * @summary Displays the distribution of lab tests using a doughnut chart.
@@ -9,11 +9,11 @@ import { ChartService } from '../chart.service';
   templateUrl: './labtests.component.html',
   styleUrls: ['./labtests.component.css']
 })
-export class LabtestsComponent implements OnInit {
+export class LabTestsComponent implements OnInit {
 
   /**
    * @summary -  Reference to the canvas element for the lab tests chart. */
-  @ViewChild('labtestsChart') labtestsChartRef!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('labtestsChart') LabTestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   LabTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -31,16 +31,24 @@ export class LabtestsComponent implements OnInit {
   constructor(private chartService: ChartService) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateLabTestsChart();
   }
 
   /**
    * @summary - Generates a doughnut chart representing the distribution of lab tests.
    */
-  CreateLabTestsChart() {
-    const labels = this.LabTests.map(test => test.testname);
-    const data = this.LabTests.map(test => parseInt(test.nooftest, 10));
+  CreateLabTestsChart(): void {
+
+    // Filtering out empty or invalid entries
+    const validLabTests = this.LabTests.filter(test => test.testname && test.nooftest);
+
+    if (validLabTests.length === 0) {
+      console.log('No valid data available for creating the Lab Tests chart.');
+      return;
+    }
+    const labels = validLabTests.map(test => test.testname);
+    const data = validLabTests.map(test => parseInt(test.nooftest, 10));
     const colors = [
       'rgb(255, 99, 132)',
       'rgb(14, 90, 235)',
@@ -55,7 +63,7 @@ export class LabtestsComponent implements OnInit {
     ];
 
     this.chartService.CreateDoughnutChart(
-      this.labtestsChartRef.nativeElement,
+      this.LabTestsChartRef.nativeElement,
       labels,
       data,
       colors,

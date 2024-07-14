@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ChartService } from '../chart.service';
+import { ChartService } from '../Services/chart.service';
 
 @Component({
   selector: 'app-age-wise-details',
@@ -8,16 +8,14 @@ import { ChartService } from '../chart.service';
 })
 export class AgeWiseDetailsComponent implements OnInit {
 
-
   /**
-    * @summary - Reference to the canvas element for the age-wise chart.
-    */
-  @ViewChild('agewisechart') agewisechart!: ElementRef<HTMLCanvasElement>;
-
+   * @summary - Reference to the canvas element for the age-wise chart.
+   */
+  @ViewChild('agewisechart') Agewisechart!: ElementRef<HTMLCanvasElement>;
 
   /** 
-   * @summary -Age-wise reports data 
-   * */
+   * @summary - Age-wise reports data 
+   */
   AgeWiseReports = [
     { ageRange: '0-9 Years', maleCount: 1045, femaleCount: 1552 },
     { ageRange: '10-14 Years', maleCount: 5255, femaleCount: 7526 },
@@ -29,18 +27,24 @@ export class AgeWiseDetailsComponent implements OnInit {
 
   constructor(private _chartService: ChartService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateAgeWiseChart();
   }
 
-
   /**
-  * @summary Generates a bar chart representing male and female counts across different age ranges.
-  */
-  CreateAgeWiseChart() {
-    const labels = this.AgeWiseReports.map(report => report.ageRange);
-    const maleCounts = this.AgeWiseReports.map(report => report.maleCount);
-    const femaleCounts = this.AgeWiseReports.map(report => report.femaleCount);
+   * @summary Generates a bar chart representing male and female counts across different age ranges.
+   */
+  CreateAgeWiseChart(): void {
+    const validAgeWiseReports = this.AgeWiseReports.filter(report => report.ageRange && report.maleCount >= 0 && report.femaleCount >= 0);
+
+    if (validAgeWiseReports.length === 0) {
+      console.log('No valid data available for creating the Age Wise chart.');
+      return;
+    }
+
+    const labels = validAgeWiseReports.map(report => report.ageRange);
+    const maleCounts = validAgeWiseReports.map(report => report.maleCount);
+    const femaleCounts = validAgeWiseReports.map(report => report.femaleCount);
 
     const datasets = [
       {
@@ -52,11 +56,12 @@ export class AgeWiseDetailsComponent implements OnInit {
         data: femaleCounts
       }
     ];
+
     const colors = ['rgb(7, 115, 188,0.6)', 'rgb(132, 227, 132,0.6)'];
     const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
 
     this._chartService.CreateChart(
-      this.agewisechart.nativeElement,
+      this.Agewisechart.nativeElement,
       'bar',
       labels,
       datasets,

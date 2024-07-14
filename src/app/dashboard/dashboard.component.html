@@ -53,32 +53,32 @@
           <button
             type="button"
             class="btn btn-sm daily-button"
-            [ngClass]="{ active: activeButton === 'daily' }"
-            (click)="setActiveButton('daily')"
+            [ngClass]="{ active: ActiveButton === 'daily' }"
+            (click)="SetActiveButton('daily')"
           >
             Daily
           </button>
           <button
             type="button"
             class="btn btn-sm middle-button"
-            [ngClass]="{ active: activeButton === 'weekly' }"
-            (click)="setActiveButton('weekly')"
+            [ngClass]="{ active: ActiveButton === 'weekly' }"
+            (click)="SetActiveButton('weekly')"
           >
             Weekly
           </button>
           <button
             type="button"
             class="btn btn-sm middle-button"
-            [ngClass]="{ active: activeButton === 'monthly' }"
-            (click)="setActiveButton('monthly')"
+            [ngClass]="{ active: ActiveButton === 'monthly' }"
+            (click)="SetActiveButton('monthly')"
           >
             Monthly
           </button>
           <button
             type="button"
             class="btn btn-sm yearly-button"
-            [ngClass]="{ active: activeButton === 'yearly' }"
-            (click)="setActiveButton('yearly')"
+            [ngClass]="{ active: ActiveButton === 'yearly' }"
+            (click)="SetActiveButton('yearly')"
           >
             Yearly
           </button>

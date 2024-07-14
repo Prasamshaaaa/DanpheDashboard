@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChartService } from '../chart.service';
+import { ChartService } from '../Services/chart.service';
 import { Dataset } from '../models';
 
 /**
@@ -10,26 +10,26 @@ import { Dataset } from '../models';
   templateUrl: './radiologyreports.component.html',
   styleUrls: ['./radiologyreports.component.css']
 })
-export class RadiologyreportsComponent implements OnInit {
+export class RadiologyReportsComponent implements OnInit {
 
   /** 
    * @summary - Reference to the canvas element for the radiology chart. 
    */
 
-  @ViewChild('radiologychart') myChartRef!: ElementRef;
+  @ViewChild('radiologychart') RadiologyChartRef!: ElementRef;
   private chart!: Dataset;
 
   constructor(private chartService: ChartService) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateRadiologyReportChart();
   }
 
   /**
    * @summary Generates a horizontal bar chart representing various radiology report statuses across categories.
    */
-  CreateRadiologyReportChart() {
+  CreateRadiologyReportChart(): void {
     const categories = ['CT', 'CT Scan', 'Doppler', 'Extra', 'Gastrology', 'IVU', 'Mammagram', 'Micturating Cystourethro', 'MRI Report', 'Neurology', 'Sonomammagram', 'Special Producer', 'UltraSound', 'Ultrasound(USG)', 'X-ray'];
     const statuses = ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'];
 
@@ -41,7 +41,16 @@ export class RadiologyreportsComponent implements OnInit {
       'rgba(153, 102, 255, 0.5)'
     ];
 
-    const datasets = statuses.map((status, index) => ({
+
+    // Checking for empty or invalid categories and statuses
+    const validCategories = categories.filter(cat => cat.trim() !== '');
+    const validStatuses = statuses.filter(stat => stat.trim() !== '');
+
+    if (validCategories.length === 0 || validStatuses.length === 0 && validCategories.length === validStatuses.length) {
+      console.log('Categories or statuses are empty or invalid. Cannot create chart.');
+      return;
+    }
+    const datasets = validStatuses.map((status, index) => ({
       label: status,
       data: this.getNumbers(categories.length),
       backgroundColor: colors[index % colors.length],
@@ -49,20 +58,26 @@ export class RadiologyreportsComponent implements OnInit {
       borderWidth: 1
     }));
 
-    const chartTitle = 'Radiology Reports Chart';
-    const xAxisLabel = 'Count';
-    const yAxisLabel = 'Categories';
+    //Checking if all datasets contain only non-negative numbers
+    if (datasets.every(dataset => dataset.data.every(num => num >= 0))) {
 
-    this.chart = this.chartService.CreateChart(
-      this.myChartRef.nativeElement,
-      'horizontalBar',
-      categories,
-      datasets,
-      chartTitle,
-      xAxisLabel,
-      yAxisLabel,
-      colors
-    );
+      const chartTitle = 'Radiology Reports Chart';
+      const xAxisLabel = 'Count';
+      const yAxisLabel = 'Categories';
+
+      this.chart = this.chartService.CreateChart(
+        this.RadiologyChartRef.nativeElement,
+        'horizontalBar',
+        categories,
+        datasets,
+        chartTitle,
+        xAxisLabel,
+        yAxisLabel,
+        colors
+      );
+    } else {
+      console.log('No valid data available for creating the Radiology Reports chart.');
+    }
   }
 
   /**

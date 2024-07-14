@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Chart, ChartType } from 'chart.js';
+import { ChartConfig } from '../models';
 
 @Injectable({
   providedIn: 'root'

@@ -30,16 +30,16 @@
     <button
       type="button"
       class="btn btn-sm service-button"
-      [ngClass]="{ active: activeButton === 'service' }"
-      (click)="setActiveButton('service')"
+      [ngClass]="{ active: ActiveButton === 'service' }"
+      (click)="SetActiveButton('service')"
     >
       Service
     </button>
     <button
       type="button"
       class="btn btn-sm pharmacy-button"
-      [ngClass]="{ active: activeButton === 'pharmacy' }"
-      (click)="setActiveButton('pharmacy')"
+      [ngClass]="{ active: ActiveButton === 'pharmacy' }"
+      (click)="SetActiveButton('pharmacy')"
     >
       Pharmacy
     </button>

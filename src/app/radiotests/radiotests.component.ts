@@ -1,16 +1,18 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { ChartService } from '../chart.service';
+import { ChartService } from '../Services/chart.service';
 
 @Component({
   selector: 'app-radiotests',
   templateUrl: './radiotests.component.html',
   styleUrls: ['./radiotests.component.css']
 })
-export class RadiotestsComponent implements OnInit {
+export class RadioTestsComponent implements OnInit {
 
   /** 
-   * @summary - Reference to the canvas element for the radio tests chart. */
-  @ViewChild('radiotestsChart') radiotestsChartRef!: ElementRef<HTMLCanvasElement>;
+   * @summary - Reference to the canvas element for the radio tests chart. 
+   
+  */
+  @ViewChild('radiotestsChart') RadioTestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   RadioTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -27,16 +29,25 @@ export class RadiotestsComponent implements OnInit {
 
   constructor(private chartService: ChartService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateRadioTestsChart();
   }
 
   /**
    * @summary Generates a doughnut chart representing the distribution of various radio tests.
    */
-  CreateRadioTestsChart() {
-    const labels = this.RadioTests.map(test => test.testname);
-    const data = this.RadioTests.map(test => parseInt(test.nooftest, 10));
+
+  CreateRadioTestsChart(): void {
+    // Filtering out empty or invalid entries
+    const validRadioTests = this.RadioTests.filter(test => test.testname && test.nooftest);
+
+    if (validRadioTests.length === 0) {
+      console.log('No valid data available for  creating the RadioTests chart.');
+      return;
+    }
+
+    const labels = validRadioTests.map(test => test.testname);
+    const data = validRadioTests.map(test => parseInt(test.nooftest, 10));
     const colors = [
       'rgb(255, 99, 132)',
       'rgb(14, 90, 235)',
@@ -51,11 +62,12 @@ export class RadiotestsComponent implements OnInit {
     ];
 
     this.chartService.CreateDoughnutChart(
-      this.radiotestsChartRef.nativeElement,
+      this.RadioTestsChartRef.nativeElement,
       labels,
       data,
       colors,
       'Radio Test Distribution'
     );
   }
+
 }

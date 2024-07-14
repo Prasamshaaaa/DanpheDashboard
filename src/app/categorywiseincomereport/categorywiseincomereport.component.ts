@@ -1,21 +1,21 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ChartService } from '../chart.service';
+import { ChartService } from '../Services/chart.service';
 
 @Component({
   selector: 'app-categorywiseincomereport',
   templateUrl: './categorywiseincomereport.component.html',
   styleUrls: ['./categorywiseincomereport.component.css']
 })
-export class CategorywiseincomereportComponent implements OnInit {
+export class CategoryWiseIncomeReportComponent implements OnInit {
 
 
   /**
     * @summary - Reference to the canvas element for the category-wise chart.
     */
-  @ViewChild('categorywisechart') categorywisechart!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('categorywisechart') CategoryWiseChart!: ElementRef<HTMLCanvasElement>;
   constructor(private _chartService: ChartService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.CreateCategoryReportChart();
   }
 
@@ -41,10 +41,19 @@ export class CategorywiseincomereportComponent implements OnInit {
   /**
     * @summary Generates a bar chart representing collection and return counts across different age categoryreport.
     */
-  CreateCategoryReportChart() {
-    const labels = this.categoryReports.map(report => report.categoryreport);
-    const collections = this.categoryReports.map(report => parseFloat(report.collection.replace('Rs.', '').replace(/,/g, '')));
-    const returns = this.categoryReports.map(report => parseInt(report.return, 10));
+  CreateCategoryReportChart(): void {
+
+    // Filtering out empty or invalid entries
+    const validCategoryReports = this.categoryReports.filter(report => report.categoryreport && report.collection && report.return);
+
+    if (validCategoryReports.length === 0) {
+      console.log('No valid data available for creating the Category Wise Income chart.');
+      return;
+    }
+
+    const labels = validCategoryReports.map(report => report.categoryreport);
+    const collections = validCategoryReports.map(report => parseFloat(report.collection.replace('Rs.', '').replace(/,/g, '')));
+    const returns = validCategoryReports.map(report => parseInt(report.return, 10));
 
 
 
@@ -65,8 +74,9 @@ export class CategorywiseincomereportComponent implements OnInit {
     ];
 
     const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
+
     this._chartService.CreateChart(
-      this.categorywisechart.nativeElement,
+      this.CategoryWiseChart.nativeElement,
       'bar',
       labels,
       datasets,
