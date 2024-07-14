@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-age-wise-details',
@@ -7,6 +7,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./age-wise-details.component.css']
 })
 export class AgeWiseDetailsComponent implements OnInit {
+
+  @ViewChild('agewisechart') agewisechart!: ElementRef<HTMLCanvasElement>;
 
   AgeWiseReports = [
     { ageRange: '0-9 Years', maleCount: 1045, femaleCount: 1552 },
@@ -17,7 +19,7 @@ export class AgeWiseDetailsComponent implements OnInit {
     { ageRange: '70 above Years', maleCount: 252, femaleCount: 5525 },
   ];
 
-  constructor() { }
+  constructor(private _chartService: ChartService) { }
 
   ngOnInit() {
     this.CreateAgeWiseChart();
@@ -28,63 +30,29 @@ export class AgeWiseDetailsComponent implements OnInit {
     const maleCounts = this.AgeWiseReports.map(report => report.maleCount);
     const femaleCounts = this.AgeWiseReports.map(report => report.femaleCount);
 
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Male',
-          data: maleCounts,
-          backgroundColor: 'rgb(7, 115, 188,0.6)',
-          borderColor: 'rgb(7, 115, 188)',
-          borderWidth: 1
-        },
-        {
-          label: 'Female',
-          data: femaleCounts,
-          backgroundColor: 'rgb(132, 227, 132,0.6)',
-          borderColor: 'rgb(132, 227, 132,1)',
-          borderWidth: 1
-        }
-      ]
-    };
-
-    const config = {
-      type: 'bar',
-      data: data,
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Age Wise Details Chart'
-          }
-        },
-        scales: {
-          x: {
-            beginAtZero: true,
-            stacked: true,
-            title: {
-              display: true,
-              text: 'Count'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Age Range'
-            }
-          }
-        }
+    const datasets = [
+      {
+        label: 'Male',
+        data: maleCounts
+      },
+      {
+        label: 'Female',
+        data: femaleCounts
       }
-    };
+    ];
+    const colors = ['rgb(7, 115, 188,0.6)', 'rgb(132, 227, 132,0.6)'];
+    const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
 
-    const myChart = new Chart(
-      document.getElementById('agewisechart') as HTMLCanvasElement,
-      config
+    this._chartService.CreateChart(
+      this.agewisechart.nativeElement,
+      'bar',
+      labels,
+      datasets,
+      'Age Wise Details Chart',
+      'Count',
+      'Age Range',
+      colors,
+      legendPosition
     );
   }
 }

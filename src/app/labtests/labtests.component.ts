@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-labtests',
   templateUrl: './labtests.component.html',
   styleUrls: ['./labtests.component.css']
 })
-export class LabtestsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    this.CreateLabTestsChart();
-
-  }
+export class LabtestsComponent implements OnInit, AfterViewInit {
+  @ViewChild('labtestsChart') labtestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   LabTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -26,63 +20,39 @@ export class LabtestsComponent implements OnInit {
     { rank: 8, testname: 'TFT', nooftest: '4444' },
     { rank: 9, testname: 'URINE CULTURE', nooftest: '5555' },
     { rank: 10, testname: 'BLOOD SUGAR-POST PRANDIAL(PP)', nooftest: '7777' },
-
   ];
 
-  CreateLabTestsChart() {
-    const labels = this.LabTests.map((test) => test.testname);
-    const data = this.LabTests.map((test) => test.nooftest);
+  constructor(private chartService: ChartService) { }
 
-    const chartData = {
-      labels: labels,
-      datasets: [{
-        label: 'Number of Tests',
-        data: data,
-        backgroundColor: [
-          // 'rgb(255, 99, 132)',
-          // 'rgb(54, 162, 235)',
-          // 'rgb(255, 205, 86)',
-          // 'rgb(75, 192, 192)',
-          // 'rgb(153, 102, 255)',
-          // 'rgb(255, 159, 64)',
-          // 'rgb(94, 255, 102)',
-          // 'rgb(255, 102, 182)',
-          // 'rgb(102, 158, 255)',
-          // 'rgb(255, 204, 102)'
+  ngOnInit() { }
 
-
-          'rgb(255, 99, 132)',
-          'rgb(14, 90, 235)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(153, 102, 255)',
-          'rgb(200, 159, 64)',
-          'rgb(80, 255, 102)',
-          'rgb(255, 102, 182)',
-          'rgb(150, 158, 95)',
-          'rgb(15, 104, 102)'
-        ],
-        hoverOffset: 4
-      }]
-    };
-
-    new Chart('labtestsChart', {
-      type: 'doughnut',
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Lab Test Distribution'
-          }
-        }
-      }
-    });
+  ngAfterViewInit() {
+    this.CreateLabTestsChart();
   }
 
+  CreateLabTestsChart() {
+    const labels = this.LabTests.map(test => test.testname);
+    const data = this.LabTests.map(test => parseInt(test.nooftest, 10));
+    const colors = [
+      'rgb(255, 99, 132)',
+      'rgb(14, 90, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(153, 102, 255)',
+      'rgb(200, 159, 64)',
+      'rgb(80, 255, 102)',
+      'rgb(255, 102, 182)',
+      'rgb(150, 158, 95)',
+      'rgb(15, 104, 102)'
+    ];
+
+    this.chartService.CreateDoughnutChart(
+      this.labtestsChartRef.nativeElement,
+      labels,
+      data,
+      colors,
+      'Lab Test Distribution',
+      'top'
+    );
+  }
 }

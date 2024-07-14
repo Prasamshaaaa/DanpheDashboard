@@ -1,19 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-radiotests',
   templateUrl: './radiotests.component.html',
   styleUrls: ['./radiotests.component.css']
 })
-export class RadiotestsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-    this.CreateRadioTestsChart();
-  }
-
+export class RadiotestsComponent implements OnInit, AfterViewInit {
+  @ViewChild('radiotestsChart') radiotestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   RadioTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -26,52 +20,38 @@ export class RadiotestsComponent implements OnInit {
     { rank: 8, testname: 'TFT', nooftest: '4444' },
     { rank: 9, testname: 'URINE CULTURE', nooftest: '5555' },
     { rank: 10, testname: 'BLOOD SUGAR-POST PRANDIAL(PP)', nooftest: '7777' },
-
   ];
 
-  CreateRadioTestsChart() {
-    const labels = this.RadioTests.map((test) => test.testname);
-    const data = this.RadioTests.map((test) => test.nooftest);
+  constructor(private chartService: ChartService) { }
 
-    const chartData = {
-      labels: labels,
-      datasets: [{
-        label: 'Number of Tests',
-        data: data,
-        backgroundColor: [
-          'rgb(255, 99, 132)',
-          'rgb(14, 90, 235)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(153, 102, 255)',
-          'rgb(200, 159, 64)',
-          'rgb(80, 255, 102)',
-          'rgb(255, 102, 182)',
-          'rgb(150, 158, 95)',
-          'rgb(15, 104, 102)'
+  ngOnInit() { }
 
-        ],
-        hoverOffset: 4
-      }]
-    };
-
-    new Chart('radiotestsChart', {
-      type: 'doughnut',
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Lab Test Distribution'
-          }
-        }
-      }
-    });
+  ngAfterViewInit() {
+    this.CreateRadioTestsChart();
   }
 
+  CreateRadioTestsChart() {
+    const labels = this.RadioTests.map(test => test.testname);
+    const data = this.RadioTests.map(test => parseInt(test.nooftest, 10));
+    const colors = [
+      'rgb(255, 99, 132)',
+      'rgb(14, 90, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(75, 192, 192)',
+      'rgb(153, 102, 255)',
+      'rgb(200, 159, 64)',
+      'rgb(80, 255, 102)',
+      'rgb(255, 102, 182)',
+      'rgb(150, 158, 95)',
+      'rgb(15, 104, 102)'
+    ];
+
+    this.chartService.CreateDoughnutChart(
+      this.radiotestsChartRef.nativeElement,
+      labels,
+      data,
+      colors,
+      'Radio Test Distribution'
+    );
+  }
 }

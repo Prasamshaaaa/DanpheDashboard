@@ -92,7 +92,7 @@
 
 .chart-box {
   width: 95%;
-  height: 500px;
+  height: 400px;
   background-color: none;
   padding: 5px;
   justify-content: center;
@@ -100,7 +100,7 @@
   /* margin-left: 35px; */
 }
 .chart-size {
-  width: 70%;
+  width: 90%;
   height: 90%;
   margin-top: 10px;
 }
@@ -138,6 +138,10 @@
 
 .arrowicon {
   color: #666;
+}
+
+canvas {
+  height: 300px !important;
 }
 
 @media only screen and (max-width: 1468px) and (min-width: 768px) {
@@ -188,5 +192,10 @@
   .container {
     padding-left: 0px;
     padding-right: 0px;
+  }
+  canvas {
+    height: 200px !important;
+    width: 80% !important;
+    margin-left: 50px !important;
   }
 }

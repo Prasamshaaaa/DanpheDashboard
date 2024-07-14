@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-categorywiseincomereport',
@@ -7,8 +7,8 @@ import { Chart } from 'chart.js';
   styleUrls: ['./categorywiseincomereport.component.css']
 })
 export class CategorywiseincomereportComponent implements OnInit {
-
-  constructor() { }
+  @ViewChild('categorywisechart') categorywisechart!: ElementRef<HTMLCanvasElement>;
+  constructor(private _chartService: ChartService) { }
 
   ngOnInit() {
     this.CreateCategoryReportChart();
@@ -38,42 +38,35 @@ export class CategorywiseincomereportComponent implements OnInit {
     const collections = this.categoryReports.map(report => parseFloat(report.collection.replace('Rs.', '').replace(/,/g, '')));
     const returns = this.categoryReports.map(report => parseInt(report.return, 10));
 
-    const data = {
-      labels: labels,
-      datasets: [
-        {
-          label: 'Collection',
-          data: collections,
-          backgroundColor: 'rgb(7, 115, 188,0.6)',
-          borderColor: 'rgb(7, 115, 188)',
-          borderWidth: 1
-        },
-        {
-          label: 'Return',
-          data: returns,
-          backgroundColor: 'rgb(169, 228, 169,0.6)',
-          borderColor: 'rgb(169, 228, 169,1)',
-          borderWidth: 1
-        }
-      ]
-    };
 
-    const config = {
-      type: 'bar',
-      data: data,
-      options: {
-        indexAxis: 'y',
-        scales: {
-          x: {
-            beginAtZero: true
-          }
-        }
+
+    const datasets = [
+      {
+        label: 'Collection',
+        data: collections
+      },
+      {
+        label: 'Return',
+        data: returns
       }
-    };
+    ];
 
-    const myChart = new Chart(
-      document.getElementById('categorywisechart') as HTMLCanvasElement,
-      config
+    const colors = [
+      'rgb(7, 115, 188,0.6)',
+      'rgb(169, 228, 169,0.6)'
+    ];
+
+    const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
+    this._chartService.CreateChart(
+      this.categorywisechart.nativeElement,
+      'bar',
+      labels,
+      datasets,
+      'Age Wise Details Chart',
+      'Count',
+      'Age Range',
+      colors,
+      legendPosition
     );
   }
 }

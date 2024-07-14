@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-collectiondetail',
@@ -8,18 +8,15 @@ import { Chart } from 'chart.js';
 })
 export class CollectiondetailComponent implements AfterViewInit {
   activeButton: string = 'service';
-  constructor(private elementRef: ElementRef) { }
 
-  // ngOnInit() {
-  //   this.CreateCollectionDetailsChart();
-  // }
+  @ViewChild('collectionDetailsChart') collectionDetailsChart!: ElementRef<HTMLCanvasElement>;
+
+  constructor(private _chartService: ChartService) { }
 
   ngAfterViewInit() {
-    // Call chart initialization method after view is fully initialized
     this.CreateCollectionDetailsChart();
   }
 
-  //For buttons
   setActiveButton(button: string) {
     this.activeButton = button;
   }
@@ -28,48 +25,23 @@ export class CollectiondetailComponent implements AfterViewInit {
     const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11', 'Year 12', 'Year 13', 'Year 14', 'Year 15'];
     const data = years.map(() => Math.floor(Math.random() * 1000)); // Generate random count data
 
-    const chartData = {
-      labels: years,
-      datasets: [{
-        label: 'Collection Count',
-        data: data,
-        borderColor: 'rgb(7, 115, 188)',
-        backgroundColor: 'rgb(7, 115, 188,0.6)',
-        fill: true
-      }]
-    };
+    const datasets = [{
+      label: 'Collection Count',
+      data: data
+    }];
+    const colors = ['rgb(7, 115, 188,0.6)'];
+    const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
 
-    new Chart('collectiolDetailsChart', {
-      type: 'line',
-      data: chartData,
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Random Line Chart'
-          }
-        },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: 'Yearly'
-            }
-          },
-          y: {
-            title: {
-              display: true,
-              text: 'Collection Count'
-            }
-          }
-        }
-      }
-    });
+    this._chartService.CreateChart(
+      this.collectionDetailsChart.nativeElement,
+      'line',
+      years,
+      datasets,
+      'Collection Details Chart',
+      'Yearly',
+      'Collection Count',
+      colors,
+      legendPosition
+    );
   }
-
 }
