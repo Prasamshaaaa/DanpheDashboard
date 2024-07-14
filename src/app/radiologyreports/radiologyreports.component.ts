@@ -1,22 +1,34 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../chart.service';
 import { Dataset } from '../models';
+
+/**
+ * @summary - Displays the distribution of various radiology report categories using a horizontal bar chart.
+ */
 @Component({
   selector: 'app-radiologyreports',
   templateUrl: './radiologyreports.component.html',
   styleUrls: ['./radiologyreports.component.css']
 })
 export class RadiologyreportsComponent implements OnInit {
-  @ViewChild('radiologychart') myChartRef: ElementRef;
 
-  private chart: Dataset;
+  /** 
+   * @summary - Reference to the canvas element for the radiology chart. 
+   */
+
+  @ViewChild('radiologychart') myChartRef!: ElementRef;
+  private chart!: Dataset;
 
   constructor(private chartService: ChartService) { }
+
 
   ngOnInit() {
     this.CreateRadiologyReportChart();
   }
 
+  /**
+   * @summary Generates a horizontal bar chart representing various radiology report statuses across categories.
+   */
   CreateRadiologyReportChart() {
     const categories = ['CT', 'CT Scan', 'Doppler', 'Extra', 'Gastrology', 'IVU', 'Mammagram', 'Micturating Cystourethro', 'MRI Report', 'Neurology', 'Sonomammagram', 'Special Producer', 'UltraSound', 'Ultrasound(USG)', 'X-ray'];
     const statuses = ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'];
@@ -53,6 +65,12 @@ export class RadiologyreportsComponent implements OnInit {
     );
   }
 
+  /**
+   * @summary - Generates an array of random numbers for the given count.
+   *
+   * @param count - The number of random numbers to generate.
+   * @returns An array of random numbers.
+   */
   private getNumbers(count: number): number[] {
     const numbers = [];
     for (let i = 0; i < count; i++) {

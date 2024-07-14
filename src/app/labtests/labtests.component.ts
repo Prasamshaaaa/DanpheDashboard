@@ -1,12 +1,18 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../chart.service';
 
+/**
+ * @summary Displays the distribution of lab tests using a doughnut chart.
+ */
 @Component({
   selector: 'app-labtests',
   templateUrl: './labtests.component.html',
   styleUrls: ['./labtests.component.css']
 })
-export class LabtestsComponent implements OnInit, AfterViewInit {
+export class LabtestsComponent implements OnInit {
+
+  /**
+   * @summary -  Reference to the canvas element for the lab tests chart. */
   @ViewChild('labtestsChart') labtestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   LabTests = [
@@ -24,12 +30,14 @@ export class LabtestsComponent implements OnInit, AfterViewInit {
 
   constructor(private chartService: ChartService) { }
 
-  ngOnInit() { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.CreateLabTestsChart();
   }
 
+  /**
+   * @summary - Generates a doughnut chart representing the distribution of lab tests.
+   */
   CreateLabTestsChart() {
     const labels = this.LabTests.map(test => test.testname);
     const data = this.LabTests.map(test => parseInt(test.nooftest, 10));

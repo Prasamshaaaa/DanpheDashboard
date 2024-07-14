@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../chart.service';
 
 @Component({
@@ -6,7 +6,10 @@ import { ChartService } from '../chart.service';
   templateUrl: './radiotests.component.html',
   styleUrls: ['./radiotests.component.css']
 })
-export class RadiotestsComponent implements OnInit, AfterViewInit {
+export class RadiotestsComponent implements OnInit {
+
+  /** 
+   * @summary - Reference to the canvas element for the radio tests chart. */
   @ViewChild('radiotestsChart') radiotestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   RadioTests = [
@@ -24,12 +27,13 @@ export class RadiotestsComponent implements OnInit, AfterViewInit {
 
   constructor(private chartService: ChartService) { }
 
-  ngOnInit() { }
-
-  ngAfterViewInit() {
+  ngOnInit() {
     this.CreateRadioTestsChart();
   }
 
+  /**
+   * @summary Generates a doughnut chart representing the distribution of various radio tests.
+   */
   CreateRadioTestsChart() {
     const labels = this.RadioTests.map(test => test.testname);
     const data = this.RadioTests.map(test => parseInt(test.nooftest, 10));

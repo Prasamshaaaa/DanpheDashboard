@@ -1,19 +1,25 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { OnInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ChartService } from '../chart.service';
 
+/**
+ *
+ * @summary Displays random collection counts over a span of years using a line chart.
+ */
 @Component({
   selector: 'app-collectiondetail',
   templateUrl: './collectiondetail.component.html',
   styleUrls: ['./collectiondetail.component.css']
 })
-export class CollectiondetailComponent implements AfterViewInit {
+export class CollectiondetailComponent implements OnInit {
+
   activeButton: string = 'service';
 
-  @ViewChild('collectionDetailsChart') collectionDetailsChart!: ElementRef<HTMLCanvasElement>;
+  /**  @summary - Reference to the canvas element for the collection details chart. */
+  @ViewChild('collectionDetailsChart') collectionDetailsChart!: ElementRef;
 
   constructor(private _chartService: ChartService) { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.CreateCollectionDetailsChart();
   }
 
@@ -21,10 +27,12 @@ export class CollectiondetailComponent implements AfterViewInit {
     this.activeButton = button;
   }
 
+  /**
+   * @summary Generates a line chart representing collection counts over a period of years.
+   */
   CreateCollectionDetailsChart() {
     const years = ['Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6', 'Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11', 'Year 12', 'Year 13', 'Year 14', 'Year 15'];
-    const data = years.map(() => Math.floor(Math.random() * 1000)); // Generate random count data
-
+    const data = years.map(() => Math.floor(Math.random() * 1000));
     const datasets = [{
       label: 'Collection Count',
       data: data

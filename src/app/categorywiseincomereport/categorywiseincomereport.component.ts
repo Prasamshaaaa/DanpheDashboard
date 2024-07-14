@@ -7,6 +7,11 @@ import { ChartService } from '../chart.service';
   styleUrls: ['./categorywiseincomereport.component.css']
 })
 export class CategorywiseincomereportComponent implements OnInit {
+
+
+  /**
+    * @summary - Reference to the canvas element for the category-wise chart.
+    */
   @ViewChild('categorywisechart') categorywisechart!: ElementRef<HTMLCanvasElement>;
   constructor(private _chartService: ChartService) { }
 
@@ -33,6 +38,9 @@ export class CategorywiseincomereportComponent implements OnInit {
 
   ];
 
+  /**
+    * @summary Generates a bar chart representing collection and return counts across different age categoryreport.
+    */
   CreateCategoryReportChart() {
     const labels = this.categoryReports.map(report => report.categoryreport);
     const collections = this.categoryReports.map(report => parseFloat(report.collection.replace('Rs.', '').replace(/,/g, '')));

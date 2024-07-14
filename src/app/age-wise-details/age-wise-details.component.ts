@@ -8,8 +8,16 @@ import { ChartService } from '../chart.service';
 })
 export class AgeWiseDetailsComponent implements OnInit {
 
+
+  /**
+    * @summary - Reference to the canvas element for the age-wise chart.
+    */
   @ViewChild('agewisechart') agewisechart!: ElementRef<HTMLCanvasElement>;
 
+
+  /** 
+   * @summary -Age-wise reports data 
+   * */
   AgeWiseReports = [
     { ageRange: '0-9 Years', maleCount: 1045, femaleCount: 1552 },
     { ageRange: '10-14 Years', maleCount: 5255, femaleCount: 7526 },
@@ -25,6 +33,10 @@ export class AgeWiseDetailsComponent implements OnInit {
     this.CreateAgeWiseChart();
   }
 
+
+  /**
+  * @summary Generates a bar chart representing male and female counts across different age ranges.
+  */
   CreateAgeWiseChart() {
     const labels = this.AgeWiseReports.map(report => report.ageRange);
     const maleCounts = this.AgeWiseReports.map(report => report.maleCount);

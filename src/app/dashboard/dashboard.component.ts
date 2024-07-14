@@ -8,8 +8,17 @@ declare var $: any;
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
-  @ViewChild('labDetailsChart') labDetailsChartRef!: ElementRef<HTMLCanvasElement>;
-  @ViewChild('radioDetailsChart') radioDetailsChartRef!: ElementRef<HTMLCanvasElement>;
+
+  /** 
+   * @summary - Reference to the canvas element for the lab details chart.
+   * 
+   */
+  @ViewChild('labDetailsChart') labDetailsChartRef!: ElementRef;
+
+  /** 
+   * @summary - Reference to the canvas element for the radio details chart. */
+  @ViewChild('radioDetailsChart') radioDetailsChartRef!: ElementRef;
+
   activeButton: string = 'yearly';
 
   constructor(private chartService: ChartService) { }
@@ -19,16 +28,19 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     this.CreateRadioDetailsChart();
   }
 
+
   ngAfterViewInit() {
     $('[data-toggle="tooltip"]').tooltip();
   }
 
-  // For top yearly/monthly/weekly/daily buttons
+
   setActiveButton(button: string) {
     this.activeButton = button;
   }
 
-  // Create Lab Detail Chart
+  /**
+   * @summary - Generates a doughnut chart representing various lab status counts.
+   */
   CreateLabDetailsChart(): void {
     const labels = ['Ordered', 'Sampled', 'Received', 'Reported', 'PreVerified', 'Verified'];
     const data = [300, 50, 100, 600, 20, 89];
@@ -51,7 +63,9 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     );
   }
 
-  // Create Radio Details Chart
+  /**
+   * @summary Generates a doughnut chart representing various radio status counts.
+   */
   CreateRadioDetailsChart(): void {
     const labels = ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'];
     const data = [300, 50, 100, 600, 20];
