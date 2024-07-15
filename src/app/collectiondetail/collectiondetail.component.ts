@@ -1,7 +1,8 @@
-import { OnInit, Component, ElementRef, ViewChild, Input } from '@angular/core';
+import { OnInit, Component, ElementRef, ViewChild, Input, OnDestroy } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { Dataset, ChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 /**
  * @summary Displays random collection counts over a span of years using a line chart.
@@ -11,7 +12,7 @@ import { Dataset, ChartConfig } from '../models';
   templateUrl: './collectiondetail.component.html',
   styleUrls: ['./collectiondetail.component.css']
 })
-export class CollectionDetailComponent implements OnInit {
+export class CollectionDetailComponent implements OnInit, OnDestroy {
 
   /**
    * @summary The currently active button representing the selected view type.
@@ -27,6 +28,8 @@ export class CollectionDetailComponent implements OnInit {
    * @default 'yearly'
    */
   @Input() TimePeriod: string = 'yearly';
+  private subscriptions = new Subscription();
+
 
   constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
 
@@ -38,10 +41,14 @@ export class CollectionDetailComponent implements OnInit {
      * whenever the time period is updated.
      */
     this.LoadData();
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   LoadData(): void {

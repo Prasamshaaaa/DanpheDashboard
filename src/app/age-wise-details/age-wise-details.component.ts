@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { ChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-age-wise-details',
   templateUrl: './age-wise-details.component.html',
   styleUrls: ['./age-wise-details.component.css']
 })
-export class AgeWiseDetailsComponent implements OnInit {
+export class AgeWiseDetailsComponent implements OnInit, OnDestroy {
 
   /**
    * @summary - Reference to the canvas element for the age-wise chart.
@@ -20,6 +21,9 @@ export class AgeWiseDetailsComponent implements OnInit {
    * @default 'yearly'
    */
   @Input() TimePeriod: string = 'yearly';
+
+
+  private subscriptions = new Subscription();
 
   /** 
    * @summary - Age-wise reports data 
@@ -43,10 +47,14 @@ export class AgeWiseDetailsComponent implements OnInit {
     * whenever the time period is updated.
     */
     this.LoadData();
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   LoadData(): void {

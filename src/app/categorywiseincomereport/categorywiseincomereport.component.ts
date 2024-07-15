@@ -1,14 +1,15 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { Dataset, ChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-categorywiseincomereport',
   templateUrl: './categorywiseincomereport.component.html',
   styleUrls: ['./categorywiseincomereport.component.css']
 })
-export class CategoryWiseIncomeReportComponent implements OnInit {
+export class CategoryWiseIncomeReportComponent implements OnInit, OnDestroy {
 
   /**
    * @summary - Reference to the canvas element for the category-wise chart.
@@ -21,6 +22,9 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
    */
   @Input() TimePeriod: string = 'yearly';
 
+  private subscriptions = new Subscription();
+
+
   constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
@@ -28,10 +32,14 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
      * @summary Initializes the component and loads data for the chart.
      */
     this.LoadData();
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   categoryReports = [

@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { DoughnutChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 /**
  * @summary Displays the distribution of various radio tests using a doughnut chart.
@@ -11,7 +12,7 @@ import { DoughnutChartConfig } from '../models';
   templateUrl: './radiotests.component.html',
   styleUrls: ['./radiotests.component.css']
 })
-export class RadioTestsComponent implements OnInit {
+export class RadioTestsComponent implements OnInit, OnDestroy {
 
   /** 
    * @summary Reference to the canvas element for the radio tests chart. 
@@ -22,6 +23,8 @@ export class RadioTestsComponent implements OnInit {
    * @summary Time period for the chart data, default is 'yearly'.
    */
   @Input() TimePeriod: string = 'yearly';
+
+  private subscriptions = new Subscription();
 
   RadioTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -41,10 +44,14 @@ export class RadioTestsComponent implements OnInit {
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   LoadData(): void {

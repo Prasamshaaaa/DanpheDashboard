@@ -1,8 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartService } from '../Services/chart.service';
 import { Dataset, ChartConfig } from '../models';
 import { DashboardService } from '../Services/dashboard.service';
+import { Subscription } from 'rxjs';
 
 /**
  * @summary Displays the distribution of various radiology report categories using a horizontal bar chart.
@@ -12,7 +13,7 @@ import { DashboardService } from '../Services/dashboard.service';
   templateUrl: './radiologyreports.component.html',
   styleUrls: ['./radiologyreports.component.css']
 })
-export class RadiologyReportsComponent implements OnInit {
+export class RadiologyReportsComponent implements OnInit, OnDestroy {
 
   /** 
    * @summary Reference to the canvas element for the radiology chart. 
@@ -23,17 +24,23 @@ export class RadiologyReportsComponent implements OnInit {
    * @summary Time period for the chart data, default is 'yearly'.
    */
   @Input() TimePeriod: string = 'yearly';
-  private chart!: Chart;
+
+  private subscriptions = new Subscription();
+
 
   constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   LoadData(): void {

@@ -1,14 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { ChartConfig, DoughnutChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   /** 
    * @summary - Reference to the canvas element for the lab details chart.
@@ -22,15 +23,21 @@ export class DashboardComponent implements OnInit {
 
   ActiveButton: string = 'yearly';
 
+  private subscriptions = new Subscription();
+
   constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     /**
      * @summary Initializes the component and subscribes to changes in the current time period.
      */
-    this._dashboardService.CurrentTimePeriod$.subscribe(() => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(() => {
       this.LoadCharts();
-    });
+    }));
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 
   /**

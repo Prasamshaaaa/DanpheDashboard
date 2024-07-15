@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { DashboardService } from '../Services/dashboard.service';
 import { DoughnutChartConfig } from '../models';
+import { Subscription } from 'rxjs';
 
 /**
  * @summary Displays the distribution of lab tests using a doughnut chart.
@@ -22,6 +23,8 @@ export class LabTestsComponent implements OnInit {
    * @summary Time period for the chart data, default is 'yearly'.
    */
   @Input() TimePeriod: string = 'yearly';
+  private subscriptions = new Subscription();
+
 
   LabTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
@@ -41,12 +44,15 @@ export class LabTestsComponent implements OnInit {
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
-    });
+    }));
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
   LoadData(): void {
     this.CreateLabTestsChart();
   }
