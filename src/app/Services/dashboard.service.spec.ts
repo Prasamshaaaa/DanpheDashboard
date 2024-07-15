@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TimeperiodService } from './timeperiod.service';
+import { TimeperiodService } from './dashboard.service';
 
 describe('TimeperiodService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

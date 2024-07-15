@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
-import { TimePeriodService } from '../Services/timeperiod.service';
+import { DashboardService } from '../Services/dashboard.service';
 import { DoughnutChartConfig } from '../models';
 
 /**
@@ -36,12 +36,12 @@ export class RadioTestsComponent implements OnInit {
     { rank: 10, testname: 'BLOOD SUGAR-POST PRANDIAL(PP)', nooftest: '7777' },
   ];
 
-  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
+  constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     });

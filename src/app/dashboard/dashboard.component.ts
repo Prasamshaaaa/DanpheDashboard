@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
-import { TimePeriodService } from '../Services/timeperiod.service';
+import { DashboardService } from '../Services/dashboard.service';
 import { ChartConfig, DoughnutChartConfig } from '../models';
 
 @Component({
@@ -22,13 +22,13 @@ export class DashboardComponent implements OnInit {
 
   ActiveButton: string = 'yearly';
 
-  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
+  constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     /**
      * @summary Initializes the component and subscribes to changes in the current time period.
      */
-    this._timePeriodService.CurrentTimePeriod$.subscribe(() => {
+    this._dashboardService.CurrentTimePeriod$.subscribe(() => {
       this.LoadCharts();
     });
   }
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
    */
   SetActiveButton(period: string): void {
     this.ActiveButton = period;
-    this._timePeriodService.ChangeTimePeriod(period);
+    this._dashboardService.ChangeTimePeriod(period);
   }
 
   /**

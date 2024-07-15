@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
-import { TimePeriodService } from '../Services/timeperiod.service';
+import { DashboardService } from '../Services/dashboard.service';
 import { Dataset, ChartConfig } from '../models';
 
 @Component({
@@ -21,14 +21,14 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
    */
   @Input() TimePeriod: string = 'yearly';
 
-  constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
+  constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     /**
      * @summary Initializes the component and loads data for the chart.
      */
     this.LoadData();
-    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     });

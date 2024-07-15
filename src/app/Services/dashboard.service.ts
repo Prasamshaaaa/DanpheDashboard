@@ -11,7 +11,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class TimePeriodService {
+export class DashboardService {
   /** 
   * @summary - BehaviorSubject holds the current time period.
   * @default 'daily'

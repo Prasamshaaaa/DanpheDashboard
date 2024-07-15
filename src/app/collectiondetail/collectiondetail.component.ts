@@ -1,6 +1,6 @@
 import { OnInit, Component, ElementRef, ViewChild, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
-import { TimePeriodService } from '../Services/timeperiod.service';
+import { DashboardService } from '../Services/dashboard.service';
 import { Dataset, ChartConfig } from '../models';
 
 /**
@@ -28,7 +28,7 @@ export class CollectionDetailComponent implements OnInit {
    */
   @Input() TimePeriod: string = 'yearly';
 
-  constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
+  constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     /**
@@ -38,7 +38,7 @@ export class CollectionDetailComponent implements OnInit {
      * whenever the time period is updated.
      */
     this.LoadData();
-    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     });

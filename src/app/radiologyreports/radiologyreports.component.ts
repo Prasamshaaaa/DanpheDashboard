@@ -2,7 +2,7 @@ import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
 import { ChartService } from '../Services/chart.service';
 import { Dataset, ChartConfig } from '../models';
-import { TimePeriodService } from '../Services/timeperiod.service';
+import { DashboardService } from '../Services/dashboard.service';
 
 /**
  * @summary Displays the distribution of various radiology report categories using a horizontal bar chart.
@@ -25,12 +25,12 @@ export class RadiologyReportsComponent implements OnInit {
   @Input() TimePeriod: string = 'yearly';
   private chart!: Chart;
 
-  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
+  constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+    this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     });
