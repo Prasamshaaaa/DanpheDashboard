@@ -1,10 +1,11 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Chart } from 'chart.js';
 import { ChartService } from '../Services/chart.service';
-import { Dataset } from '../models';
+import { Dataset, ChartConfig } from '../models';
 import { TimePeriodService } from '../Services/timeperiod.service';
 
 /**
- * @summary - Displays the distribution of various radiology report categories using a horizontal bar chart.
+ * @summary Displays the distribution of various radiology report categories using a horizontal bar chart.
  */
 @Component({
   selector: 'app-radiologyreports',
@@ -14,24 +15,21 @@ import { TimePeriodService } from '../Services/timeperiod.service';
 export class RadiologyReportsComponent implements OnInit {
 
   /** 
-   * @summary - Reference to the canvas element for the radiology chart. 
+   * @summary Reference to the canvas element for the radiology chart. 
    */
-
-  @ViewChild('radiologychart') RadiologyChartRef!: ElementRef;
+  @ViewChild('radiologychart') RadiologyChartRef!: ElementRef<HTMLCanvasElement>;
 
   /** 
-  * @summary Time period for the chart data, default is 'yearly'.
-  */
+   * @summary Time period for the chart data, default is 'yearly'.
+   */
   @Input() TimePeriod: string = 'yearly';
-  private chart!: Dataset;
+  private chart!: Chart;
 
   constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
-
 
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-
     this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
@@ -45,8 +43,15 @@ export class RadiologyReportsComponent implements OnInit {
   /**
    * @summary Generates a horizontal bar chart representing various radiology report statuses across categories.
    */
+
   CreateRadiologyReportChart(): void {
-    const categories = ['CT', 'CT Scan', 'Doppler', 'Extra', 'Gastrology', 'IVU', 'Mammagram', 'Micturating Cystourethro', 'MRI Report', 'Neurology', 'Sonomammagram', 'Special Producer', 'UltraSound', 'Ultrasound(USG)', 'X-ray'];
+    const categories = [
+      'CT', 'CT Scan', 'Doppler', 'Extra', 'Gastrology',
+      'IVU', 'Mammagram', 'Micturating Cystourethro',
+      'MRI Report', 'Neurology', 'Sonomammagram',
+      'Special Producer', 'UltraSound', 'Ultrasound(USG)', 'X-ray'
+    ];
+
     const statuses = ['Waiting', 'CheckIn', 'Reported', 'Verified', 'Appointment'];
 
     const colors = [
@@ -57,48 +62,40 @@ export class RadiologyReportsComponent implements OnInit {
       'rgba(153, 102, 255, 0.5)'
     ];
 
-
-    // Checking for empty or invalid categories and statuses
     const validCategories = categories.filter(cat => cat.trim() !== '');
     const validStatuses = statuses.filter(stat => stat.trim() !== '');
 
-    if (validCategories.length === 0 || validStatuses.length === 0 && validCategories.length === validStatuses.length) {
+    if (validCategories.length === 0 || validStatuses.length === 0) {
       console.log('Categories or statuses are empty or invalid. Cannot create chart.');
       return;
     }
-    const datasets = validStatuses.map((status, index) => ({
+
+    const datasets: Dataset[] = validStatuses.map((status, index) => ({
       label: status,
-      data: this.getNumbers(categories.length),
-      backgroundColor: colors[index % colors.length],
-      borderColor: colors[index % colors.length],
+      data: this.getNumbers(validCategories.length),
+      backgroundColor: validCategories.map(() => colors[index % colors.length]),
+      borderColor: validCategories.map(() => colors[index % colors.length]),
       borderWidth: 1
     }));
 
-    //Checking if all datasets contain only non-negative numbers
-    if (datasets.every(dataset => dataset.data.every(num => num >= 0))) {
+    const chartConfig: ChartConfig = {
+      chartRef: this.RadiologyChartRef.nativeElement,
+      chartType: 'horizontalBar',
+      labels: validCategories,
+      datasets: datasets,
+      chartTitle: 'Radiology Reports Chart',
+      xAxisLabel: 'Count',
+      yAxisLabel: 'Categories',
+      colors: colors,
+      legendPosition: 'top'
+    };
 
-      const chartTitle = 'Radiology Reports Chart';
-      const xAxisLabel = 'Count';
-      const yAxisLabel = 'Categories';
-
-      this.chart = this.chartService.CreateChart(
-        this.RadiologyChartRef.nativeElement,
-        'horizontalBar',
-        categories,
-        datasets,
-        chartTitle,
-        xAxisLabel,
-        yAxisLabel,
-        colors
-      );
-    } else {
-      console.log('No valid data available for creating the Radiology Reports chart.');
-    }
+    this.chartService.CreateChart(chartConfig);
   }
 
+
   /**
-   * @summary - Generates an array of random numbers for the given count.
-   *
+   * @summary Generates an array of random numbers for the given count.
    * @param count - The number of random numbers to generate.
    * @returns An array of random numbers.
    */
@@ -110,14 +107,12 @@ export class RadiologyReportsComponent implements OnInit {
     return numbers;
   }
 
-
   /**
-  * @summary Updates the time period and reloads the data when it changes.
-  * @param newTimePeriod - The new time period selected.
-  */
+   * @summary Updates the time period and reloads the data when it changes.
+   * @param newTimePeriod - The new time period selected.
+   */
   OnTimePeriodChange(newTimePeriod: string): void {
     this.TimePeriod = newTimePeriod;
     this.LoadData();
   }
-
 }

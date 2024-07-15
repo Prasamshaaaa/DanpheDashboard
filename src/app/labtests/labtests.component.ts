@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { TimePeriodService } from '../Services/timeperiod.service';
+import { DoughnutChartConfig } from '../models';
 
 /**
  * @summary Displays the distribution of lab tests using a doughnut chart.
@@ -13,13 +14,15 @@ import { TimePeriodService } from '../Services/timeperiod.service';
 export class LabTestsComponent implements OnInit {
 
   /**
-   * @summary -  Reference to the canvas element for the lab tests chart. */
+   * @summary Reference to the canvas element for the lab tests chart.
+   */
   @ViewChild('labtestsChart') LabTestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   /** 
-  * @summary Time period for the chart data, default is 'yearly'.
-  */
+   * @summary Time period for the chart data, default is 'yearly'.
+   */
   @Input() TimePeriod: string = 'yearly';
+
   LabTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
     { rank: 2, testname: 'COMPLETE HAEMOGRAM', nooftest: '5522' },
@@ -35,7 +38,6 @@ export class LabTestsComponent implements OnInit {
 
   constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
-
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
@@ -44,15 +46,15 @@ export class LabTestsComponent implements OnInit {
       this.LoadData();
     });
   }
+
   LoadData(): void {
     this.CreateLabTestsChart();
   }
 
   /**
-   * @summary - Generates a doughnut chart representing the distribution of lab tests.
+   * @summary Generates a doughnut chart representing the distribution of lab tests.
    */
   CreateLabTestsChart(): void {
-
     // Filtering out empty or invalid entries
     const validLabTests = this.LabTests.filter(test => test.testname && test.nooftest);
 
@@ -60,6 +62,7 @@ export class LabTestsComponent implements OnInit {
       console.log('No valid data available for creating the Lab Tests chart.');
       return;
     }
+
     const labels = validLabTests.map(test => test.testname);
     const data = validLabTests.map(test => parseInt(test.nooftest, 10));
     const colors = [
@@ -75,20 +78,22 @@ export class LabTestsComponent implements OnInit {
       'rgb(15, 104, 102)'
     ];
 
-    this.chartService.CreateDoughnutChart(
-      this.LabTestsChartRef.nativeElement,
-      labels,
-      data,
-      colors,
-      'Lab Test Distribution',
-      'top'
-    );
+    const chartConfig: DoughnutChartConfig = {
+      chartRef: this.LabTestsChartRef.nativeElement,
+      labels: labels,
+      data: data,
+      colors: colors,
+      chartTitle: 'Lab Test Distribution',
+      legendPosition: 'top'
+    };
+
+    this.chartService.CreateDoughnutChart(chartConfig);
   }
 
   /**
- * @summary Updates the time period and reloads the data when it changes.
- * @param newTimePeriod - The new time period selected.
- */
+   * @summary Updates the time period and reloads the data when it changes.
+   * @param newTimePeriod - The new time period selected.
+   */
   OnTimePeriodChange(newTimePeriod: string): void {
     this.TimePeriod = newTimePeriod;
     this.LoadData();

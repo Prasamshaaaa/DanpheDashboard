@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { TimePeriodService } from '../Services/timeperiod.service';
+import { Dataset, ChartConfig } from '../models';
 
 @Component({
   selector: 'app-categorywiseincomereport',
@@ -9,27 +10,23 @@ import { TimePeriodService } from '../Services/timeperiod.service';
 })
 export class CategoryWiseIncomeReportComponent implements OnInit {
 
-
   /**
-    * @summary - Reference to the canvas element for the category-wise chart.
-    */
+   * @summary - Reference to the canvas element for the category-wise chart.
+   */
   @ViewChild('categorywisechart') CategoryWiseChart!: ElementRef<HTMLCanvasElement>;
 
   /**
-     * @summary The selected time period for displaying the chart.
-     * @default 'yearly'
-     */
+   * @summary The selected time period for displaying the chart.
+   * @default 'yearly'
+   */
   @Input() TimePeriod: string = 'yearly';
+
   constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
   ngOnInit(): void {
-
     /**
-    * @summary Initializes the component and loads data for the chart.
-    * 
-    * Subscribes to changes in the current time period and reloads the chart data
-    * whenever the time period is updated.
-    */
+     * @summary Initializes the component and loads data for the chart.
+     */
     this.LoadData();
     this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
@@ -53,17 +50,16 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
     { id: 13, categoryreport: 'Double Cabin', collection: 'Rs.4,002,720.00', return: '46545' },
     { id: 14, categoryreport: 'Procedure', collection: 'Rs.4,002,720.00', return: '46545' },
     { id: 15, categoryreport: 'Hematology', collection: 'Rs.4,002,720.00', return: '46545' },
-
   ];
+
   LoadData(): void {
     this.CreateCategoryReportChart();
   }
 
   /**
-    * @summary Generates a bar chart representing collection and return counts across different age categoryreport.
-    */
+   * @summary Generates a bar chart representing collection and return counts across different categories.
+   */
   CreateCategoryReportChart(): void {
-
     // Filtering out empty or invalid entries
     const validCategoryReports = this.categoryReports.filter(report => report.categoryreport && report.collection && report.return);
 
@@ -76,48 +72,45 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
     const collections = validCategoryReports.map(report => parseFloat(report.collection.replace('Rs.', '').replace(/,/g, '')));
     const returns = validCategoryReports.map(report => parseInt(report.return, 10));
 
-
-
-    const datasets = [
+    const datasets: Dataset[] = [
       {
         label: 'Collection',
-        data: collections
+        data: collections,
+        backgroundColor: Array(validCategoryReports.length).fill('rgba(7, 115, 188, 0.6)'),
+        borderColor: Array(validCategoryReports.length).fill('rgba(7, 115, 188)'),
+        borderWidth: 1
       },
       {
         label: 'Return',
-        data: returns
+        data: returns,
+        backgroundColor: Array(validCategoryReports.length).fill('rgba(169, 228, 169, 0.6)'),
+        borderColor: Array(validCategoryReports.length).fill('rgba(169, 228, 169)'),
+        borderWidth: 1
       }
     ];
 
-    const colors = [
-      'rgb(7, 115, 188,0.6)',
-      'rgb(169, 228, 169,0.6)'
-    ];
+    const chartConfig: ChartConfig = {
+      chartRef: this.CategoryWiseChart.nativeElement,
+      chartType: 'bar',
+      labels: labels,
+      datasets: datasets,
+      chartTitle: 'Category Wise Income Report',
+      xAxisLabel: 'Category',
+      yAxisLabel: 'Amount',
+      colors: [],
+      legendPosition: 'top'
+    };
 
-    const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
-
-    this._chartService.CreateChart(
-      this.CategoryWiseChart.nativeElement,
-      'bar',
-      labels,
-      datasets,
-      'Age Wise Details Chart',
-      'Count',
-      'Age Range',
-      colors,
-      legendPosition
-    );
+    this._chartService.CreateChart(chartConfig);
   }
 
+
   /**
- * @summary Updates the selected time period and reloads data for the chart.
- * @param newTimePeriod - The new time period selected by the user.
- */
+   * @summary Updates the selected time period and reloads data for the chart.
+   * @param newTimePeriod - The new time period selected by the user.
+   */
   OnTimePeriodChange(newTimePeriod: string): void {
     this.TimePeriod = newTimePeriod;
     this.LoadData();
   }
 }
-
-
-

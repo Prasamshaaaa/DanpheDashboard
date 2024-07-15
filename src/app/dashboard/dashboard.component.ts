@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { TimePeriodService } from '../Services/timeperiod.service';
+import { ChartConfig, DoughnutChartConfig } from '../models';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,6 @@ export class DashboardComponent implements OnInit {
 
   /** 
    * @summary - Reference to the canvas element for the lab details chart.
-   * 
    */
   @ViewChild('labDetailsChart') LabDetailsChartRef!: ElementRef;
 
@@ -26,11 +26,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     /**
-  * @summary Initializes the component and subscribes to changes in the current time period.
-  * 
-  * This subscription triggers the LoadCharts method whenever the time period is changed,
-  * ensuring that the displayed charts are updated to reflect the selected time period.
-  */
+     * @summary Initializes the component and subscribes to changes in the current time period.
+     */
     this._timePeriodService.CurrentTimePeriod$.subscribe(() => {
       this.LoadCharts();
     });
@@ -72,14 +69,16 @@ export class DashboardComponent implements OnInit {
     const validData = data.filter(num => num >= 0);
 
     if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
-      this.chartService.CreateDoughnutChart(
-        this.LabDetailsChartRef.nativeElement,
-        labels,
-        data,
-        colors,
-        'Doughnut Chart Example',
-        'bottom'
-      );
+      const chartConfig: DoughnutChartConfig = {
+        chartRef: this.LabDetailsChartRef.nativeElement,
+        labels: validLabels,
+        data: validData,
+        colors: colors,
+        chartTitle: 'Lab Status Distribution',
+        legendPosition: 'bottom'
+      };
+
+      this.chartService.CreateDoughnutChart(chartConfig);
     } else {
       console.log('Invalid data or labels for Lab Details Chart.');
     }
@@ -103,16 +102,20 @@ export class DashboardComponent implements OnInit {
     const validData = data.filter(num => num >= 0);
 
     if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
-      this.chartService.CreateDoughnutChart(
-        this.RadioDetailsChartRef.nativeElement,
-        labels,
-        data,
-        colors,
-        'Doughnut Chart Example',
-        'top'
-      );
+      const chartConfig: DoughnutChartConfig = {
+        chartRef: this.RadioDetailsChartRef.nativeElement,
+        labels: validLabels,
+        data: validData,
+        colors: colors,
+        chartTitle: 'Radio Status Distribution',
+        legendPosition: 'top'
+      };
+
+      this.chartService.CreateDoughnutChart(chartConfig);
     } else {
       console.log('Invalid data or labels for Radio Details Chart.');
     }
   }
+
+
 }

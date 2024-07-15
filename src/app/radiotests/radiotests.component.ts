@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { TimePeriodService } from '../Services/timeperiod.service';
+import { DoughnutChartConfig } from '../models';
 
+/**
+ * @summary Displays the distribution of various radio tests using a doughnut chart.
+ */
 @Component({
   selector: 'app-radiotests',
   templateUrl: './radiotests.component.html',
@@ -10,15 +14,15 @@ import { TimePeriodService } from '../Services/timeperiod.service';
 export class RadioTestsComponent implements OnInit {
 
   /** 
-   * @summary - Reference to the canvas element for the radio tests chart. 
-   
-  */
+   * @summary Reference to the canvas element for the radio tests chart. 
+   */
   @ViewChild('radiotestsChart') RadioTestsChartRef!: ElementRef<HTMLCanvasElement>;
 
   /** 
    * @summary Time period for the chart data, default is 'yearly'.
    */
   @Input() TimePeriod: string = 'yearly';
+
   RadioTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
     { rank: 2, testname: 'COMPLETE HAEMOGRAM', nooftest: '5522' },
@@ -45,18 +49,17 @@ export class RadioTestsComponent implements OnInit {
 
   LoadData(): void {
     this.CreateRadioTestsChart();
-
   }
+
   /**
    * @summary Generates a doughnut chart representing the distribution of various radio tests.
    */
-
   CreateRadioTestsChart(): void {
     // Filtering out empty or invalid entries
     const validRadioTests = this.RadioTests.filter(test => test.testname && test.nooftest);
 
     if (validRadioTests.length === 0) {
-      console.log('No valid data available for  creating the RadioTests chart.');
+      console.log('No valid data available for creating the RadioTests chart.');
       return;
     }
 
@@ -75,19 +78,22 @@ export class RadioTestsComponent implements OnInit {
       'rgb(15, 104, 102)'
     ];
 
-    this.chartService.CreateDoughnutChart(
-      this.RadioTestsChartRef.nativeElement,
-      labels,
-      data,
-      colors,
-      'Radio Test Distribution'
-    );
+    const chartConfig: DoughnutChartConfig = {
+      chartRef: this.RadioTestsChartRef.nativeElement,
+      labels: labels,
+      data: data,
+      colors: colors,
+      chartTitle: 'Radio Test Distribution',
+      legendPosition: 'top'
+    };
+
+    this.chartService.CreateDoughnutChart(chartConfig);
   }
 
   /**
-  * @summary Updates the time period and reloads the data when it changes.
-  * @param newTimePeriod - The new time period selected.
-  */
+   * @summary Updates the time period and reloads the data when it changes.
+   * @param newTimePeriod - The new time period selected.
+   */
   OnTimePeriodChange(newTimePeriod: string): void {
     this.TimePeriod = newTimePeriod;
     this.LoadData();

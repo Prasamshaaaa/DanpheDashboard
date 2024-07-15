@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Chart, ChartType } from 'chart.js';
-import { ChartConfig } from '../models';
+import { Chart } from 'chart.js';
+import { ChartConfig, DoughnutChartConfig } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -10,36 +10,20 @@ export class ChartService {
   constructor() { }
 
   /**
-   * 
-   * @param chartRef - the canvas element where the chart will be rendered
-   * @param chartType - type of chart we want to create (e.g. pie, line, bar and so.on.)
-   * @param datasets - the datasets for the chart
-   * @param chartTitle - the title of the chart
-   * @param xAxisLabel - the label for the x-axis
-   * @param yAxisLabel - the label for the y-axis
-   * @param colors - array of colors for the datasets
-   * @param legendPosition - the position of the legend
-   * @summary - creates chart using cart.js
+   * Creates a chart using Chart.js.
+   * @param config - Configuration object for the chart.
+   * @summary Creates a chart using Chart.js and returns the created chart instance.
    * @returns The created chart instance.
    */
-  CreateChart(
-    chartRef: HTMLCanvasElement,
-    chartType: ChartType,
-    labels: string[],
-    datasets: any[],
-    chartTitle: string,
-    xAxisLabel: string,
-    yAxisLabel: string,
-    colors: string[],
-    legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top'
-  ) {
+  CreateChart(config: ChartConfig): Chart {
     const data = {
-      labels: labels,
-      datasets: datasets.map((dataset, index) => ({
+      labels: config.labels,
+      datasets: config.datasets.map((dataset) => ({
         label: dataset.label,
         data: dataset.data,
-        backgroundColor: colors[index % colors.length] || this.generateRandomColor(),
-        borderColor: colors[index % colors.length] || this.generateRandomColor(),
+        backgroundColor: dataset.backgroundColor || this.generateRandomColor(),
+        borderColor: dataset.borderColor || this.generateRandomColor(),
+        borderWidth: dataset.borderWidth,
         fill: true
       }))
     };
@@ -48,61 +32,48 @@ export class ChartService {
       responsive: true,
       maintainAspectRatio: false,
       legend: {
-        position: legendPosition // For Setting the legend position
+        position: config.legendPosition
       },
       title: {
         display: true,
-        text: chartTitle // For Displaying Chart Title
+        text: config.chartTitle
       },
       scales: {
         xAxes: [{
           scaleLabel: {
             display: true,
-            labelString: xAxisLabel // For displaying x-axis label
+            labelString: config.xAxisLabel
           }
         }],
         yAxes: [{
           scaleLabel: {
             display: true,
-            labelString: yAxisLabel // For displaying y-axis label
+            labelString: config.yAxisLabel
           }
         }]
       }
     };
 
-    return new Chart(chartRef, {
-      type: chartType,
+    return new Chart(config.chartRef, {
+      type: config.chartType,
       data: data,
       options: options
     });
   }
 
   /**
- * Creates a doughnut chart using Chart.js.
- *
- * @param chartRef - The canvas element where the chart will be rendered.
- * @param labels - The labels for the chart.
- * @param data - The data values for the chart.
- * @param colors - Array of colors for the chart segments.
- * @param chartTitle - The title of the chart.
- * @param legendPosition - The position of the legend.
- * @summary Creates a doughnut chart using Chart.js.
- * @returns The created chart instance.
- */
-  CreateDoughnutChart(
-    chartRef: HTMLCanvasElement,
-    labels: string[],
-    data: number[],
-    colors: string[],
-    chartTitle: string,
-    legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top'
-  ) {
+   * Creates a doughnut chart using Chart.js.
+   * @param config - Configuration object for the doughnut chart.
+   * @summary Creates a doughnut chart using Chart.js and returns the created chart instance.
+   * @returns The created chart instance.
+   */
+  CreateDoughnutChart(config: DoughnutChartConfig): Chart {
     const chartData = {
-      labels: labels,
+      labels: config.labels,
       datasets: [{
         label: 'Number of Tests',
-        data: data,
-        backgroundColor: colors,
+        data: config.data,
+        backgroundColor: config.colors,
         hoverOffset: 4
       }]
     };
@@ -112,16 +83,16 @@ export class ChartService {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: legendPosition
+          position: config.legendPosition
         },
         title: {
           display: true,
-          text: chartTitle
+          text: config.chartTitle
         }
       }
     };
 
-    return new Chart(chartRef, {
+    return new Chart(config.chartRef, {
       type: 'doughnut',
       data: chartData,
       options: options
@@ -130,10 +101,11 @@ export class ChartService {
 
   /**
  
- * @summary  It gives a random color in RGBA format with 50% opacity.
- * @returns returns a string representing the RGBA color.
- */
+* @summary  It gives a random color in RGBA format with 50% opacity.
+* @returns returns a string representing the RGBA color.
+*/
   private generateRandomColor(): string {
     return `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`;
   }
+
 }

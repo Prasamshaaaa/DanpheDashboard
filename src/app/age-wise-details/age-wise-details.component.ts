@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { TimePeriodService } from '../Services/timeperiod.service';
+import { ChartConfig } from '../models';
 
 @Component({
   selector: 'app-age-wise-details',
@@ -11,10 +12,8 @@ export class AgeWiseDetailsComponent implements OnInit {
 
   /**
    * @summary - Reference to the canvas element for the age-wise chart.
-   * 
    */
   @ViewChild('agewisechart') Agewisechart!: ElementRef<HTMLCanvasElement>;
-
 
   /**
    * @summary The selected time period for displaying the chart.
@@ -43,7 +42,6 @@ export class AgeWiseDetailsComponent implements OnInit {
     * Subscribes to changes in the current time period and reloads the chart data
     * whenever the time period is updated.
     */
-
     this.LoadData();
     this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
@@ -73,34 +71,40 @@ export class AgeWiseDetailsComponent implements OnInit {
     const datasets = [
       {
         label: 'Male',
-        data: maleCounts
+        data: maleCounts,
+        backgroundColor: Array(validAgeWiseReports.length).fill('rgba(7, 115, 188, 0.6)'),
+        borderColor: Array(validAgeWiseReports.length).fill('rgba(7, 115, 188)'),
+        borderWidth: 1
       },
       {
         label: 'Female',
-        data: femaleCounts
+        data: femaleCounts,
+        backgroundColor: Array(validAgeWiseReports.length).fill('rgba(132, 227, 132, 0.6)'),
+        borderColor: Array(validAgeWiseReports.length).fill('rgba(132, 227, 132)'),
+        borderWidth: 1
       }
     ];
 
-    const colors = ['rgb(7, 115, 188,0.6)', 'rgb(132, 227, 132,0.6)'];
-    const legendPosition: 'top' | 'left' | 'bottom' | 'right' = 'top';
+    const chartConfig: ChartConfig = {
+      chartRef: this.Agewisechart.nativeElement,
+      chartType: 'bar',
+      labels: labels,
+      datasets: datasets,
+      chartTitle: 'Age Wise Details Chart',
+      xAxisLabel: 'Age Range',
+      yAxisLabel: 'Count',
+      colors: [],
+      legendPosition: 'top'
+    };
 
-    this._chartService.CreateChart(
-      this.Agewisechart.nativeElement,
-      'bar',
-      labels,
-      datasets,
-      'Age Wise Details Chart',
-      'Count',
-      'Age Range',
-      colors,
-      legendPosition
-    );
+    this._chartService.CreateChart(chartConfig);
   }
 
+
   /**
- * @summary Updates the selected time period and reloads data for the chart.
- * @param newTimePeriod - The new time period selected by the user.
- */
+   * @summary Updates the selected time period and reloads data for the chart.
+   * @param newTimePeriod - The new time period selected by the user.
+   */
   OnTimePeriodChange(newTimePeriod: string): void {
     this.TimePeriod = newTimePeriod;
     this.LoadData();
