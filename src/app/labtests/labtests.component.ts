@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 /**
  * @summary Displays the distribution of lab tests using a doughnut chart.
@@ -15,6 +16,10 @@ export class LabTestsComponent implements OnInit {
    * @summary -  Reference to the canvas element for the lab tests chart. */
   @ViewChild('labtestsChart') LabTestsChartRef!: ElementRef<HTMLCanvasElement>;
 
+  /** 
+  * @summary Time period for the chart data, default is 'yearly'.
+  */
+  @Input() TimePeriod: string = 'yearly';
   LabTests = [
     { rank: 1, testname: 'RBS by Glucometer', nooftest: '7272' },
     { rank: 2, testname: 'COMPLETE HAEMOGRAM', nooftest: '5522' },
@@ -28,10 +33,18 @@ export class LabTestsComponent implements OnInit {
     { rank: 10, testname: 'BLOOD SUGAR-POST PRANDIAL(PP)', nooftest: '7777' },
   ];
 
-  constructor(private chartService: ChartService) { }
+  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
 
   ngOnInit(): void {
+    this.LoadData();
+    // Subscribe to changes in the selected time period
+    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+      this.TimePeriod = period;
+      this.LoadData();
+    });
+  }
+  LoadData(): void {
     this.CreateLabTestsChart();
   }
 
@@ -70,5 +83,14 @@ export class LabTestsComponent implements OnInit {
       'Lab Test Distribution',
       'top'
     );
+  }
+
+  /**
+ * @summary Updates the time period and reloads the data when it changes.
+ * @param newTimePeriod - The new time period selected.
+ */
+  OnTimePeriodChange(newTimePeriod: string): void {
+    this.TimePeriod = newTimePeriod;
+    this.LoadData();
   }
 }

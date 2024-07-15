@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 @Component({
   selector: 'app-age-wise-details',
@@ -10,8 +11,16 @@ export class AgeWiseDetailsComponent implements OnInit {
 
   /**
    * @summary - Reference to the canvas element for the age-wise chart.
+   * 
    */
   @ViewChild('agewisechart') Agewisechart!: ElementRef<HTMLCanvasElement>;
+
+
+  /**
+   * @summary The selected time period for displaying the chart.
+   * @default 'yearly'
+   */
+  @Input() TimePeriod: string = 'yearly';
 
   /** 
    * @summary - Age-wise reports data 
@@ -25,9 +34,24 @@ export class AgeWiseDetailsComponent implements OnInit {
     { ageRange: '70 above Years', maleCount: 252, femaleCount: 5525 },
   ];
 
-  constructor(private _chartService: ChartService) { }
+  constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
   ngOnInit(): void {
+    /**
+    * @summary Initializes the component and loads data for the chart.
+    * 
+    * Subscribes to changes in the current time period and reloads the chart data
+    * whenever the time period is updated.
+    */
+
+    this.LoadData();
+    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+      this.TimePeriod = period;
+      this.LoadData();
+    });
+  }
+
+  LoadData(): void {
     this.CreateAgeWiseChart();
   }
 
@@ -72,4 +96,14 @@ export class AgeWiseDetailsComponent implements OnInit {
       legendPosition
     );
   }
+
+  /**
+ * @summary Updates the selected time period and reloads data for the chart.
+ * @param newTimePeriod - The new time period selected by the user.
+ */
+  OnTimePeriodChange(newTimePeriod: string): void {
+    this.TimePeriod = newTimePeriod;
+    this.LoadData();
+  }
+
 }

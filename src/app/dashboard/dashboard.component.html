@@ -707,7 +707,7 @@
     style="padding-right: 10px"
   >
     <div class="sub-container5" style="height: 610px">
-      <app-collectiondetail></app-collectiondetail>
+      <app-collectiondetail [TimePeriod]="ActiveButton"></app-collectiondetail>
     </div>
   </div>
 </div>
@@ -725,7 +725,7 @@
   >
     <!-- radiology reports -->
     <div class="sub-container4">
-      <app-radiologyreports></app-radiologyreports>
+      <app-radiologyreports [TimePeriod]="ActiveButton"></app-radiologyreports>
     </div>
   </div>
 </div>
@@ -750,7 +750,9 @@
     style="padding-right: 10px"
   >
     <div class="sub-container8" style="height: 450px">
-      <app-categorywiseincomereport></app-categorywiseincomereport>
+      <app-categorywiseincomereport
+        [TimePeriod]="ActiveButton"
+      ></app-categorywiseincomereport>
     </div>
   </div>
 </div>
@@ -762,7 +764,7 @@
     style="padding-right: 10px"
   >
     <div class="sub-container5" style="height: 680px">
-      <app-labtests></app-labtests>
+      <app-labtests [TimePeriod]="ActiveButton"></app-labtests>
     </div>
   </div>
 </div>
@@ -774,7 +776,7 @@
     style="padding-right: 10px"
   >
     <div class="sub-container5" style="height: 680px">
-      <app-radiotests></app-radiotests>
+      <app-radiotests [TimePeriod]="ActiveButton"></app-radiotests>
     </div>
   </div>
 </div>
@@ -783,7 +785,7 @@
   <div class="col-lg-6 col-md-6 col-sm-12 topcontainer">
     <!-------Age Wise Details------->
     <div class="sub-container9">
-      <app-age-wise-details></app-age-wise-details>
+      <app-age-wise-details [TimePeriod]="ActiveButton"></app-age-wise-details>
     </div>
   </div>
   <div

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,21 +16,41 @@ export class DashboardComponent implements OnInit {
   @ViewChild('labDetailsChart') LabDetailsChartRef!: ElementRef;
 
   /** 
-   * @summary - Reference to the canvas element for the radio details chart. */
+   * @summary - Reference to the canvas element for the radio details chart. 
+   */
   @ViewChild('radioDetailsChart') RadioDetailsChartRef!: ElementRef;
 
   ActiveButton: string = 'yearly';
 
-  constructor(private chartService: ChartService) { }
+  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
   ngOnInit(): void {
-    this.CreateLabDetailsChart();
-    this.CreateRadioDetailsChart();
+    /**
+  * @summary Initializes the component and subscribes to changes in the current time period.
+  * 
+  * This subscription triggers the LoadCharts method whenever the time period is changed,
+  * ensuring that the displayed charts are updated to reflect the selected time period.
+  */
+    this._timePeriodService.CurrentTimePeriod$.subscribe(() => {
+      this.LoadCharts();
+    });
   }
 
+  /**
+   * @summary Sets the active time period button and notifies the service.
+   * @param period - The selected time period (e.g., 'daily', 'weekly', 'monthly', 'yearly').
+   */
+  SetActiveButton(period: string): void {
+    this.ActiveButton = period;
+    this._timePeriodService.ChangeTimePeriod(period);
+  }
 
-  SetActiveButton(button: string): void {
-    this.ActiveButton = button;
+  /**
+   * @summary Loads all charts when the time period changes.
+   */
+  LoadCharts(): void {
+    this.CreateLabDetailsChart();
+    this.CreateRadioDetailsChart();
   }
 
   /**
@@ -50,9 +71,7 @@ export class DashboardComponent implements OnInit {
     const validLabels = labels.filter(label => label.trim() !== '');
     const validData = data.filter(num => num >= 0);
 
-
     if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
-
       this.chartService.CreateDoughnutChart(
         this.LabDetailsChartRef.nativeElement,
         labels,
@@ -84,7 +103,6 @@ export class DashboardComponent implements OnInit {
     const validData = data.filter(num => num >= 0);
 
     if (validLabels.length > 0 && validData.length > 0 && validLabels.length === validData.length) {
-
       this.chartService.CreateDoughnutChart(
         this.RadioDetailsChartRef.nativeElement,
         labels,

@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
 import { Dataset } from '../models';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 /**
  * @summary - Displays the distribution of various radiology report categories using a horizontal bar chart.
@@ -17,12 +18,27 @@ export class RadiologyReportsComponent implements OnInit {
    */
 
   @ViewChild('radiologychart') RadiologyChartRef!: ElementRef;
+
+  /** 
+  * @summary Time period for the chart data, default is 'yearly'.
+  */
+  @Input() TimePeriod: string = 'yearly';
   private chart!: Dataset;
 
-  constructor(private chartService: ChartService) { }
+  constructor(private chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
 
   ngOnInit(): void {
+    this.LoadData();
+    // Subscribe to changes in the selected time period
+
+    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+      this.TimePeriod = period;
+      this.LoadData();
+    });
+  }
+
+  LoadData(): void {
     this.CreateRadiologyReportChart();
   }
 
@@ -93,4 +109,15 @@ export class RadiologyReportsComponent implements OnInit {
     }
     return numbers;
   }
+
+
+  /**
+  * @summary Updates the time period and reloads the data when it changes.
+  * @param newTimePeriod - The new time period selected.
+  */
+  OnTimePeriodChange(newTimePeriod: string): void {
+    this.TimePeriod = newTimePeriod;
+    this.LoadData();
+  }
+
 }

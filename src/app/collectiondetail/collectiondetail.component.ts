@@ -1,5 +1,6 @@
-import { OnInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { OnInit, Component, ElementRef, ViewChild, Input } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 /**
  *
@@ -12,17 +13,48 @@ import { ChartService } from '../Services/chart.service';
 })
 export class CollectionDetailComponent implements OnInit {
 
+  /**
+     * @summary The currently active button representing the selected view type.
+     * @default 'service'
+     */
   ActiveButton: string = 'service';
 
   /** @summary - Reference to the canvas element for the collection details chart. */
   @ViewChild('collectionDetailsChart') CollectionDetailsChart!: ElementRef;
 
-  constructor(private _chartService: ChartService) { }
+  /**
+  * @summary The selected time period for displaying the chart.
+  * @default 'yearly'
+  */
+  @Input() TimePeriod: string = 'yearly';
+
+  constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
   ngOnInit(): void {
-    this.CreateCollectionDetailsChart();
+    /**
+        * @summary Initializes the component and loads data for the chart.
+        *
+        * Subscribes to changes in the current time period and reloads the chart data
+        * whenever the time period is updated.
+        */
+
+    this.LoadData();
+    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+      this.TimePeriod = period;
+      this.LoadData();
+    });
   }
 
+  LoadData(): void {
+    this.CreateCollectionDetailsChart();
+
+  }
+
+
+  /**
+ * @summary Sets the currently active button for the chart view.
+ * @param button - The button representing the selected view type.
+ */
   SetActiveButton(button: string) {
     this.ActiveButton = button;
   }
@@ -58,5 +90,14 @@ export class CollectionDetailComponent implements OnInit {
         legendPosition
       );
     }
+  }
+
+  /**
+  * @summary Updates the selected time period and reloads data for the chart.
+  * @param newTimePeriod - The new time period selected by the user.
+  */
+  OnTimePeriodChange(newTimePeriod: string): void {
+    this.TimePeriod = newTimePeriod;
+    this.LoadData();
   }
 }

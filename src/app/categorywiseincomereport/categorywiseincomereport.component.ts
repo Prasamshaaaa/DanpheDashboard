@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartService } from '../Services/chart.service';
+import { TimePeriodService } from '../Services/timeperiod.service';
 
 @Component({
   selector: 'app-categorywiseincomereport',
@@ -13,10 +14,27 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
     * @summary - Reference to the canvas element for the category-wise chart.
     */
   @ViewChild('categorywisechart') CategoryWiseChart!: ElementRef<HTMLCanvasElement>;
-  constructor(private _chartService: ChartService) { }
+
+  /**
+     * @summary The selected time period for displaying the chart.
+     * @default 'yearly'
+     */
+  @Input() TimePeriod: string = 'yearly';
+  constructor(private _chartService: ChartService, private _timePeriodService: TimePeriodService) { }
 
   ngOnInit(): void {
-    this.CreateCategoryReportChart();
+
+    /**
+    * @summary Initializes the component and loads data for the chart.
+    * 
+    * Subscribes to changes in the current time period and reloads the chart data
+    * whenever the time period is updated.
+    */
+    this.LoadData();
+    this._timePeriodService.CurrentTimePeriod$.subscribe(period => {
+      this.TimePeriod = period;
+      this.LoadData();
+    });
   }
 
   categoryReports = [
@@ -37,6 +55,9 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
     { id: 15, categoryreport: 'Hematology', collection: 'Rs.4,002,720.00', return: '46545' },
 
   ];
+  LoadData(): void {
+    this.CreateCategoryReportChart();
+  }
 
   /**
     * @summary Generates a bar chart representing collection and return counts across different age categoryreport.
@@ -86,6 +107,15 @@ export class CategoryWiseIncomeReportComponent implements OnInit {
       colors,
       legendPosition
     );
+  }
+
+  /**
+ * @summary Updates the selected time period and reloads data for the chart.
+ * @param newTimePeriod - The new time period selected by the user.
+ */
+  OnTimePeriodChange(newTimePeriod: string): void {
+    this.TimePeriod = newTimePeriod;
+    this.LoadData();
   }
 }
 
