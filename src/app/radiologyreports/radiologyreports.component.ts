@@ -25,7 +25,7 @@ export class RadiologyReportsComponent implements OnInit, OnDestroy {
    */
   @Input() TimePeriod: string = 'yearly';
 
-  private subscriptions = new Subscription();
+  private Subscriptions = new Subscription();
 
 
   constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
@@ -33,14 +33,14 @@ export class RadiologyReportsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.LoadData();
     // Subscribe to changes in the selected time period
-    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.Subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     }));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.Subscriptions.unsubscribe();
   }
 
   LoadData(): void {

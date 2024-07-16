@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ActiveButton: string = 'yearly';
 
-  private subscriptions = new Subscription();
+  private Subscriptions = new Subscription();
 
   constructor(private chartService: ChartService, private _dashboardService: DashboardService) { }
 
@@ -31,13 +31,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     /**
      * @summary Initializes the component and subscribes to changes in the current time period.
      */
-    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(() => {
+    this.Subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(() => {
       this.LoadCharts();
     }));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.Subscriptions.unsubscribe();
   }
 
   /**

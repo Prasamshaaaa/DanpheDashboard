@@ -23,7 +23,7 @@ export class AgeWiseDetailsComponent implements OnInit, OnDestroy {
   @Input() TimePeriod: string = 'yearly';
 
 
-  private subscriptions = new Subscription();
+  private Subscriptions = new Subscription();
 
   /** 
    * @summary - Age-wise reports data 
@@ -47,14 +47,14 @@ export class AgeWiseDetailsComponent implements OnInit, OnDestroy {
     * whenever the time period is updated.
     */
     this.LoadData();
-    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.Subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     }));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.Subscriptions.unsubscribe();
   }
 
   LoadData(): void {

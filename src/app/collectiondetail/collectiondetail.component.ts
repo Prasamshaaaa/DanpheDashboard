@@ -28,7 +28,7 @@ export class CollectionDetailComponent implements OnInit, OnDestroy {
    * @default 'yearly'
    */
   @Input() TimePeriod: string = 'yearly';
-  private subscriptions = new Subscription();
+  private Subscriptions = new Subscription();
 
 
   constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
@@ -41,14 +41,14 @@ export class CollectionDetailComponent implements OnInit, OnDestroy {
      * whenever the time period is updated.
      */
     this.LoadData();
-    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.Subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     }));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.Subscriptions.unsubscribe();
   }
 
   LoadData(): void {

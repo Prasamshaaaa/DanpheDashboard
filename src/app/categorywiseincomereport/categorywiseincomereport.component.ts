@@ -22,7 +22,7 @@ export class CategoryWiseIncomeReportComponent implements OnInit, OnDestroy {
    */
   @Input() TimePeriod: string = 'yearly';
 
-  private subscriptions = new Subscription();
+  private Subscriptions = new Subscription();
 
 
   constructor(private _chartService: ChartService, private _dashboardService: DashboardService) { }
@@ -32,14 +32,14 @@ export class CategoryWiseIncomeReportComponent implements OnInit, OnDestroy {
      * @summary Initializes the component and loads data for the chart.
      */
     this.LoadData();
-    this.subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
+    this.Subscriptions.add(this._dashboardService.CurrentTimePeriod$.subscribe(period => {
       this.TimePeriod = period;
       this.LoadData();
     }));
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
+    this.Subscriptions.unsubscribe();
   }
 
   categoryReports = [
